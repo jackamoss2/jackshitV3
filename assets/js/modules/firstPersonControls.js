@@ -1,4 +1,4 @@
-import * as THREE from './three.module.js';
+import * as THREE from '../libs/three.module.js';
 
 export class FirstPersonControls {
   constructor(camera, domElement, scene = null, options = {}) {

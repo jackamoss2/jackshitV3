@@ -1,5 +1,5 @@
 // three.js imports
-import * as THREE from './modules/three.module.js';
+import * as THREE from './libs/three.module.js';
 import { FirstPersonControls } from './modules/firstPersonControls.js';
 import { LightsSetup } from './modules/lightsSetup.js';
 

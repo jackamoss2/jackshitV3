@@ -1,4 +1,4 @@
-import * as THREE from './three.module.js';
+import * as THREE from '../libs/three.module.js';
 
 export function LightsSetup(scene) {
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);

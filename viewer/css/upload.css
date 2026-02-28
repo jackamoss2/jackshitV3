@@ -1,0 +1,31 @@
+/* ── Upload / Data Panel Drop ──────────────────────── */
+
+/* Full-width upload block button */
+.data-upload-block {
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  background: rgba(255, 255, 255, 0.04);
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #999;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.data-upload-block:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ddd;
+}
+
+/* Drag-over highlight on data panel body */
+#data-panel-body.drag-over {
+  background: rgba(245, 197, 66, 0.06);
+  outline: 2px dashed #f5c542;
+  outline-offset: -2px;
+  border-radius: 4px;
+}

@@ -1,0 +1,57 @@
+/* ── Collapsible Sub-panels ────────────────────────── */
+
+.collapsible {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.collapsible:last-child {
+  border-bottom: none;
+}
+
+.collapsible-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 8px 0;
+  background: none;
+  border: none;
+  color: #ddd;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.collapsible-header:hover {
+  color: #fff;
+}
+
+.collapse-arrow {
+  display: inline-block;
+  font-size: 10px;
+  transition: transform 0.2s ease;
+}
+
+.collapsible.open .collapse-arrow {
+  transform: rotate(90deg);
+}
+
+.collapsible-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.collapsible.open .collapsible-body {
+  max-height: 500px;
+}
+
+/* Data section gets dedicated space */
+.collapsible-data.open .collapsible-body {
+  max-height: none;
+  height: 33vh;
+  overflow-y: auto;
+}

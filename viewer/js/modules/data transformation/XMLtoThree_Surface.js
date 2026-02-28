@@ -1,4 +1,5 @@
-import * as THREE from 'three';
+import * as THREE from '../../libs/three.module.js';
+import { initOriginFromPoints, applyOffset } from '../crsManager.js';
 
 // parse a LandXML point string into [x, y, z]
 function parseCoords(text) {
@@ -8,18 +9,27 @@ function parseCoords(text) {
   return parts;
 }
 
+/**
+ * @param {Element} surfaceNode
+ * @returns {{ mesh: THREE.Mesh, rawPoints: number[][] }}
+ */
 export function createSurfaceMesh(surfaceNode) {
   const surfaceName = surfaceNode.getAttribute("name") || "LandXML_Surface";
 
   // --- collect points ---
   const pointsMap = new Map();
+  const rawPoints = [];
   surfaceNode.querySelectorAll("P").forEach(node => {
     const coordsArr = parseCoords(node.textContent);
     if (!coordsArr) return;
     pointsMap.set(node.getAttribute("id"), coordsArr);
+    rawPoints.push(coordsArr);
   });
 
-  // --- collect faces ---
+  // Establish scene origin from first surface's points
+  initOriginFromPoints(rawPoints);
+
+  // --- collect faces (apply offset) ---
   const vertexArray = [];
   surfaceNode.querySelectorAll("Faces > F").forEach(node => {
     if (node.getAttribute("i") === "1") return; // skip invisible
@@ -29,7 +39,10 @@ export function createSurfaceMesh(surfaceNode) {
     const coords = ids.map(id => pointsMap.get(id));
     if (coords.includes(undefined)) return;
 
-    coords.forEach(([x, y, z]) => vertexArray.push(x, y, z));
+    coords.forEach(([x, y, z]) => {
+      const [ox, oy, oz] = applyOffset(x, y, z);
+      vertexArray.push(ox, oy, oz);
+    });
   });
 
   // --- create geometry ---
@@ -56,5 +69,5 @@ export function createSurfaceMesh(surfaceNode) {
   const mesh = new THREE.Mesh(geometry, material);
   mesh.name = surfaceName;
 
-  return mesh;
+  return { mesh, rawPoints };
 }

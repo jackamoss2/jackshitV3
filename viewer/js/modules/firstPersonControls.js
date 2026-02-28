@@ -9,7 +9,10 @@ export class FirstPersonControls {
     this.speed = options.speed || 4;
     this.sprintMultiplier = options.sprintMultiplier || 8;
     this.crawlMultiplier = options.crawlMultiplier || 0.25;
-    this.sensitivity = options.sensitivity || 0.002;
+    this.sensitivity = options.sensitivity || 0.001;
+
+    this.onEnter = options.onEnter || null;
+    this.onExit = options.onExit || null;
 
     this.position = camera.position.clone();
 
@@ -177,6 +180,7 @@ export class FirstPersonControls {
   this.domElement.style.cursor = 'none';
   this._ignoreFirstMouseMove = true;
   this.domElement.requestPointerLock();
+  if (this.onEnter) this.onEnter();
   }
 
   _exitControls() {
@@ -187,6 +191,7 @@ export class FirstPersonControls {
     if (document.pointerLockElement === this.domElement) {
       document.exitPointerLock();
     }
+    if (this.onExit) this.onExit();
   }
 
   _initPointerLock() {

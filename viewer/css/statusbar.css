@@ -1,0 +1,33 @@
+/* ── Status Bar ───────────────────────────────────── */
+
+#status-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background: rgba(24, 24, 24, 0.85);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  color: #999;
+}
+
+#status-text.status-active {
+  color: #f5c542;
+}
+
+.status-right {
+  color: #777;
+  font-size: 11px;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.status-right.crs-active {
+  color: #4fc3f7;
+}

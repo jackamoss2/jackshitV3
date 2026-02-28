@@ -4,10 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jackshit viewer</title>
-    <link rel="stylesheet" href="assets/css/viewer.css">
+    <link rel="stylesheet" href="viewer/css/base.css">
+    <link rel="stylesheet" href="viewer/css/toolbar.css">
+    <link rel="stylesheet" href="viewer/css/panels.css">
+    <link rel="stylesheet" href="viewer/css/collapsible.css">
+    <link rel="stylesheet" href="viewer/css/statusbar.css">
+    <link rel="stylesheet" href="viewer/css/upload.css">
+    <link rel="stylesheet" href="viewer/css/datatree.css">
+    <link rel="stylesheet" href="viewer/css/settings.css">
 </head>
 <body>
     <canvas id="threejs-canvas"></canvas>
-    <script type="module" src="assets/js/viewer.js"></script>
+
+    <!-- UI Overlay -->
+    <div id="ui-overlay">
+
+        <!-- Top Toolbar -->
+        <div id="toolbar">
+            <button class="toolbar-btn" data-panel="left-panel" title="Toggle Left Panel">☰</button>
+            <span class="toolbar-title">jackshit viewer</span>
+            <button class="toolbar-btn" data-panel="right-panel" title="Toggle Right Panel">⚙</button>
+        </div>
+
+        <!-- Left Panel -->
+        <div id="left-panel" class="ui-panel panel-left hidden">
+            <div class="panel-header">
+                <span>Explorer</span>
+                <button class="panel-close" data-panel="left-panel">✕</button>
+            </div>
+            <div class="panel-content">
+
+                <!-- Data -->
+                <div class="collapsible collapsible-data open">
+                    <button class="collapsible-header"><span class="collapse-arrow">▶</span> Data</button>
+                    <button id="data-upload-btn" class="data-upload-block" title="Upload XML file">⬆ Upload XML</button>
+                    <div class="collapsible-body" id="data-panel-body">
+                        <input type="file" id="upload-input" accept=".xml" hidden>
+                        <div id="data-tree"></div>
+                        <div id="data-metadata"></div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="collapsible">
+                    <button class="collapsible-header"><span class="collapse-arrow">▶</span> Tools</button>
+                    <div class="collapsible-body">
+                        <p>Tools content goes here.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div id="right-panel" class="ui-panel panel-right hidden">
+            <div class="panel-header">
+                <span>Settings</span>
+                <button class="panel-close" data-panel="right-panel">✕</button>
+            </div>
+            <div class="panel-content">
+
+                <div class="setting-group">
+                    <label class="setting-label" for="setting-speed">Normal Speed</label>
+                    <div class="setting-row">
+                        <input type="range" id="setting-speed" class="setting-slider" min="0.01" max="2.5" step="0.01" value="0.1">
+                        <span id="setting-speed-val" class="setting-value">0.10</span>
+                        <button class="setting-reset" data-setting="speed" title="Reset to default">↺</button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label" for="setting-zoom-speed">Zoom Speed</label>
+                    <div class="setting-row">
+                        <input type="range" id="setting-zoom-speed" class="setting-slider" min="1" max="20" step="0.5" value="8">
+                        <span id="setting-zoom-speed-val" class="setting-value">8.0</span>
+                        <button class="setting-reset" data-setting="zoomSpeed" title="Reset to default">↺</button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label" for="setting-sensitivity">Mouse Sensitivity</label>
+                    <div class="setting-row">
+                        <input type="range" id="setting-sensitivity" class="setting-slider" min="0.0002" max="0.005" step="0.0002" value="0.001">
+                        <span id="setting-sensitivity-val" class="setting-value">0.0010</span>
+                        <button class="setting-reset" data-setting="sensitivity" title="Reset to default">↺</button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label" for="setting-render-dist">Render Distance</label>
+                    <div class="setting-row">
+                        <input type="range" id="setting-render-dist" class="setting-slider" min="100" max="10000" step="100" value="2000">
+                        <span id="setting-render-dist-val" class="setting-value">2000</span>
+                        <button class="setting-reset" data-setting="renderDist" title="Reset to default">↺</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bottom Status Bar -->
+        <div id="status-bar">
+            <span id="status-text">Ready</span>
+            <span id="crs-display" class="status-right" title="Coordinate Reference System">No CRS</span>
+        </div>
+
+    </div>
+
+    <script type="module" src="viewer/js/viewer.js"></script>
 </body>
 </html>

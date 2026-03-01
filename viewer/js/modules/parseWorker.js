@@ -369,6 +369,7 @@ async function parseDEM(content, fileName, fileType) {
 }
 
 // ── Message handler ─────────────────────────────────
+// LandXML is now parsed on the main thread; worker only handles DEM formats.
 
 let geotiffLoaded = false;
 
@@ -379,15 +380,15 @@ self.onmessage = async (e) => {
     let result;
 
     if (type === 'landxml') {
-      result = parseLandXML(content, fileName);
-    } else {
-      // Load geotiff.js in the worker on first DEM use
-      if (!geotiffLoaded && (type === 'geotiff')) {
-        importScripts('https://cdn.jsdelivr.net/npm/geotiff');
-        geotiffLoaded = true;
-      }
-      result = await parseDEM(content, fileName, type);
+      throw new Error('LandXML should be parsed on the main thread');
     }
+
+    // Load geotiff.js in the worker on first DEM use
+    if (!geotiffLoaded && (type === 'geotiff')) {
+      importScripts('https://cdn.jsdelivr.net/npm/geotiff');
+      geotiffLoaded = true;
+    }
+    result = await parseDEM(content, fileName, type);
 
     // Collect transferable buffers
     const transfers = result.surfaces.map(s => s.vertexBuffer.buffer);

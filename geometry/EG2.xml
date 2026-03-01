@@ -1,0 +1,1180 @@
+<?xml version="1.0"?>
+<LandXML xmlns="http://www.landxml.org/schema/LandXML-1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.landxml.org/schema/LandXML-1.2 http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd" date="2025-08-09" time="09:21:40" version="1.2" language="English" readOnly="false">
+	<Units>
+		<Imperial areaUnit="squareFoot" linearUnit="USSurveyFoot" volumeUnit="cubicYard" temperatureUnit="fahrenheit" pressureUnit="inchHG" diameterUnit="inch" angularUnit="decimal degrees" directionUnit="decimal degrees"></Imperial>
+	</Units>
+	<Project name="C:\Users\AMOSSJ\Downloads\Waipahu_Station_TPO.dwg"></Project>
+	<Application name="Autodesk Civil 3D" desc="Civil 3D" manufacturer="Autodesk, Inc." version="2022" manufacturerURL="www.autodesk.com/civil" timeStamp="2025-08-09T09:21:40"></Application>
+	<CgPoints>
+		<CgPoint name="1" desc="&quot;+&quot; CUT" code="CP">78965.532000000007 1639293.287999999942 8.952</CgPoint>
+		<CgPoint name="2" desc="MAG NAIL" code="CP">78921.887000000002 1639082.712999999989 8.405</CgPoint>
+		<CgPoint name="3" desc="60 D NAIL" code="CP">78882.046000000002 1639188.148000000045 7.307</CgPoint>
+		<CgPoint name="4" desc="MAG NAIL" code="CP">78947.403999999995 1639189.845999999903 9.468</CgPoint>
+		<CgPoint name="200" desc="        0" code="FDBC">79431.587 1640589.945000000065 9.737</CgPoint>
+		<CgPoint name="201" desc="        0" code="BM">79287.460999999996 1640106.233999999939 11.597</CgPoint>
+		<CgPoint name="7000" code="ELPB">78951.701000000001 1639228.83899999992 9.757</CgPoint>
+		<CgPoint name="7001" desc="TC" code="TC BC">78940.392000000007 1639221.580000000075 8.292</CgPoint>
+		<CgPoint name="7002" code="TC">78935.486999999994 1639219.621999999974 8.463</CgPoint>
+		<CgPoint name="7003" desc="TC" code="TC EC E">78939.188999999998 1639215.51099999994 8.291</CgPoint>
+		<CgPoint name="7004" desc="FL" code="CFL BC">78939.135999999999 1639215.378000000026 7.902</CgPoint>
+		<CgPoint name="7005" desc="FL" code="CFL">78935.285000000003 1639219.584000000032 7.722</CgPoint>
+		<CgPoint name="7006" desc="FL" code="CFL EC">78940.460999999996 1639221.683999999892 7.978</CgPoint>
+		<CgPoint name="7007" desc="FH" code="WTFH">78938.626999999993 1639218.740999999922 8.107</CgPoint>
+		<CgPoint name="7008" desc="LIGHT" code="ELLP">78958.538 1639227.736000000034 9.578</CgPoint>
+		<CgPoint name="7009" code="WTBL REC">78937.487999999998 1639205.185000000056 7.492</CgPoint>
+		<CgPoint name="7010" code="WTPB">78937.998999999996 1639207.014999999898 7.444</CgPoint>
+		<CgPoint name="7011" code="WTBL">78935.335999999996 1639207.716000000015 7.451</CgPoint>
+		<CgPoint name="7012" desc="CONC" code="CONC REC">78926.664999999994 1639205.628999999957 7.673</CgPoint>
+		<CgPoint name="7013" code="CONC">78927.054999999993 1639207.777999999933 7.676</CgPoint>
+		<CgPoint name="7014" code="CONC">78930.236000000004 1639207.155999999959 7.691</CgPoint>
+		<CgPoint name="7015" desc="BFP" code="WTBF">78927.100999999995 1639206.655000000028 7.687</CgPoint>
+		<CgPoint name="7016" desc="BFP" code="WTBF">78928.454230053496 1639206.414516919991 0.</CgPoint>
+		<CgPoint name="7017" desc="IRRG BOX" code="IRBX">78924.236000000004 1639205.852999999886 7.547</CgPoint>
+		<CgPoint name="7018" desc="IRRG BOX" code="IRBX">78924.577000000005 1639203.486000000034 7.476</CgPoint>
+		<CgPoint name="7019" desc="IRRG VALVE" code="IRVA 6&quot;">78922.082999999999 1639202.229999999981 7.451</CgPoint>
+		<CgPoint name="7020" desc="IRRG BOX" code="IRBX">78922.218999999997 1639200.783999999985 7.513</CgPoint>
+		<CgPoint name="7021" desc="IRRG BOX" code="IRBX">78922.395000000004 1639199.186999999918 7.54</CgPoint>
+		<CgPoint name="7022" desc="IRRG BOX" code="IRBX">78922.642000000007 1639197.635000000009 7.578</CgPoint>
+		<CgPoint name="7023" desc="IRRG VALVE" code="IRVA 6&quot;">78925.096999999994 1639198.166999999899 6.746</CgPoint>
+		<CgPoint name="7024" desc="MON WELL" code="GEMW">78921.269 1639178.486000000034 7.492</CgPoint>
+		<CgPoint name="7025" desc="IRRG BOX" code="IRBX">78920.286999999997 1639163.354999999981 7.32</CgPoint>
+		<CgPoint name="7026" desc="IRRG VALVE" code="IRVA 6&quot;">78920.482999999993 1639161.953999999911 7.261</CgPoint>
+		<CgPoint name="7027" code="ELPB">78937.207999999999 1639144.389999999898 9.263</CgPoint>
+		<CgPoint name="7028" desc="LIGHT" code="ELLP">78941.323999999993 1639142.398999999976 9.258</CgPoint>
+		<CgPoint name="7029" desc="MON WELL" code="GEMW">78920.120999999999 1639118.210999999894 7.778</CgPoint>
+		<CgPoint name="7030" code="ELPB">78917.850000000006 1639122.425999999978 7.643</CgPoint>
+		<CgPoint name="7031" desc="IRRG BOX" code="IRBX">78917.263999999996 1639125.14599999995 7.507</CgPoint>
+		<CgPoint name="7032" desc="WALL BOT" code="WLBW H3.2">78910.085999999996 1639134.574000000022 7.315</CgPoint>
+		<CgPoint name="7033" desc="WALL BOT" code="WLBW">78912.203999999998 1639134.203999999911 7.348</CgPoint>
+		<CgPoint name="7034" desc="WALL BOT" code="WLBW">78913.055999999997 1639137.79700000002 7.46</CgPoint>
+		<CgPoint name="7035" desc="WALL BOT" code="WLBW CLS STANDPIPE">78910.827999999994 1639138.262000000104 7.44</CgPoint>
+		<CgPoint name="7036" code="CONC">78905.706999999995 1639118.834999999963 7.576</CgPoint>
+		<CgPoint name="7037" desc="CONC" code="CONC E">78906.274999999994 1639121.355999999912 7.542</CgPoint>
+		<CgPoint name="7038" desc="CONC" code="CONC B">78908.447 1639133.037000000011 7.396</CgPoint>
+		<CgPoint name="7039" desc="CONC" code="CONC E">78909.019 1639135.756000000052 7.381</CgPoint>
+		<CgPoint name="7040" desc="CONC" code="CONC REC">78907.659 1639141.66100000008 7.402</CgPoint>
+		<CgPoint name="7041" code="CONC">78910.130999999994 1639141.21399999992 7.366</CgPoint>
+		<CgPoint name="7042" code="CONC">78909.173999999999 1639135.986999999965 7.318</CgPoint>
+		<CgPoint name="7043" desc="CONC" code="CONC B">78911.834000000003 1639157.354999999981 7.377</CgPoint>
+		<CgPoint name="7044" code="CONC">78912.338000000003 1639159.935999999987 7.314</CgPoint>
+		<CgPoint name="7045" desc="CONC" code="CONC E">78909.668999999994 1639160.368000000017 7.392</CgPoint>
+		<CgPoint name="7046" desc="RISER" code="ELRI">78905.509999999995 1639134.256999999983 7.551</CgPoint>
+		<CgPoint name="7047" desc="CONC" code="CONC B 2.4X2.4">78893.797999999995 1639121.304000000004 7.696</CgPoint>
+		<CgPoint name="7048" desc="CONC" code="CONC E">78894.301000000007 1639123.84300000011 7.705</CgPoint>
+		<CgPoint name="7049" desc="BLDG LINE" code="BGLN 12FT TO COR">78895.263000000006 1639132.43200000003 7.674</CgPoint>
+		<CgPoint name="7050" desc="BLDG LINE" code="BGLN">78898.262000000002 1639147.311999999918 7.634</CgPoint>
+		<CgPoint name="7051" desc="BLDG LINE" code="BGLN">78899.020000000004 1639147.240999999922 7.63</CgPoint>
+		<CgPoint name="7052" desc="BLDG LINE" code="BGLN">78899.501000000004 1639149.791999999899 7.69</CgPoint>
+		<CgPoint name="7053" desc="BLDG LINE" code="BGLN">78898.585000000006 1639150.176999999909 7.693</CgPoint>
+		<CgPoint name="7054" desc="BLDG LINE" code="BGLN">78900.517000000007 1639159.530000000028 7.804</CgPoint>
+		<CgPoint name="7055" desc="BLDG LINE" code="BGLN">78901.399000000005 1639159.418999999994 7.756</CgPoint>
+		<CgPoint name="7056" desc="BLDG LINE" code="BGLN">78901.922000000006 1639162.043000000063 7.692</CgPoint>
+		<CgPoint name="7057" desc="BLDG LINE" code="BGLN">78892.619999999995 1639163.959000000032 7.791</CgPoint>
+		<CgPoint name="7058" desc="BLDG LINE" code="BGLN">78894.505000000005 1639173.58899999992 7.473</CgPoint>
+		<CgPoint name="7059" desc="BLDG LINE" code="BGLN E">78881.400999999998 1639176.169999999925 7.597</CgPoint>
+		<CgPoint name="7060" code="SSCO">78881.952000000005 1639179.049000000115 7.64</CgPoint>
+		<CgPoint name="7061" desc="CONC" code="CONC B">78880.928 1639178.344000000041 7.647</CgPoint>
+		<CgPoint name="7062" code="CONC">78882.801000000007 1639177.878999999957 7.64</CgPoint>
+		<CgPoint name="7063" code="CONC">78883.198999999993 1639179.799000000115 7.562</CgPoint>
+		<CgPoint name="7064" desc="CONC" code="CONC CLS">78881.209000000003 1639180.033999999985 7.579</CgPoint>
+		<CgPoint name="7065" code="SSCO">78901.173999999999 1639176.277000000002 7.56</CgPoint>
+		<CgPoint name="7066" desc="CONC" code="CONC B">78900.012000000002 1639175.486000000034 7.553</CgPoint>
+		<CgPoint name="7067" code="CONC">78901.926999999996 1639175.14599999995 7.575</CgPoint>
+		<CgPoint name="7068" code="CONC">78902.203999999998 1639177.084000000032 7.502</CgPoint>
+		<CgPoint name="7069" desc="CONC" code="CONC CLS">78900.319000000003 1639177.404000000097 7.523</CgPoint>
+		<CgPoint name="7070" code="SSCO">78889.054999999993 1639214.943999999901 7.226</CgPoint>
+		<CgPoint name="7071" desc="CONC" code="CONC B">78888.017000000007 1639214.147000000114 7.166</CgPoint>
+		<CgPoint name="7072" code="CONC">78889.860000000001 1639213.772000000114 7.173</CgPoint>
+		<CgPoint name="7073" code="CONC">78890.271999999997 1639215.695000000065 7.156</CgPoint>
+		<CgPoint name="7074" desc="CONC" code="CONC CLS">78888.369000000006 1639216.053000000073 7.191</CgPoint>
+		<CgPoint name="7075" desc="CHAIN LINK FENCE" code="FNCL B">78884.580000000002 1639218.858000000007 7.295</CgPoint>
+		<CgPoint name="7076" desc="CHAIN LINK FENCE" code="FNCL">78881.942999999999 1639206.240999999922 7.591</CgPoint>
+		<CgPoint name="7077" desc="CHAIN LINK FENCE" code="FNCL">78879.236000000004 1639192.949999999953 7.681</CgPoint>
+		<CgPoint name="7078" desc="CHAIN LINK FENCE" code="FNCL E H-4">78875.038 1639172.227999999886 7.622</CgPoint>
+		<CgPoint name="7079" desc="GND" code="OG">78884.490000000005 1639187.402000000002 7.102</CgPoint>
+		<CgPoint name="7080" desc="GND" code="OG">78888.381999999998 1639198.901000000071 7.156</CgPoint>
+		<CgPoint name="7081" desc="GND" code="OG">78891.606 1639213.11400000006 7.161</CgPoint>
+		<CgPoint name="7082" desc="GND" code="OG">78893.216 1639220.047999999952 7.339</CgPoint>
+		<CgPoint name="7083" desc="GND" code="OG">78905.294999999998 1639216.264999999898 7.458</CgPoint>
+		<CgPoint name="7084" desc="GND" code="OG">78901.903000000006 1639202.870000000112 7.152</CgPoint>
+		<CgPoint name="7085" desc="GND" code="OG">78898.490000000005 1639190.82799999998 7.152</CgPoint>
+		<CgPoint name="7086" desc="GND" code="OG">78895.572 1639179.168000000063 7.34</CgPoint>
+		<CgPoint name="7087" code="CONC">78894.672000000006 1639163.522000000114 7.859</CgPoint>
+		<CgPoint name="7088" code="CONC">78895.414000000004 1639167.100000000093 7.85</CgPoint>
+		<CgPoint name="7089" code="CONC">78901.216 1639165.870000000112 7.847</CgPoint>
+		<CgPoint name="7090" desc="CONC" code="CONC E">78900.513999999996 1639162.398000000045 7.862</CgPoint>
+		<CgPoint name="7091" desc="GND" code="OG">78899.394 1639127.554999999935 7.638</CgPoint>
+		<CgPoint name="7092" desc="GND" code="OG">78901.111999999994 1639138.054999999935 7.593</CgPoint>
+		<CgPoint name="7093" desc="GND" code="OG">78903.744999999995 1639149.229999999981 7.535</CgPoint>
+		<CgPoint name="7094" desc="GND" code="OG">78905.494999999995 1639159.975000000093 7.609</CgPoint>
+		<CgPoint name="7095" desc="GND" code="OG">78908.164000000004 1639171.722999999998 7.318</CgPoint>
+		<CgPoint name="7096" desc="GND" code="OG">78909.899999999994 1639183.090000000084 7.225</CgPoint>
+		<CgPoint name="7097" desc="GND" code="OG">78912.945999999996 1639196.056000000099 7.158</CgPoint>
+		<CgPoint name="7098" desc="GND" code="OG">78915.342000000004 1639207.361000000034 7.363</CgPoint>
+		<CgPoint name="7099" desc="GND" code="OG">78917.154999999999 1639215.175000000047 7.617</CgPoint>
+		<CgPoint name="7100" desc="GND" code="OG">78931.832999999999 1639211.581000000006 7.683</CgPoint>
+		<CgPoint name="7101" desc="GND" code="OG">78930.910000000003 1639200.296000000089 7.771</CgPoint>
+		<CgPoint name="7102" desc="GND" code="OG">78929.020000000004 1639187.040000000037 7.723</CgPoint>
+		<CgPoint name="7103" desc="GND" code="OG">78927.297999999995 1639173.800000000047 7.783</CgPoint>
+		<CgPoint name="7104" desc="GND" code="OG">78925.509999999995 1639162.181000000099 7.724</CgPoint>
+		<CgPoint name="7105" desc="GND" code="OG">78921.637000000002 1639148.254999999888 7.679</CgPoint>
+		<CgPoint name="7106" desc="GND" code="OG">78911.222999999998 1639148.48900000006 7.468</CgPoint>
+		<CgPoint name="7107" desc="GND" code="OG">78919.510999999999 1639132.852999999886 7.699</CgPoint>
+		<CgPoint name="7108" desc="GND" code="OG">78916.149000000005 1639119.188000000082 7.331</CgPoint>
+		<CgPoint name="7109" desc="GND" code="OG">78923.790999999997 1639116.766999999993 7.974</CgPoint>
+		<CgPoint name="7110" desc="GND" code="OG">78925.971999999994 1639128.149999999907 8.027</CgPoint>
+		<CgPoint name="7111" desc="GND" code="OG">78927.831999999995 1639139.61400000006 8.265</CgPoint>
+		<CgPoint name="7112" desc="GND" code="OG">78930.005999999994 1639151.013999999966 8.265</CgPoint>
+		<CgPoint name="7113" desc="GND" code="OG">78932.591 1639164.409999999916 8.291</CgPoint>
+		<CgPoint name="7114" desc="GND" code="OG">78934.903000000006 1639175.658999999985 8.263</CgPoint>
+		<CgPoint name="7115" desc="GND" code="OG">78937.237999999998 1639187.230999999912 8.296</CgPoint>
+		<CgPoint name="7116" desc="GND" code="OG">78940.051999999996 1639197.979999999981 8.223</CgPoint>
+		<CgPoint name="7117" desc="GND" code="OG">78941.534 1639203.004999999888 8.313</CgPoint>
+		<CgPoint name="7118" desc="GND" code="OG">78943.396999999997 1639210.662999999942 8.227</CgPoint>
+		<CgPoint name="7119" code="TC">78954.206000000006 1639248.990999999922 8.957</CgPoint>
+		<CgPoint name="7120" desc="TC" code="TC BC">78958.520999999993 1639245.625 9.291</CgPoint>
+		<CgPoint name="7121" code="TC">78958.732999999993 1639245.212999999989 9.287</CgPoint>
+		<CgPoint name="7122" desc="TC" code="TC EC">78958.732000000004 1639244.699999999953 9.28</CgPoint>
+		<CgPoint name="7123" code="TC">78956.903000000006 1639235.891000000061 9.417</CgPoint>
+		<CgPoint name="7124" code="TC">78955.709000000003 1639229.887000000104 9.622</CgPoint>
+		<CgPoint name="7125" desc="TC" code="TC E">78955.275999999998 1639229.938000000082 9.638</CgPoint>
+		<CgPoint name="7126" desc="FL" code="CFL B">78955.854000000007 1639229.875 9.611</CgPoint>
+		<CgPoint name="7127" desc="FL" code="CFL">78956.948000000004 1639235.757999999914 9.277</CgPoint>
+		<CgPoint name="7128" desc="FL" code="CFL BC">78958.804999999993 1639244.566000000108 8.837</CgPoint>
+		<CgPoint name="7129" desc="FL" code="CFL">78958.847999999998 1639245.121999999974 8.828</CgPoint>
+		<CgPoint name="7130" desc="FL" code="CFL EC">78958.657999999996 1639245.575999999885 8.776</CgPoint>
+		<CgPoint name="7131" desc="FL" code="CFL E">78954.251999999993 1639249.097000000067 8.478</CgPoint>
+		<CgPoint name="7132" desc="TC" code="TC BC">78958.850999999995 1639245.27099999995 8.798</CgPoint>
+		<CgPoint name="7133" desc="FL" code="CFL BC">78958.860000000001 1639245.345999999903 8.77</CgPoint>
+		<CgPoint name="7134" code="TC">78962.732999999993 1639239.487999999896 8.883</CgPoint>
+		<CgPoint name="7135" desc="FL" code="CFL">78962.790999999997 1639239.534999999916 8.85</CgPoint>
+		<CgPoint name="7136" desc="TC" code="TC EC">78962.759000000005 1639234.618999999948 9.181</CgPoint>
+		<CgPoint name="7137" desc="FL" code="CFL EC">78962.830000000002 1639234.551999999909 8.927</CgPoint>
+		<CgPoint name="7138" desc="FL" code="CFL">78961.731 1639228.66100000008 8.993</CgPoint>
+		<CgPoint name="7139" code="TC">78961.618000000002 1639228.750999999931 9.487</CgPoint>
+		<CgPoint name="7140" desc="WALK CONC" code="SWCO B CPN 7125">78955.251999999993 1639229.877000000095 9.623</CgPoint>
+		<CgPoint name="7141" desc="WALK CONC" code="SWCO">78953.172000000006 1639219.560000000056 9.623</CgPoint>
+		<CgPoint name="7142" code="TC">78959.650999999998 1639218.830000000075 9.444</CgPoint>
+		<CgPoint name="7143" desc="FL" code="CFL">78959.854999999996 1639218.882999999914 8.959</CgPoint>
+		<CgPoint name="7144" desc="FL" code="CFL">78957.739000000001 1639208.397000000114 8.874</CgPoint>
+		<CgPoint name="7145" code="TC">78957.585000000006 1639208.469999999972 9.365</CgPoint>
+		<CgPoint name="7146" desc="WALK CONC" code="SWCO">78951.263999999996 1639210.450999999885 9.558</CgPoint>
+		<CgPoint name="7147" desc="WALK CONC" code="SWCO">78948.907999999996 1639198.679000000004 9.499</CgPoint>
+		<CgPoint name="7148" code="TC">78954.323000000004 1639192.607000000076 9.34</CgPoint>
+		<CgPoint name="7149" desc="FL" code="CFL">78954.285999999993 1639191.358999999939 8.846</CgPoint>
+		<CgPoint name="7150" desc="FL" code="CFL">78952.070000000007 1639180.492000000086 8.811</CgPoint>
+		<CgPoint name="7151" code="TC">78951.888000000006 1639180.5 9.283</CgPoint>
+		<CgPoint name="7152" desc="WALK CONC" code="SWCO">78945.471999999994 1639181.735000000102 9.444</CgPoint>
+		<CgPoint name="7153" desc="WALK CONC" code="SWCO">78942.975000000006 1639169.267999999924 9.462</CgPoint>
+		<CgPoint name="7154" code="TC">78949.258000000002 1639167.137000000104 9.264</CgPoint>
+		<CgPoint name="7155" desc="FL" code="CFL">78949.421000000002 1639167.08899999992 8.793</CgPoint>
+		<CgPoint name="7156" desc="FL" code="CFL">78947.020999999993 1639155.250999999931 8.832</CgPoint>
+		<CgPoint name="7157" code="TC">78946.804999999993 1639155.361000000034 9.32</CgPoint>
+		<CgPoint name="7158" desc="WALK CONC" code="SWCO">78940.426000000007 1639156.524999999907 9.482</CgPoint>
+		<CgPoint name="7159" desc="WALK CONC" code="SWCO">78937.432000000001 1639141.449000000022 9.298</CgPoint>
+		<CgPoint name="7160" code="TC">78943.724000000002 1639139.824000000022 9.173</CgPoint>
+		<CgPoint name="7161" desc="FL" code="CFL">78943.884999999995 1639139.899999999907 8.685</CgPoint>
+		<CgPoint name="7162" desc="FL" code="CFL BC">78940.990000000005 1639125.267999999924 8.626</CgPoint>
+		<CgPoint name="7163" desc="TC" code="TC BC">78940.793999999994 1639125.243999999948 9.084</CgPoint>
+		<CgPoint name="7164" desc="WALK CONC" code="SWCO E cpn 7176">78934.452000000005 1639126.845999999903 8.976</CgPoint>
+		<CgPoint name="7165" code="TC">78939.755000000005 1639120.361000000034 8.758</CgPoint>
+		<CgPoint name="7166" desc="FL" code="CFL">78939.837 1639120.362999999896 8.528</CgPoint>
+		<CgPoint name="7167" desc="TC" code="TC EC E">78937.759999999995 1639115.894000000088 8.502</CgPoint>
+		<CgPoint name="7168" desc="FL" code="CFL">78937.793999999994 1639115.824000000022 8.464</CgPoint>
+		<CgPoint name="7169" desc="FL" code="CFL">78932.062999999995 1639111.959999999963 8.15</CgPoint>
+		<CgPoint name="7170" desc="FL" code="CFL EC E">78925.452999999994 1639109.91100000008 7.551</CgPoint>
+		<CgPoint name="7171" desc="TC" code="TC BC B">78925.415999999997 1639109.915999999968 7.788</CgPoint>
+		<CgPoint name="7172" code="TC">78925.895999999993 1639110.081999999937 8.058</CgPoint>
+		<CgPoint name="7173" code="TC">78929.581999999995 1639111.147000000114 8.312</CgPoint>
+		<CgPoint name="7174" desc="TC" code="TC EC">78931.877999999997 1639112.043000000063 8.495</CgPoint>
+		<CgPoint name="7175" code="TC">78933.073999999993 1639117.097000000067 8.68</CgPoint>
+		<CgPoint name="7176" desc="TC" code="TC E">78934.869000000006 1639126.577000000048 9.062</CgPoint>
+		<CgPoint name="7177" desc="FL" code="CFL B">78935.020999999993 1639126.432999999961 9.058</CgPoint>
+		<CgPoint name="7178" desc="FL" code="CFL CPN 7169">78933.187999999995 1639117.09300000011 8.449</CgPoint>
+		<CgPoint name="7179" desc="TC" code="TC B">78912.244999999995 1639110.054000000004 7.87</CgPoint>
+		<CgPoint name="7180" desc="FL" code="CFL B">78912.248999999996 1639109.975000000093 7.502</CgPoint>
+		<CgPoint name="7181" code="TC">78901.490999999995 1639111.584000000032 7.84</CgPoint>
+		<CgPoint name="7182" desc="FL" code="CFL">78901.567999999999 1639111.472999999998 7.468</CgPoint>
+		<CgPoint name="7183" code="TC">78890.190000000002 1639113.26099999994 7.812</CgPoint>
+		<CgPoint name="7184" desc="FL" code="CFL">78890.214999999997 1639113.158999999985 7.45</CgPoint>
+		<CgPoint name="7185" code="TC">78878.269 1639114.861999999965 7.882</CgPoint>
+		<CgPoint name="7186" desc="FL" code="CFL">78878.264999999999 1639114.736000000034 7.471</CgPoint>
+		<CgPoint name="7187" code="TC">78866.415999999997 1639116.492000000086 7.953</CgPoint>
+		<CgPoint name="7188" desc="FL" code="CFL">78866.434999999998 1639116.358000000007 7.587</CgPoint>
+		<CgPoint name="7189" desc="TC" code="TC E">78864.504000000001 1639116.729999999981 7.944</CgPoint>
+		<CgPoint name="7190" desc="FL" code="CFL E">78864.490000000005 1639116.637000000104 7.591</CgPoint>
+		<CgPoint name="7191" desc="CHAIN LINK FENCE" code="FNCL B CPN 7078">78865.241999999998 1639121.347999999998 7.586</CgPoint>
+		<CgPoint name="7192" desc="CHAIN LINK FENCE" code="FNCL B">78865.891000000003 1639120.129999999888 7.752</CgPoint>
+		<CgPoint name="7193" desc="CHAIN LINK FENCE" code="FNCL E H-6">78862.399999999994 1639120.848999999929 7.362</CgPoint>
+		<CgPoint name="7194" desc="BLDG LINE" code="BGLN B CPN 7059">78871.601999999999 1639125.972000000067 7.686</CgPoint>
+		<CgPoint name="7195" desc="BLDG LINE" code="BGLN">78873.637000000002 1639125.577000000048 7.686</CgPoint>
+		<CgPoint name="7196" desc="BLDG LINE" code="BGLN 2FT JOG">78878.544999999998 1639124.561999999918 7.872</CgPoint>
+		<CgPoint name="7197" desc="BLDG LINE" code="BGLN">78880.601999999999 1639124.16100000008 7.883</CgPoint>
+		<CgPoint name="7198" desc="BLDG LINE" code="BGLN">78881.054999999993 1639126.033999999985 7.683</CgPoint>
+		<CgPoint name="7199" desc="BLDG LINE" code="BGLN E 10.2">78881.567999999999 1639125.943999999901 7.775</CgPoint>
+		<CgPoint name="7200" desc="CHAIN LINK FENCE" code="FNCL B H-6">78881.899000000005 1639125.745000000112 7.744</CgPoint>
+		<CgPoint name="7201" desc="CHAIN LINK FENCE" code="FNCL">78885.455000000002 1639125.053000000073 7.923</CgPoint>
+		<CgPoint name="7202" desc="CHAIN LINK FENCE" code="FNCL E GATE1">78885.987999999998 1639126.875999999931 7.896</CgPoint>
+		<CgPoint name="7203" desc="CHAIN LINK FENCE" code="FNCL B">78887.491999999998 1639134.117000000086 7.76</CgPoint>
+		<CgPoint name="7204" desc="MON WELL" code="GEMW">78870.817999999999 1639123.793000000063 7.815</CgPoint>
+		<CgPoint name="7205" desc="GND" code="OG">78871.243000000002 1639120.006999999983 7.569</CgPoint>
+		<CgPoint name="7206" desc="GND" code="OG">78882.178 1639117.847999999998 7.615</CgPoint>
+		<CgPoint name="7207" desc="GND" code="OG">78893.156000000003 1639117.024999999907 7.732</CgPoint>
+		<CgPoint name="7208" desc="GND" code="OG">78900.298999999999 1639115.462000000058 7.649</CgPoint>
+		<CgPoint name="7209" desc="GND" code="OG">78911.813999999998 1639114.142999999924 7.54</CgPoint>
+		<CgPoint name="7210" desc="GND" code="OG">78907.644 1639126.506000000052 7.438</CgPoint>
+		<CgPoint name="7211" desc="GND" code="OG">78919.035999999993 1639110.09300000011 7.466</CgPoint>
+		<CgPoint name="7212" desc="ELEC POLE" code="ELLP">78881.785410633252 1639223.595188960899 7.23</CgPoint>
+		<CgPoint name="7213" code="ANCHOR">78894.683067061866 1639221.967166034272 7.23</CgPoint>
+	</CgPoints>
+	<CgPoints name="20250611">
+		<CgPoint pntRef="1"></CgPoint>
+		<CgPoint pntRef="2"></CgPoint>
+		<CgPoint pntRef="3"></CgPoint>
+		<CgPoint pntRef="4"></CgPoint>
+		<CgPoint pntRef="200"></CgPoint>
+		<CgPoint pntRef="201"></CgPoint>
+		<CgPoint pntRef="7000"></CgPoint>
+		<CgPoint pntRef="7001"></CgPoint>
+		<CgPoint pntRef="7002"></CgPoint>
+		<CgPoint pntRef="7003"></CgPoint>
+		<CgPoint pntRef="7004"></CgPoint>
+		<CgPoint pntRef="7005"></CgPoint>
+		<CgPoint pntRef="7006"></CgPoint>
+		<CgPoint pntRef="7007"></CgPoint>
+		<CgPoint pntRef="7008"></CgPoint>
+		<CgPoint pntRef="7009"></CgPoint>
+		<CgPoint pntRef="7010"></CgPoint>
+		<CgPoint pntRef="7011"></CgPoint>
+		<CgPoint pntRef="7012"></CgPoint>
+		<CgPoint pntRef="7013"></CgPoint>
+		<CgPoint pntRef="7014"></CgPoint>
+		<CgPoint pntRef="7015"></CgPoint>
+		<CgPoint pntRef="7016"></CgPoint>
+		<CgPoint pntRef="7017"></CgPoint>
+		<CgPoint pntRef="7018"></CgPoint>
+		<CgPoint pntRef="7019"></CgPoint>
+		<CgPoint pntRef="7020"></CgPoint>
+		<CgPoint pntRef="7021"></CgPoint>
+		<CgPoint pntRef="7022"></CgPoint>
+		<CgPoint pntRef="7023"></CgPoint>
+		<CgPoint pntRef="7024"></CgPoint>
+		<CgPoint pntRef="7025"></CgPoint>
+		<CgPoint pntRef="7026"></CgPoint>
+		<CgPoint pntRef="7027"></CgPoint>
+		<CgPoint pntRef="7028"></CgPoint>
+		<CgPoint pntRef="7029"></CgPoint>
+		<CgPoint pntRef="7030"></CgPoint>
+		<CgPoint pntRef="7031"></CgPoint>
+		<CgPoint pntRef="7032"></CgPoint>
+		<CgPoint pntRef="7033"></CgPoint>
+		<CgPoint pntRef="7034"></CgPoint>
+		<CgPoint pntRef="7035"></CgPoint>
+		<CgPoint pntRef="7036"></CgPoint>
+		<CgPoint pntRef="7037"></CgPoint>
+		<CgPoint pntRef="7038"></CgPoint>
+		<CgPoint pntRef="7039"></CgPoint>
+		<CgPoint pntRef="7040"></CgPoint>
+		<CgPoint pntRef="7041"></CgPoint>
+		<CgPoint pntRef="7042"></CgPoint>
+		<CgPoint pntRef="7043"></CgPoint>
+		<CgPoint pntRef="7044"></CgPoint>
+		<CgPoint pntRef="7045"></CgPoint>
+		<CgPoint pntRef="7046"></CgPoint>
+		<CgPoint pntRef="7047"></CgPoint>
+		<CgPoint pntRef="7048"></CgPoint>
+		<CgPoint pntRef="7049"></CgPoint>
+		<CgPoint pntRef="7050"></CgPoint>
+		<CgPoint pntRef="7051"></CgPoint>
+		<CgPoint pntRef="7052"></CgPoint>
+		<CgPoint pntRef="7053"></CgPoint>
+		<CgPoint pntRef="7054"></CgPoint>
+		<CgPoint pntRef="7055"></CgPoint>
+		<CgPoint pntRef="7056"></CgPoint>
+		<CgPoint pntRef="7057"></CgPoint>
+		<CgPoint pntRef="7058"></CgPoint>
+		<CgPoint pntRef="7059"></CgPoint>
+		<CgPoint pntRef="7060"></CgPoint>
+		<CgPoint pntRef="7061"></CgPoint>
+		<CgPoint pntRef="7062"></CgPoint>
+		<CgPoint pntRef="7063"></CgPoint>
+		<CgPoint pntRef="7064"></CgPoint>
+		<CgPoint pntRef="7065"></CgPoint>
+		<CgPoint pntRef="7066"></CgPoint>
+		<CgPoint pntRef="7067"></CgPoint>
+		<CgPoint pntRef="7068"></CgPoint>
+		<CgPoint pntRef="7069"></CgPoint>
+		<CgPoint pntRef="7070"></CgPoint>
+		<CgPoint pntRef="7071"></CgPoint>
+		<CgPoint pntRef="7072"></CgPoint>
+		<CgPoint pntRef="7073"></CgPoint>
+		<CgPoint pntRef="7074"></CgPoint>
+		<CgPoint pntRef="7075"></CgPoint>
+		<CgPoint pntRef="7076"></CgPoint>
+		<CgPoint pntRef="7077"></CgPoint>
+		<CgPoint pntRef="7078"></CgPoint>
+		<CgPoint pntRef="7079"></CgPoint>
+		<CgPoint pntRef="7080"></CgPoint>
+		<CgPoint pntRef="7081"></CgPoint>
+		<CgPoint pntRef="7082"></CgPoint>
+		<CgPoint pntRef="7083"></CgPoint>
+		<CgPoint pntRef="7084"></CgPoint>
+		<CgPoint pntRef="7085"></CgPoint>
+		<CgPoint pntRef="7086"></CgPoint>
+		<CgPoint pntRef="7087"></CgPoint>
+		<CgPoint pntRef="7088"></CgPoint>
+		<CgPoint pntRef="7089"></CgPoint>
+		<CgPoint pntRef="7090"></CgPoint>
+		<CgPoint pntRef="7091"></CgPoint>
+		<CgPoint pntRef="7092"></CgPoint>
+		<CgPoint pntRef="7093"></CgPoint>
+		<CgPoint pntRef="7094"></CgPoint>
+		<CgPoint pntRef="7095"></CgPoint>
+		<CgPoint pntRef="7096"></CgPoint>
+		<CgPoint pntRef="7097"></CgPoint>
+		<CgPoint pntRef="7098"></CgPoint>
+		<CgPoint pntRef="7099"></CgPoint>
+		<CgPoint pntRef="7100"></CgPoint>
+		<CgPoint pntRef="7101"></CgPoint>
+		<CgPoint pntRef="7102"></CgPoint>
+		<CgPoint pntRef="7103"></CgPoint>
+		<CgPoint pntRef="7104"></CgPoint>
+		<CgPoint pntRef="7105"></CgPoint>
+		<CgPoint pntRef="7106"></CgPoint>
+		<CgPoint pntRef="7107"></CgPoint>
+		<CgPoint pntRef="7108"></CgPoint>
+		<CgPoint pntRef="7109"></CgPoint>
+		<CgPoint pntRef="7110"></CgPoint>
+		<CgPoint pntRef="7111"></CgPoint>
+		<CgPoint pntRef="7112"></CgPoint>
+		<CgPoint pntRef="7113"></CgPoint>
+		<CgPoint pntRef="7114"></CgPoint>
+		<CgPoint pntRef="7115"></CgPoint>
+		<CgPoint pntRef="7116"></CgPoint>
+		<CgPoint pntRef="7117"></CgPoint>
+		<CgPoint pntRef="7118"></CgPoint>
+		<CgPoint pntRef="7119"></CgPoint>
+		<CgPoint pntRef="7120"></CgPoint>
+		<CgPoint pntRef="7121"></CgPoint>
+		<CgPoint pntRef="7122"></CgPoint>
+		<CgPoint pntRef="7123"></CgPoint>
+		<CgPoint pntRef="7124"></CgPoint>
+		<CgPoint pntRef="7125"></CgPoint>
+		<CgPoint pntRef="7126"></CgPoint>
+		<CgPoint pntRef="7127"></CgPoint>
+		<CgPoint pntRef="7128"></CgPoint>
+		<CgPoint pntRef="7129"></CgPoint>
+		<CgPoint pntRef="7130"></CgPoint>
+		<CgPoint pntRef="7131"></CgPoint>
+		<CgPoint pntRef="7132"></CgPoint>
+		<CgPoint pntRef="7133"></CgPoint>
+		<CgPoint pntRef="7134"></CgPoint>
+		<CgPoint pntRef="7135"></CgPoint>
+		<CgPoint pntRef="7136"></CgPoint>
+		<CgPoint pntRef="7137"></CgPoint>
+		<CgPoint pntRef="7138"></CgPoint>
+		<CgPoint pntRef="7139"></CgPoint>
+		<CgPoint pntRef="7140"></CgPoint>
+		<CgPoint pntRef="7141"></CgPoint>
+		<CgPoint pntRef="7142"></CgPoint>
+		<CgPoint pntRef="7143"></CgPoint>
+		<CgPoint pntRef="7144"></CgPoint>
+		<CgPoint pntRef="7145"></CgPoint>
+		<CgPoint pntRef="7146"></CgPoint>
+		<CgPoint pntRef="7147"></CgPoint>
+		<CgPoint pntRef="7148"></CgPoint>
+		<CgPoint pntRef="7149"></CgPoint>
+		<CgPoint pntRef="7150"></CgPoint>
+		<CgPoint pntRef="7151"></CgPoint>
+		<CgPoint pntRef="7152"></CgPoint>
+		<CgPoint pntRef="7153"></CgPoint>
+		<CgPoint pntRef="7154"></CgPoint>
+		<CgPoint pntRef="7155"></CgPoint>
+		<CgPoint pntRef="7156"></CgPoint>
+		<CgPoint pntRef="7157"></CgPoint>
+		<CgPoint pntRef="7158"></CgPoint>
+		<CgPoint pntRef="7159"></CgPoint>
+		<CgPoint pntRef="7160"></CgPoint>
+		<CgPoint pntRef="7161"></CgPoint>
+		<CgPoint pntRef="7162"></CgPoint>
+		<CgPoint pntRef="7163"></CgPoint>
+		<CgPoint pntRef="7164"></CgPoint>
+		<CgPoint pntRef="7165"></CgPoint>
+		<CgPoint pntRef="7166"></CgPoint>
+		<CgPoint pntRef="7167"></CgPoint>
+		<CgPoint pntRef="7168"></CgPoint>
+		<CgPoint pntRef="7169"></CgPoint>
+		<CgPoint pntRef="7170"></CgPoint>
+		<CgPoint pntRef="7171"></CgPoint>
+		<CgPoint pntRef="7172"></CgPoint>
+		<CgPoint pntRef="7173"></CgPoint>
+		<CgPoint pntRef="7174"></CgPoint>
+		<CgPoint pntRef="7175"></CgPoint>
+		<CgPoint pntRef="7176"></CgPoint>
+		<CgPoint pntRef="7177"></CgPoint>
+		<CgPoint pntRef="7178"></CgPoint>
+		<CgPoint pntRef="7179"></CgPoint>
+		<CgPoint pntRef="7180"></CgPoint>
+		<CgPoint pntRef="7181"></CgPoint>
+		<CgPoint pntRef="7182"></CgPoint>
+		<CgPoint pntRef="7183"></CgPoint>
+		<CgPoint pntRef="7184"></CgPoint>
+		<CgPoint pntRef="7185"></CgPoint>
+		<CgPoint pntRef="7186"></CgPoint>
+		<CgPoint pntRef="7187"></CgPoint>
+		<CgPoint pntRef="7188"></CgPoint>
+		<CgPoint pntRef="7189"></CgPoint>
+		<CgPoint pntRef="7190"></CgPoint>
+		<CgPoint pntRef="7191"></CgPoint>
+		<CgPoint pntRef="7192"></CgPoint>
+		<CgPoint pntRef="7193"></CgPoint>
+		<CgPoint pntRef="7194"></CgPoint>
+		<CgPoint pntRef="7195"></CgPoint>
+		<CgPoint pntRef="7196"></CgPoint>
+		<CgPoint pntRef="7197"></CgPoint>
+		<CgPoint pntRef="7198"></CgPoint>
+		<CgPoint pntRef="7199"></CgPoint>
+		<CgPoint pntRef="7200"></CgPoint>
+		<CgPoint pntRef="7201"></CgPoint>
+		<CgPoint pntRef="7202"></CgPoint>
+		<CgPoint pntRef="7203"></CgPoint>
+		<CgPoint pntRef="7204"></CgPoint>
+		<CgPoint pntRef="7205"></CgPoint>
+		<CgPoint pntRef="7206"></CgPoint>
+		<CgPoint pntRef="7207"></CgPoint>
+		<CgPoint pntRef="7208"></CgPoint>
+		<CgPoint pntRef="7209"></CgPoint>
+		<CgPoint pntRef="7210"></CgPoint>
+		<CgPoint pntRef="7211"></CgPoint>
+	</CgPoints>
+	<CgPoints name="building">
+		<CgPoint pntRef="7049"></CgPoint>
+		<CgPoint pntRef="7050"></CgPoint>
+		<CgPoint pntRef="7051"></CgPoint>
+		<CgPoint pntRef="7052"></CgPoint>
+		<CgPoint pntRef="7053"></CgPoint>
+		<CgPoint pntRef="7054"></CgPoint>
+		<CgPoint pntRef="7055"></CgPoint>
+		<CgPoint pntRef="7056"></CgPoint>
+		<CgPoint pntRef="7057"></CgPoint>
+		<CgPoint pntRef="7058"></CgPoint>
+		<CgPoint pntRef="7059"></CgPoint>
+		<CgPoint pntRef="7194"></CgPoint>
+		<CgPoint pntRef="7195"></CgPoint>
+		<CgPoint pntRef="7196"></CgPoint>
+		<CgPoint pntRef="7197"></CgPoint>
+		<CgPoint pntRef="7198"></CgPoint>
+		<CgPoint pntRef="7199"></CgPoint>
+	</CgPoints>
+	<CgPoints name="CFL">
+		<CgPoint pntRef="7004"></CgPoint>
+		<CgPoint pntRef="7005"></CgPoint>
+		<CgPoint pntRef="7006"></CgPoint>
+		<CgPoint pntRef="7126"></CgPoint>
+		<CgPoint pntRef="7127"></CgPoint>
+		<CgPoint pntRef="7128"></CgPoint>
+		<CgPoint pntRef="7129"></CgPoint>
+		<CgPoint pntRef="7130"></CgPoint>
+		<CgPoint pntRef="7131"></CgPoint>
+		<CgPoint pntRef="7133"></CgPoint>
+		<CgPoint pntRef="7135"></CgPoint>
+		<CgPoint pntRef="7137"></CgPoint>
+		<CgPoint pntRef="7138"></CgPoint>
+		<CgPoint pntRef="7143"></CgPoint>
+		<CgPoint pntRef="7144"></CgPoint>
+		<CgPoint pntRef="7149"></CgPoint>
+		<CgPoint pntRef="7150"></CgPoint>
+		<CgPoint pntRef="7155"></CgPoint>
+		<CgPoint pntRef="7156"></CgPoint>
+		<CgPoint pntRef="7161"></CgPoint>
+		<CgPoint pntRef="7162"></CgPoint>
+		<CgPoint pntRef="7166"></CgPoint>
+		<CgPoint pntRef="7168"></CgPoint>
+		<CgPoint pntRef="7169"></CgPoint>
+		<CgPoint pntRef="7170"></CgPoint>
+		<CgPoint pntRef="7177"></CgPoint>
+		<CgPoint pntRef="7178"></CgPoint>
+		<CgPoint pntRef="7180"></CgPoint>
+		<CgPoint pntRef="7182"></CgPoint>
+		<CgPoint pntRef="7184"></CgPoint>
+		<CgPoint pntRef="7186"></CgPoint>
+		<CgPoint pntRef="7188"></CgPoint>
+		<CgPoint pntRef="7190"></CgPoint>
+	</CgPoints>
+	<CgPoints name="sidewalk">
+		<CgPoint pntRef="7140"></CgPoint>
+		<CgPoint pntRef="7141"></CgPoint>
+		<CgPoint pntRef="7146"></CgPoint>
+		<CgPoint pntRef="7147"></CgPoint>
+		<CgPoint pntRef="7152"></CgPoint>
+		<CgPoint pntRef="7153"></CgPoint>
+		<CgPoint pntRef="7158"></CgPoint>
+		<CgPoint pntRef="7159"></CgPoint>
+		<CgPoint pntRef="7164"></CgPoint>
+	</CgPoints>
+	<CgPoints name="TC">
+		<CgPoint pntRef="7001"></CgPoint>
+		<CgPoint pntRef="7002"></CgPoint>
+		<CgPoint pntRef="7003"></CgPoint>
+		<CgPoint pntRef="7119"></CgPoint>
+		<CgPoint pntRef="7120"></CgPoint>
+		<CgPoint pntRef="7121"></CgPoint>
+		<CgPoint pntRef="7122"></CgPoint>
+		<CgPoint pntRef="7123"></CgPoint>
+		<CgPoint pntRef="7124"></CgPoint>
+		<CgPoint pntRef="7125"></CgPoint>
+		<CgPoint pntRef="7132"></CgPoint>
+		<CgPoint pntRef="7134"></CgPoint>
+		<CgPoint pntRef="7136"></CgPoint>
+		<CgPoint pntRef="7139"></CgPoint>
+		<CgPoint pntRef="7142"></CgPoint>
+		<CgPoint pntRef="7145"></CgPoint>
+		<CgPoint pntRef="7148"></CgPoint>
+		<CgPoint pntRef="7151"></CgPoint>
+		<CgPoint pntRef="7154"></CgPoint>
+		<CgPoint pntRef="7157"></CgPoint>
+		<CgPoint pntRef="7160"></CgPoint>
+		<CgPoint pntRef="7163"></CgPoint>
+		<CgPoint pntRef="7165"></CgPoint>
+		<CgPoint pntRef="7167"></CgPoint>
+		<CgPoint pntRef="7171"></CgPoint>
+		<CgPoint pntRef="7172"></CgPoint>
+		<CgPoint pntRef="7173"></CgPoint>
+		<CgPoint pntRef="7174"></CgPoint>
+		<CgPoint pntRef="7175"></CgPoint>
+		<CgPoint pntRef="7176"></CgPoint>
+		<CgPoint pntRef="7179"></CgPoint>
+		<CgPoint pntRef="7181"></CgPoint>
+		<CgPoint pntRef="7183"></CgPoint>
+		<CgPoint pntRef="7185"></CgPoint>
+		<CgPoint pntRef="7187"></CgPoint>
+		<CgPoint pntRef="7189"></CgPoint>
+	</CgPoints>
+	<Surfaces>
+		<Surface name="V-TOPO-E-(2025-06-16)1" desc="Description">
+			<SourceData>
+				<Breaklines>
+					<Breakline brkType="proximity" desc="TC">
+						<PntList3D>78912.244999999995 1639110.054000000004 7.87 78901.490999999995 1639111.584000000032 7.84 78890.190000000002 1639113.26099999994 7.812 78878.269 1639114.861999999965 7.882 78866.415999999997 1639116.492000000086 7.953 78864.504000000001 1639116.729999999981 7.944</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="BGLN">
+						<PntList3D>78895.263000000006 1639132.43200000003 7.674 78898.262000000002 1639147.311999999918 7.634 78899.020000000004 1639147.240999999922 7.63 78899.501000000004 1639149.791999999899 7.69 78898.585000000006 1639150.176999999909 7.693 78900.517000000007 1639159.530000000028 7.804 78901.399000000005 1639159.418999999994 7.756 78901.922000000006 1639162.043000000063 7.692 78892.619999999995 1639163.959000000032 7.791 78894.505000000005 1639173.58899999992 7.473 78881.400999999998 1639176.169999999925 7.597 78871.601999999999 1639125.972000000067 7.686 78873.637000000002 1639125.577000000048 7.686 78878.544999999998 1639124.561999999918 7.872 78880.601999999999 1639124.16100000008 7.883 78881.054999999993 1639126.033999999985 7.683 78881.567999999999 1639125.943999999901 7.775 78873.637000000002 1639125.577000000048 7.686 78895.263000000006 1639132.43200000003 7.674</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="TC-1">
+						<PntList3D>78940.392000000007 1639221.580000000075 8.292 78935.285000000003 1639219.584000000032 7.722 78935.486999999994 1639219.621999999974 8.463 78935.285000000003 1639219.584000000032 7.722 78939.135999999999 1639215.378000000026 7.902 78939.188999999998 1639215.51099999994 8.291</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="CFL-1">
+						<PntList3D>78939.135999999999 1639215.378000000026 7.902 78935.285000000003 1639219.584000000032 7.722 78940.392000000007 1639221.580000000075 8.292 78940.460999999996 1639221.683999999892 7.978</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="TC-2">
+						<PntList3D>78958.850999999995 1639245.27099999995 8.798</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="TC-2">
+						<PntList3D>78962.732999999993 1639239.487999999896 8.883</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="TC-2">
+						<PntList3D>78962.759000000005 1639234.618999999948 9.181 78961.618000000002 1639228.750999999931 9.487 78959.650999999998 1639218.830000000075 9.444 78957.585000000006 1639208.469999999972 9.365 78954.323000000004 1639192.607000000076 9.34 78951.888000000006 1639180.5 9.283 78949.258000000002 1639167.137000000104 9.264 78946.804999999993 1639155.361000000034 9.32 78943.724000000002 1639139.824000000022 9.173 78940.793999999994 1639125.243999999948 9.084</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="TC-2">
+						<PntList3D>78939.755000000005 1639120.361000000034 8.758</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="TC-2">
+						<PntList3D>78937.759999999995 1639115.894000000088 8.502</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="CFL-2">
+						<PntList3D>78958.860000000001 1639245.345999999903 8.77</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="CFL-2">
+						<PntList3D>78962.790999999997 1639239.534999999916 8.85</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="CFL-2">
+						<PntList3D>78961.731 1639228.66100000008 8.993 78959.854999999996 1639218.882999999914 8.959 78957.739000000001 1639208.397000000114 8.874 78954.285999999993 1639191.358999999939 8.846 78952.070000000007 1639180.492000000086 8.811 78949.421000000002 1639167.08899999992 8.793 78947.020999999993 1639155.250999999931 8.832 78943.884999999995 1639139.899999999907 8.685</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="CFL-2">
+						<PntList3D>78937.793999999994 1639115.824000000022 8.464</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="CFL-2">
+						<PntList3D>78932.062999999995 1639111.959999999963 8.15</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="TC-3">
+						<PntList3D>78954.206000000006 1639248.990999999922 8.957 78958.520999999993 1639245.625 9.291 78958.732999999993 1639245.212999999989 9.287 78958.732000000004 1639244.699999999953 9.28 78956.903000000006 1639235.891000000061 9.417 78955.709000000003 1639229.887000000104 9.622 78955.275999999998 1639229.938000000082 9.638</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="CFL-3">
+						<PntList3D>78955.854000000007 1639229.875 9.611 78956.948000000004 1639235.757999999914 9.277 78958.804999999993 1639244.566000000108 8.837 78958.847999999998 1639245.121999999974 8.828 78958.657999999996 1639245.575999999885 8.776</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="SWCO">
+						<PntList3D>78955.275999999998 1639229.938000000082 9.638 78955.251999999993 1639229.877000000095 9.623 78953.172000000006 1639219.560000000056 9.623 78951.263999999996 1639210.450999999885 9.558 78948.907999999996 1639198.679000000004 9.499 78945.471999999994 1639181.735000000102 9.444 78942.975000000006 1639169.267999999924 9.462 78940.426000000007 1639156.524999999907 9.482 78937.432000000001 1639141.449000000022 9.298 78934.452000000005 1639126.845999999903 8.976 78934.869000000006 1639126.577000000048 9.062</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="TC-4">
+						<PntList3D>78925.415999999997 1639109.915999999968 7.788 78925.895999999993 1639110.081999999937 8.058</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="TC-4">
+						<PntList3D>78929.581999999995 1639111.147000000114 8.312 78931.877999999997 1639112.043000000063 8.495 78933.073999999993 1639117.097000000067 8.68 78934.869000000006 1639126.577000000048 9.062</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+					<Breakline brkType="proximity" desc="CFL-4">
+						<PntList3D>78935.020999999993 1639126.432999999961 9.058 78933.187999999995 1639117.09300000011 8.449 78932.062999999995 1639111.959999999963 8.15</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D"></Feature>
+					</Breakline>
+				</Breaklines>
+			</SourceData>
+			<Definition surfType="TIN" area2DSurf="6768.94600949597" area3DSurf="6853.291230254003" elevMax="11.597" elevMin="0.">
+				<Pnts>
+					<P id="5">78940.392000000007 1639221.580000000075 8.292</P>
+					<P id="6">78895.263000000006 1639132.43200000003 7.674</P>
+					<P id="7">79287.460999999996 1640106.233999999939 11.597</P>
+					<P id="8">78910.130999999994 1639141.21399999992 7.366</P>
+					<P id="9">78932.062999999995 1639111.959999999963 8.15</P>
+					<P id="10">78909.173999999999 1639135.986999999965 7.318</P>
+					<P id="11">78925.452999999994 1639109.91100000008 7.551</P>
+					<P id="12">78911.834000000003 1639157.354999999981 7.377</P>
+					<P id="13">78925.415999999997 1639109.915999999968 7.788</P>
+					<P id="14">78912.338000000003 1639159.935999999987 7.314</P>
+					<P id="15">78925.895999999993 1639110.081999999937 8.058</P>
+					<P id="16">78894.301000000007 1639123.84300000011 7.705</P>
+					<P id="17">79431.587 1640589.945000000065 9.737</P>
+					<P id="18">78935.486999999994 1639219.621999999974 8.463</P>
+					<P id="19">78939.188999999998 1639215.51099999994 8.291</P>
+					<P id="20">78939.135999999999 1639215.378000000026 7.902</P>
+					<P id="21">78935.285000000003 1639219.584000000032 7.722</P>
+					<P id="22">78940.460999999996 1639221.683999999892 7.978</P>
+					<P id="23">78937.487999999998 1639205.185000000056 7.492</P>
+					<P id="24">78937.998999999996 1639207.014999999898 7.444</P>
+					<P id="25">78935.335999999996 1639207.716000000015 7.451</P>
+					<P id="26">78926.664999999994 1639205.628999999957 7.673</P>
+					<P id="27">78927.054999999993 1639207.777999999933 7.676</P>
+					<P id="28">78930.236000000004 1639207.155999999959 7.691</P>
+					<P id="29">78921.269 1639178.486000000034 7.492</P>
+					<P id="30">78910.085999999996 1639134.574000000022 7.315</P>
+					<P id="31">78912.203999999998 1639134.203999999911 7.348</P>
+					<P id="32">78913.055999999997 1639137.79700000002 7.46</P>
+					<P id="33">78910.827999999994 1639138.262000000104 7.44</P>
+					<P id="34">78905.706999999995 1639118.834999999963 7.576</P>
+					<P id="35">78906.274999999994 1639121.355999999912 7.542</P>
+					<P id="36">78908.447 1639133.037000000011 7.396</P>
+					<P id="37">78909.019 1639135.756000000052 7.381</P>
+					<P id="38">78907.659 1639141.66100000008 7.402</P>
+					<P id="39">78909.668999999994 1639160.368000000017 7.392</P>
+					<P id="40">78905.509999999995 1639134.256999999983 7.551</P>
+					<P id="41">78893.797999999995 1639121.304000000004 7.696</P>
+					<P id="42">78898.262000000002 1639147.311999999918 7.634</P>
+					<P id="43">78899.020000000004 1639147.240999999922 7.63</P>
+					<P id="44">78899.501000000004 1639149.791999999899 7.69</P>
+					<P id="45">78898.585000000006 1639150.176999999909 7.693</P>
+					<P id="46">78900.517000000007 1639159.530000000028 7.804</P>
+					<P id="47">78901.399000000005 1639159.418999999994 7.756</P>
+					<P id="48">78901.922000000006 1639162.043000000063 7.692</P>
+					<P id="49">78892.619999999995 1639163.959000000032 7.791</P>
+					<P id="50">78894.505000000005 1639173.58899999992 7.473</P>
+					<P id="51">78881.400999999998 1639176.169999999925 7.597</P>
+					<P id="52">78880.928 1639178.344000000041 7.647</P>
+					<P id="53">78882.801000000007 1639177.878999999957 7.64</P>
+					<P id="54">78883.198999999993 1639179.799000000115 7.562</P>
+					<P id="55">78881.209000000003 1639180.033999999985 7.579</P>
+					<P id="56">78900.012000000002 1639175.486000000034 7.553</P>
+					<P id="57">78901.926999999996 1639175.14599999995 7.575</P>
+					<P id="58">78902.203999999998 1639177.084000000032 7.502</P>
+					<P id="59">78900.319000000003 1639177.404000000097 7.523</P>
+					<P id="60">78888.017000000007 1639214.147000000114 7.166</P>
+					<P id="61">78889.860000000001 1639213.772000000114 7.173</P>
+					<P id="62">78890.271999999997 1639215.695000000065 7.156</P>
+					<P id="63">78888.369000000006 1639216.053000000073 7.191</P>
+					<P id="64">78884.580000000002 1639218.858000000007 7.295</P>
+					<P id="65">78881.942999999999 1639206.240999999922 7.591</P>
+					<P id="66">78879.236000000004 1639192.949999999953 7.681</P>
+					<P id="67">78875.038 1639172.227999999886 7.622</P>
+					<P id="68">78884.490000000005 1639187.402000000002 7.102</P>
+					<P id="69">78888.381999999998 1639198.901000000071 7.156</P>
+					<P id="70">78891.606 1639213.11400000006 7.161</P>
+					<P id="71">78893.216 1639220.047999999952 7.339</P>
+					<P id="72">78905.294999999998 1639216.264999999898 7.458</P>
+					<P id="73">78901.903000000006 1639202.870000000112 7.152</P>
+					<P id="74">78898.490000000005 1639190.82799999998 7.152</P>
+					<P id="75">78895.572 1639179.168000000063 7.34</P>
+					<P id="76">78894.672000000006 1639163.522000000114 7.859</P>
+					<P id="77">78895.414000000004 1639167.100000000093 7.85</P>
+					<P id="78">78901.216 1639165.870000000112 7.847</P>
+					<P id="79">78900.513999999996 1639162.398000000045 7.862</P>
+					<P id="80">78899.394 1639127.554999999935 7.638</P>
+					<P id="81">78901.111999999994 1639138.054999999935 7.593</P>
+					<P id="82">78903.744999999995 1639149.229999999981 7.535</P>
+					<P id="83">78905.494999999995 1639159.975000000093 7.609</P>
+					<P id="84">78908.164000000004 1639171.722999999998 7.318</P>
+					<P id="85">78909.899999999994 1639183.090000000084 7.225</P>
+					<P id="86">78912.945999999996 1639196.056000000099 7.158</P>
+					<P id="87">78915.342000000004 1639207.361000000034 7.363</P>
+					<P id="88">78917.154999999999 1639215.175000000047 7.617</P>
+					<P id="89">78931.832999999999 1639211.581000000006 7.683</P>
+					<P id="90">78930.910000000003 1639200.296000000089 7.771</P>
+					<P id="91">78929.020000000004 1639187.040000000037 7.723</P>
+					<P id="92">78927.297999999995 1639173.800000000047 7.783</P>
+					<P id="93">78925.509999999995 1639162.181000000099 7.724</P>
+					<P id="94">78921.637000000002 1639148.254999999888 7.679</P>
+					<P id="95">78911.222999999998 1639148.48900000006 7.468</P>
+					<P id="96">78919.510999999999 1639132.852999999886 7.699</P>
+					<P id="97">78916.149000000005 1639119.188000000082 7.331</P>
+					<P id="98">78923.790999999997 1639116.766999999993 7.974</P>
+					<P id="99">78925.971999999994 1639128.149999999907 8.027</P>
+					<P id="100">78927.831999999995 1639139.61400000006 8.265</P>
+					<P id="101">78930.005999999994 1639151.013999999966 8.265</P>
+					<P id="102">78932.591 1639164.409999999916 8.291</P>
+					<P id="103">78934.903000000006 1639175.658999999985 8.263</P>
+					<P id="104">78937.237999999998 1639187.230999999912 8.296</P>
+					<P id="105">78940.051999999996 1639197.979999999981 8.223</P>
+					<P id="106">78941.534 1639203.004999999888 8.313</P>
+					<P id="107">78943.396999999997 1639210.662999999942 8.227</P>
+					<P id="108">78954.206000000006 1639248.990999999922 8.957</P>
+					<P id="109">78958.520999999993 1639245.625 9.291</P>
+					<P id="110">78958.732999999993 1639245.212999999989 9.287</P>
+					<P id="111">78958.732000000004 1639244.699999999953 9.28</P>
+					<P id="112">78956.903000000006 1639235.891000000061 9.417</P>
+					<P id="113">78955.709000000003 1639229.887000000104 9.622</P>
+					<P id="114">78955.275999999998 1639229.938000000082 9.638</P>
+					<P id="115">78955.854000000007 1639229.875 9.611</P>
+					<P id="116">78956.948000000004 1639235.757999999914 9.277</P>
+					<P id="117">78958.804999999993 1639244.566000000108 8.837</P>
+					<P id="118">78958.847999999998 1639245.121999999974 8.828</P>
+					<P id="119">78958.657999999996 1639245.575999999885 8.776</P>
+					<P id="120">78954.251999999993 1639249.097000000067 8.478</P>
+					<P id="121">78958.850999999995 1639245.27099999995 8.798</P>
+					<P id="122">78958.860000000001 1639245.345999999903 8.77</P>
+					<P id="123">78962.732999999993 1639239.487999999896 8.883</P>
+					<P id="124">78962.790999999997 1639239.534999999916 8.85</P>
+					<P id="125">78962.759000000005 1639234.618999999948 9.181</P>
+					<P id="126">78962.830000000002 1639234.551999999909 8.927</P>
+					<P id="127">78961.731 1639228.66100000008 8.993</P>
+					<P id="128">78961.618000000002 1639228.750999999931 9.487</P>
+					<P id="129">78955.251999999993 1639229.877000000095 9.623</P>
+					<P id="130">78953.172000000006 1639219.560000000056 9.623</P>
+					<P id="131">78959.650999999998 1639218.830000000075 9.444</P>
+					<P id="132">78959.854999999996 1639218.882999999914 8.959</P>
+					<P id="133">78957.739000000001 1639208.397000000114 8.874</P>
+					<P id="134">78957.585000000006 1639208.469999999972 9.365</P>
+					<P id="135">78951.263999999996 1639210.450999999885 9.558</P>
+					<P id="136">78948.907999999996 1639198.679000000004 9.499</P>
+					<P id="137">78954.323000000004 1639192.607000000076 9.34</P>
+					<P id="138">78954.285999999993 1639191.358999999939 8.846</P>
+					<P id="139">78952.070000000007 1639180.492000000086 8.811</P>
+					<P id="140">78951.888000000006 1639180.5 9.283</P>
+					<P id="141">78945.471999999994 1639181.735000000102 9.444</P>
+					<P id="142">78942.975000000006 1639169.267999999924 9.462</P>
+					<P id="143">78949.258000000002 1639167.137000000104 9.264</P>
+					<P id="144">78949.421000000002 1639167.08899999992 8.793</P>
+					<P id="145">78947.020999999993 1639155.250999999931 8.832</P>
+					<P id="146">78946.804999999993 1639155.361000000034 9.32</P>
+					<P id="147">78940.426000000007 1639156.524999999907 9.482</P>
+					<P id="148">78937.432000000001 1639141.449000000022 9.298</P>
+					<P id="149">78943.724000000002 1639139.824000000022 9.173</P>
+					<P id="150">78943.884999999995 1639139.899999999907 8.685</P>
+					<P id="151">78940.990000000005 1639125.267999999924 8.626</P>
+					<P id="152">78940.793999999994 1639125.243999999948 9.084</P>
+					<P id="153">78934.452000000005 1639126.845999999903 8.976</P>
+					<P id="154">78939.755000000005 1639120.361000000034 8.758</P>
+					<P id="155">78939.837 1639120.362999999896 8.528</P>
+					<P id="156">78937.759999999995 1639115.894000000088 8.502</P>
+					<P id="157">78937.793999999994 1639115.824000000022 8.464</P>
+					<P id="158">78929.581999999995 1639111.147000000114 8.312</P>
+					<P id="159">78931.877999999997 1639112.043000000063 8.495</P>
+					<P id="160">78933.073999999993 1639117.097000000067 8.68</P>
+					<P id="161">78934.869000000006 1639126.577000000048 9.062</P>
+					<P id="162">78935.020999999993 1639126.432999999961 9.058</P>
+					<P id="163">78933.187999999995 1639117.09300000011 8.449</P>
+					<P id="164">78912.244999999995 1639110.054000000004 7.87</P>
+					<P id="165">78912.248999999996 1639109.975000000093 7.502</P>
+					<P id="166">78901.490999999995 1639111.584000000032 7.84</P>
+					<P id="167">78901.567999999999 1639111.472999999998 7.468</P>
+					<P id="168">78890.190000000002 1639113.26099999994 7.812</P>
+					<P id="169">78890.214999999997 1639113.158999999985 7.45</P>
+					<P id="170">78878.269 1639114.861999999965 7.882</P>
+					<P id="171">78878.264999999999 1639114.736000000034 7.471</P>
+					<P id="172">78866.415999999997 1639116.492000000086 7.953</P>
+					<P id="173">78866.434999999998 1639116.358000000007 7.587</P>
+					<P id="174">78864.504000000001 1639116.729999999981 7.944</P>
+					<P id="175">78864.490000000005 1639116.637000000104 7.591</P>
+					<P id="176">78865.241999999998 1639121.347999999998 7.586</P>
+					<P id="177">78865.891000000003 1639120.129999999888 7.752</P>
+					<P id="178">78862.399999999994 1639120.848999999929 7.362</P>
+					<P id="179">78871.601999999999 1639125.972000000067 7.686</P>
+					<P id="180">78873.637000000002 1639125.577000000048 7.686</P>
+					<P id="181">78878.544999999998 1639124.561999999918 7.872</P>
+					<P id="182">78880.601999999999 1639124.16100000008 7.883</P>
+					<P id="183">78881.054999999993 1639126.033999999985 7.683</P>
+					<P id="184">78881.567999999999 1639125.943999999901 7.775</P>
+					<P id="185">78881.899000000005 1639125.745000000112 7.744</P>
+					<P id="186">78885.455000000002 1639125.053000000073 7.923</P>
+					<P id="187">78885.987999999998 1639126.875999999931 7.896</P>
+					<P id="188">78871.243000000002 1639120.006999999983 7.569</P>
+					<P id="189">78882.178 1639117.847999999998 7.615</P>
+					<P id="190">78893.156000000003 1639117.024999999907 7.732</P>
+					<P id="191">78900.298999999999 1639115.462000000058 7.649</P>
+					<P id="192">78911.813999999998 1639114.142999999924 7.54</P>
+					<P id="193">78907.644 1639126.506000000052 7.438</P>
+					<P id="194">78919.035999999993 1639110.09300000011 7.466</P>
+				</Pnts>
+				<Faces>
+					<F n="6 2 47">18 5 20</F>
+					<F n="1 3 48">20 5 19</F>
+					<F n="2 4 49">19 5 22</F>
+					<F i="1" n="59 3 5">108 22 5</F>
+					<F i="1" n="4 6 54">108 5 21</F>
+					<F n="5 1 47">21 5 18</F>
+					<F i="1" n="113 14 8">180 42 6</F>
+					<F i="1" n="9 333 7">6 183 180</F>
+					<F i="1" n="10 340 8">6 187 183</F>
+					<F n="9 11 44">187 6 16</F>
+					<F n="43 10 12">80 16 6</F>
+					<F n="11 13 106">80 6 40</F>
+					<F n="103 12 14">81 40 6</F>
+					<F n="13 7 109">81 6 42</F>
+					<F n="19 16 100">95 8 38</F>
+					<F i="1" n="15 17 26">38 8 33</F>
+					<F n="16 18 87">33 8 32</F>
+					<F n="89 17 19">94 32 8</F>
+					<F n="36 18 15">95 94 8</F>
+					<F n="298 0 21">163 157 9</F>
+					<F n="20 22 300">163 9 159</F>
+					<F n="21 0 299">159 9 158</F>
+					<F i="1" n="27 24 98">40 10 37</F>
+					<F n="23 25 82">37 10 30</F>
+					<F n="84 24 26">33 30 10</F>
+					<F i="1" n="16 25 27">38 33 10</F>
+					<F i="1" n="103 26 23">40 38 10</F>
+					<F i="1" n="0 305 30">11 165 194</F>
+					<F n="0 30 38">15 11 13</F>
+					<F i="1" n="38 29 28">194 13 11</F>
+					<F n="37 32 39">93 12 14</F>
+					<F i="1" n="40 31 33">39 14 12</F>
+					<F i="1" n="105 32 34">83 39 12</F>
+					<F i="1" n="33 35 122">83 12 82</F>
+					<F n="100 34 36">95 82 12</F>
+					<F n="35 37 19">95 12 94</F>
+					<F n="196 36 31">93 94 12</F>
+					<F n="29 30 41">15 13 194</F>
+					<F n="31 40 76">93 14 84</F>
+					<F n="39 32 104">84 14 39</F>
+					<F n="42 38 204">98 15 194</F>
+					<F n="206 0 41">98 158 15</F>
+					<F n="46 11 95">191 16 80</F>
+					<F i="1" n="10 45 342">187 16 186</F>
+					<F i="1" n="44 46 107">186 16 41</F>
+					<F n="108 45 43">191 41 16</F>
+					<F n="51 6 1">20 21 18</F>
+					<F n="50 2 49">107 20 19</F>
+					<F n="48 3 56">107 19 22</F>
+					<F n="53 48 65">24 20 107</F>
+					<F n="52 55 47">20 89 21</F>
+					<F n="51 53 66">89 20 25</F>
+					<F i="1" n="52 50 61">25 20 24</F>
+					<F i="1" n="5 55 182">108 21 88</F>
+					<F i="1" n="73 54 51">89 88 21</F>
+					<F n="49 57 223">107 22 130</F>
+					<F n="58 244 56">22 129 130</F>
+					<F n="238 57 59">114 129 22</F>
+					<F i="1" n="58 4 224">114 22 108</F>
+					<F n="65 64 61">24 106 23</F>
+					<F i="1" n="53 60 62">25 24 23</F>
+					<F i="1" n="66 61 63">90 25 23</F>
+					<F n="191 62 64">105 90 23</F>
+					<F n="220 63 60">106 105 23</F>
+					<F n="50 222 60">24 107 106</F>
+					<F n="52 62 75">89 25 90</F>
+					<F n="71 68 189">86 26 90</F>
+					<F i="1" n="69 75 67">26 28 90</F>
+					<F i="1" n="70 72 68">26 27 28</F>
+					<F n="74 69 71">87 27 26</F>
+					<F n="185 70 67">86 87 26</F>
+					<F n="75 69 73">89 28 27</F>
+					<F n="72 74 55">89 27 88</F>
+					<F n="70 184 73">27 87 88</F>
+					<F n="66 68 72">89 90 28</F>
+					<F n="39 81 77">93 84 29</F>
+					<F n="78 194 76">29 92 93</F>
+					<F n="77 79 192">92 29 91</F>
+					<F n="78 80 189">91 29 86</F>
+					<F n="79 81 187">86 29 85</F>
+					<F n="80 76 155">85 29 84</F>
+					<F n="24 83 98">37 30 36</F>
+					<F n="82 84 88">36 30 31</F>
+					<F i="1" n="87 83 25">33 31 30</F>
+					<F n="88 86 200">193 31 96</F>
+					<F n="85 87 89">96 31 32</F>
+					<F i="1" n="17 86 84">33 32 31</F>
+					<F n="99 83 85">193 36 31</F>
+					<F n="198 86 18">94 96 32</F>
+					<F n="93 91 307">166 34 192</F>
+					<F n="90 92 96">192 34 35</F>
+					<F i="1" n="95 91 93">191 35 34</F>
+					<F n="92 90 310">191 34 166</F>
+					<F n="97 95 106">193 35 80</F>
+					<F i="1" n="43 94 92">191 80 35</F>
+					<F n="91 97 203">192 35 97</F>
+					<F n="200 96 94">193 97 35</F>
+					<F i="1" n="23 82 99">40 37 36</F>
+					<F i="1" n="106 98 88">193 40 36</F>
+					<F n="15 101 35">95 38 82</F>
+					<F n="100 102 114">82 38 43</F>
+					<F n="109 101 103">81 43 38</F>
+					<F n="102 27 13">81 38 40</F>
+					<F n="40 105 153">84 39 78</F>
+					<F n="125 104 33">83 78 39</F>
+					<F n="94 12 99">193 80 40</F>
+					<F i="1" n="343 45 108">190 186 41</F>
+					<F n="310 107 46">191 190 41</F>
+					<F n="14 110 102">81 42 43</F>
+					<F i="1" n="114 109 111">44 43 42</F>
+					<F i="1" n="116 110 112">45 44 42</F>
+					<F i="1" n="117 111 113">49 45 42</F>
+					<F i="1" n="129 112 7">180 49 42</F>
+					<F n="101 110 115">82 43 44</F>
+					<F n="114 116 122">82 44 47</F>
+					<F n="115 111 118">47 44 45</F>
+					<F i="1" n="119 112 124">76 45 49</F>
+					<F n="116 119 121">47 45 46</F>
+					<F i="1" n="120 118 117">76 46 45</F>
+					<F i="1" n="121 119 124">48 46 76</F>
+					<F i="1" n="123 118 120">48 47 46</F>
+					<F n="34 115 123">83 82 47</F>
+					<F n="122 121 125">83 47 48</F>
+					<F n="120 117 127">48 76 49</F>
+					<F n="123 126 105">83 48 78</F>
+					<F n="188 125 127">79 78 48</F>
+					<F n="130 126 124">49 79 48</F>
+					<F i="1" n="132 129 139">51 49 179</F>
+					<F i="1" n="128 113 331">179 49 180</F>
+					<F n="131 188 127">49 77 79</F>
+					<F n="130 132 133">77 49 50</F>
+					<F i="1" n="136 131 128">51 50 49</F>
+					<F n="131 134 151">77 50 56</F>
+					<F n="150 133 135">75 56 50</F>
+					<F n="134 136 142">75 50 53</F>
+					<F n="135 132 137">53 50 51</F>
+					<F n="136 138 140">53 51 52</F>
+					<F n="141 137 139">67 52 51</F>
+					<F n="173 138 128">179 67 51</F>
+					<F i="1" n="143 137 141">55 53 52</F>
+					<F n="147 140 138">67 55 52</F>
+					<F n="135 143 144">75 53 54</F>
+					<F i="1" n="145 142 140">55 54 53</F>
+					<F n="142 145 174">75 54 68</F>
+					<F n="144 143 146">68 54 55</F>
+					<F n="172 145 147">66 68 55</F>
+					<F n="0 146 141">67 66 55</F>
+					<F i="1" n="149 154 152">56 58 57</F>
+					<F i="1" n="150 157 148">56 59 58</F>
+					<F n="158 149 134">75 59 56</F>
+					<F n="188 133 152">78 77 56</F>
+					<F n="151 148 153">78 56 57</F>
+					<F n="104 152 154">84 78 57</F>
+					<F n="153 148 155">84 57 58</F>
+					<F n="81 154 156">85 84 58</F>
+					<F n="155 157 187">85 58 74</F>
+					<F n="156 149 158">74 58 59</F>
+					<F n="174 157 150">75 74 59</F>
+					<F i="1" n="165 162 160">63 61 60</F>
+					<F n="168 159 161">64 63 60</F>
+					<F n="0 160 162">65 64 60</F>
+					<F n="161 159 163">65 60 61</F>
+					<F n="171 162 164">70 65 61</F>
+					<F n="163 165 166">70 61 62</F>
+					<F i="1" n="167 164 159">63 62 61</F>
+					<F n="179 164 167">71 70 62</F>
+					<F n="166 165 168">71 62 63</F>
+					<F n="167 160 169">71 63 64</F>
+					<F i="1" n="181 168 0">120 71 64</F>
+					<F n="172 0 171">69 66 65</F>
+					<F n="177 170 163">70 69 65</F>
+					<F n="175 146 170">69 68 66</F>
+					<F i="1" n="328 0 139">179 178 67</F>
+					<F n="144 175 158">75 68 74</F>
+					<F n="174 172 176">74 68 69</F>
+					<F n="175 177 186">74 69 73</F>
+					<F n="176 171 178">73 69 70</F>
+					<F n="177 179 183">73 70 72</F>
+					<F n="178 166 180">72 70 71</F>
+					<F i="1" n="182 179 181">108 72 71</F>
+					<F i="1" n="227 180 169">120 108 71</F>
+					<F i="1" n="54 184 180">108 88 72</F>
+					<F n="185 178 184">87 73 72</F>
+					<F n="74 183 182">88 87 72</F>
+					<F n="71 186 183">87 86 73</F>
+					<F n="187 176 185">86 74 73</F>
+					<F n="80 156 186">86 85 74</F>
+					<F n="130 151 126">79 77 78</F>
+					<F n="190 79 67">90 91 86</F>
+					<F n="193 189 191">104 91 90</F>
+					<F n="63 219 190">90 105 104</F>
+					<F n="195 78 193">103 92 91</F>
+					<F n="217 192 190">104 103 91</F>
+					<F n="197 77 195">102 93 92</F>
+					<F n="215 194 192">103 102 92</F>
+					<F n="199 37 197">101 94 93</F>
+					<F n="213 196 194">102 101 93</F>
+					<F n="199 202 89">94 100 96</F>
+					<F n="211 198 196">101 100 94</F>
+					<F n="85 201 97">193 96 97</F>
+					<F n="200 202 205">97 96 99</F>
+					<F n="209 201 198">100 99 96</F>
+					<F n="306 96 204">194 192 97</F>
+					<F n="41 203 205">98 194 97</F>
+					<F n="207 204 201">99 98 97</F>
+					<F n="299 42 207">160 158 98</F>
+					<F n="206 205 208">160 98 99</F>
+					<F n="207 209 293">160 99 153</F>
+					<F n="208 202 210">153 99 100</F>
+					<F n="209 211 286">153 100 148</F>
+					<F n="210 199 212">148 100 101</F>
+					<F n="211 213 282">148 101 147</F>
+					<F n="212 197 214">147 101 102</F>
+					<F n="213 215 276">147 102 142</F>
+					<F n="214 195 216">142 102 103</F>
+					<F n="215 217 273">142 103 141</F>
+					<F n="216 193 218">141 103 104</F>
+					<F n="219 268 217">104 136 141</F>
+					<F n="191 220 218">104 105 136</F>
+					<F n="219 64 221">136 105 106</F>
+					<F n="220 222 267">136 106 135</F>
+					<F n="221 65 223">135 106 107</F>
+					<F n="222 56 260">135 107 130</F>
+					<F i="1" n="59 225 236">114 108 112</F>
+					<F i="1" n="224 226 233">112 108 111</F>
+					<F n="225 227 228">111 108 109</F>
+					<F n="230 226 181">120 109 108</F>
+					<F n="226 229 232">111 109 110</F>
+					<F n="231 228 230">119 110 109</F>
+					<F n="0 229 227">120 119 109</F>
+					<F n="232 229 251">118 110 119</F>
+					<F n="234 228 231">118 111 110</F>
+					<F n="235 225 234">117 112 111</F>
+					<F n="248 233 232">118 117 111</F>
+					<F n="237 233 245">116 112 117</F>
+					<F n="238 224 237">113 114 112</F>
+					<F n="235 240 236">112 116 113</F>
+					<F n="58 236 239">129 114 113</F>
+					<F n="238 240 244">129 113 115</F>
+					<F n="243 239 237">116 115 113</F>
+					<F n="244 242 258">130 115 128</F>
+					<F n="241 243 255">128 115 125</F>
+					<F n="242 240 246">125 115 116</F>
+					<F n="241 57 239">115 130 129</F>
+					<F n="246 235 247">123 116 117</F>
+					<F n="253 243 245">123 125 116</F>
+					<F n="253 245 248">124 123 117</F>
+					<F n="247 234 249">124 117 118</F>
+					<F n="248 250 0">124 118 122</F>
+					<F n="249 251 252">122 118 121</F>
+					<F n="252 250 231">119 121 118</F>
+					<F n="0 250 251">119 122 121</F>
+					<F n="246 247 254">125 123 124</F>
+					<F n="255 253 0">126 125 124</F>
+					<F n="242 254 256">128 125 126</F>
+					<F n="255 0 257">128 126 127</F>
+					<F n="256 0 259">128 127 132</F>
+					<F n="241 259 260">130 128 131</F>
+					<F n="257 263 258">128 132 131</F>
+					<F n="223 258 261">135 130 131</F>
+					<F n="260 262 267">135 131 134</F>
+					<F n="261 263 264">134 131 133</F>
+					<F n="262 259 0">133 131 132</F>
+					<F n="262 265 266">134 133 137</F>
+					<F n="270 264 0">138 137 133</F>
+					<F n="268 267 264">137 136 134</F>
+					<F n="221 261 266">136 135 134</F>
+					<F n="269 218 266">137 141 136</F>
+					<F n="270 273 268">137 140 141</F>
+					<F n="265 271 269">137 138 140</F>
+					<F n="270 0 272">140 138 139</F>
+					<F n="275 271 0">144 140 139</F>
+					<F n="216 269 274">142 141 140</F>
+					<F n="276 273 275">143 142 140</F>
+					<F n="278 274 272">144 143 140</F>
+					<F n="214 274 277">147 142 143</F>
+					<F n="276 278 282">147 143 146</F>
+					<F n="277 275 279">146 143 144</F>
+					<F n="278 0 280">146 144 145</F>
+					<F n="279 0 281">146 145 150</F>
+					<F n="280 289 283">146 150 149</F>
+					<F n="212 277 283">148 147 146</F>
+					<F n="285 282 281">149 148 146</F>
+					<F n="285 302 286">148 162 161</F>
+					<F n="283 287 284">148 149 162</F>
+					<F n="293 210 284">161 153 148</F>
+					<F n="285 288 291">162 149 152</F>
+					<F n="287 289 290">152 149 151</F>
+					<F n="288 281 0">151 149 150</F>
+					<F n="292 288 0">155 152 151</F>
+					<F n="287 292 294">162 152 154</F>
+					<F n="296 291 290">155 154 152</F>
+					<F n="208 286 302">160 153 161</F>
+					<F n="291 295 301">162 154 163</F>
+					<F n="294 296 298">163 154 156</F>
+					<F n="295 292 297">156 154 155</F>
+					<F n="298 296 0">157 156 155</F>
+					<F n="295 297 20">163 156 157</F>
+					<F n="300 22 206">160 159 158</F>
+					<F n="21 299 301">163 159 160</F>
+					<F n="300 302 294">163 160 162</F>
+					<F n="284 301 293">161 162 160</F>
+					<F n="304 309 307">164 167 166</F>
+					<F n="303 305 0">167 164 165</F>
+					<F n="28 304 306">194 165 164</F>
+					<F n="305 307 203">194 164 192</F>
+					<F n="90 306 303">166 192 164</F>
+					<F n="309 313 311">166 169 168</F>
+					<F n="308 303 0">169 166 167</F>
+					<F n="108 93 311">190 191 166</F>
+					<F n="310 308 314">190 166 168</F>
+					<F n="313 317 315">168 171 170</F>
+					<F n="308 0 312">168 169 171</F>
+					<F n="311 315 343">190 168 189</F>
+					<F n="318 314 312">170 189 168</F>
+					<F n="317 324 320">170 173 172</F>
+					<F n="312 0 316">170 171 173</F>
+					<F n="315 319 334">189 170 181</F>
+					<F n="332 318 320">188 181 170</F>
+					<F n="321 319 316">172 188 170</F>
+					<F n="320 322 330">188 172 177</F>
+					<F n="321 323 326">177 172 174</F>
+					<F n="325 322 324">175 174 172</F>
+					<F n="323 316 0">175 172 173</F>
+					<F n="326 323 0">178 174 175</F>
+					<F n="329 322 325">178 177 174</F>
+					<F n="331 330 328">179 188 176</F>
+					<F i="1" n="327 329 173">179 176 178</F>
+					<F n="328 330 326">178 176 177</F>
+					<F n="321 329 327">188 177 176</F>
+					<F n="129 332 327">179 180 188</F>
+					<F n="331 333 319">188 180 181</F>
+					<F i="1" n="335 332 8">183 181 180</F>
+					<F n="318 335 336">189 181 182</F>
+					<F i="1" n="339 334 333">183 182 181</F>
+					<F n="334 337 343">189 182 186</F>
+					<F n="336 338 342">186 182 185</F>
+					<F n="337 339 341">185 182 184</F>
+					<F n="338 335 340">184 182 183</F>
+					<F i="1" n="341 339 9">187 184 183</F>
+					<F n="342 338 340">187 185 184</F>
+					<F n="44 337 341">187 186 185</F>
+					<F n="314 336 107">190 189 186</F>
+				</Faces>
+			</Definition>
+		</Surface>
+	</Surfaces>
+</LandXML>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jackshit — about</title>
+    <link rel="stylesheet" href="site/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <button class="nav-hamburger" id="nav-hamburger" title="Menu">☰</button>
+            <a href="index.html" class="site-brand">jackshit</a>
+            <ul id="nav-links">
+                <li><a href="samples.html">Samples</a></li>
+                <li><a href="viewer.html">Viewer</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" title="Toggle light/dark mode">☾</button>
+        </nav>
+    </header>
+
+    <main class="about-page">
+        <h1 class="about-heading">About</h1>
+
+        <section class="about-section">
+            <h2>What is jackshit?</h2>
+            <p>jackshit is a browser-based 3D viewer for surveying and engineering data. It renders LandXML surfaces, GeoTIFF elevation models, and ASCII Grid DEMs directly in your browser — no plugins, no installs, no server.</p>
+        </section>
+
+        <section class="about-section">
+            <h2>Supported Formats</h2>
+            <ul>
+                <li><strong>LandXML</strong> — TIN surfaces with full metadata (CRS, project info, application)</li>
+                <li><strong>GeoTIFF</strong> — Raster elevation models (.tif / .tiff)</li>
+                <li><strong>ASCII Grid</strong> — ESRI-format grid files (.asc)</li>
+            </ul>
+        </section>
+
+        <section class="about-section">
+            <h2>How It Works</h2>
+            <p>Files are parsed entirely in your browser. LandXML is processed on the main thread; DEM formats use a Web Worker for non-blocking parsing. Geometry is rendered with Three.js using per-surface centroid offsets to maintain float-precision at any coordinate magnitude.</p>
+        </section>
+
+        <section class="about-section">
+            <h2>Tech</h2>
+            <ul>
+                <li>Three.js r138 (ES module, no bundler)</li>
+                <li>GeoTIFF.js for raster parsing</li>
+                <li>Custom first-person camera controls</li>
+                <li>Static site — hosts on any file server or S3 bucket</li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="site/js/theme.js"></script>
+</body>
+</html>

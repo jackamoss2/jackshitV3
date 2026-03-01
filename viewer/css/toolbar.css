@@ -20,6 +20,26 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   color: var(--text-secondary);
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-magenta, #ff3cac), var(--accent-blue));
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: var(--text-secondary);
+}
+
+.toolbar-home {
+  text-decoration: none;
+}
+
+.toolbar-home:hover .toolbar-title {
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 0.6s ease forwards;
+}
+
+@keyframes gradient-flow {
+  from { background-position: 100% 0; }
+  to   { background-position: 0% 0; }
 }
 
 .toolbar-btn {
@@ -29,15 +49,26 @@
   font-size: 16px;
   width: 32px;
   height: 32px;
-  border-radius: 6px;
+  border-radius: 3px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.15s, border-color 0.15s;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
 }
 
 .toolbar-btn:hover {
   background: var(--bg-hover);
   border-color: var(--border-btn-hover);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.12);
+}
+
+body.light-mode .toolbar-btn:hover {
+  box-shadow: none;
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }

@@ -1,0 +1,363 @@
+<?xml version="1.0"?>
+<LandXML xmlns="http://www.landxml.org/schema/LandXML-1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.landxml.org/schema/LandXML-1.2 http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd" date="2024-09-22" time="15:07:50" version="1.2" language="English" readOnly="false">
+	<Units>
+		<Imperial areaUnit="squareFoot" linearUnit="foot" volumeUnit="cubicYard" temperatureUnit="fahrenheit" pressureUnit="inchHG" diameterUnit="inch" angularUnit="decimal degrees" directionUnit="decimal degrees"></Imperial>
+	</Units>
+	<CoordinateSystem desc="NAD83 Oregon State Planes (Polyconic), North Zone, Intn&apos;l Foot" epsgCode="2269" ogcWktCode="PROJCS[&quot;OR83-NIF&quot;,GEOGCS[&quot;LL83&quot;,DATUM[&quot;NAD83&quot;,SPHEROID[&quot;GRS1980&quot;,6378137.000,298.25722210]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degree&quot;,0.017453292519943295]],PROJECTION[&quot;Lambert_Conformal_Conic_2SP&quot;],PARAMETER[&quot;false_easting&quot;,8202099.738],PARAMETER[&quot;false_northing&quot;,0.000],PARAMETER[&quot;central_meridian&quot;,-120.50000000000000],PARAMETER[&quot;latitude_of_origin&quot;,43.66666666666666],PARAMETER[&quot;standard_parallel_1&quot;,46.00000000000000],PARAMETER[&quot;standard_parallel_2&quot;,44.33333333333333],UNIT[&quot;Foot_Intnl&quot;,0.30480000000000]]" horizontalDatum="NAD83" horizontalCoordinateSystemName="OR83-NIF" fileLocation="AutoCAD Map Zone Name"></CoordinateSystem>
+	<Project name="Y:\Projects\Wilsonville, City of\004-2024 Street Maintenance\CAD\_WORKING\XREF\Design Bases\3D Base.dwg"></Project>
+	<Application name="Autodesk Civil 3D" desc="Civil 3D" manufacturer="Autodesk, Inc." version="2022" manufacturerURL="www.autodesk.com/civil" timeStamp="2024-09-22T15:07:50">
+		<Author createdBy="" createdByEmail="" company="" companyURL="" timeStamp="2024-09-22T15:07:50"></Author>
+	</Application>
+	<PlanFeatures name="Site -FG - BOONES FERRY &amp; MID BLOCK - SE- FeatureLines">
+		<PlanFeature name="Feature 1">
+			<CoordGeom>
+				<Line>
+					<Start>604297.827551111579 7617363.716260649264 153.518986601848</Start>
+					<End>604295.724086140282 7617370.363670567051 154.044268629514</End>
+				</Line>
+				<Line>
+					<Start>604295.724086140282 7617370.363670567051 154.044268629514</Start>
+					<End>604293.461411977652 7617377.514216395095 154.156768629327</End>
+				</Line>
+			</CoordGeom>
+			<Location desc="FeatureLine Elevation Point">604297.676706166938 7617364.192963708192 153.526486602146</Location>
+			<Feature code="FeatureLine" source="Autodesk Civil 3D">
+				<Property label="site" value="FG - BOONES FERRY &amp; MID BLOCK - SE"></Property>
+				<Property label="layer" value="C-TOPO-FEAT"></Property>
+			</Feature>
+		</PlanFeature>
+		<PlanFeature name="Feature 2">
+			<CoordGeom>
+				<Line>
+					<Start>604295.724086140282 7617370.363670567051 154.044268629514</Start>
+					<End>604290.957055589184 7617368.855221124366 154.027220940683</End>
+				</Line>
+			</CoordGeom>
+			<Feature code="FeatureLine" source="Autodesk Civil 3D">
+				<Property label="site" value="FG - BOONES FERRY &amp; MID BLOCK - SE"></Property>
+				<Property label="layer" value="C-TOPO-FEAT"></Property>
+			</Feature>
+		</PlanFeature>
+		<PlanFeature name="Feature 3">
+			<CoordGeom>
+				<Line>
+					<Start>604293.060557322577 7617362.207695040852 153.501917792019</Start>
+					<End>604290.957055589184 7617368.855221124366 154.027220940683</End>
+				</Line>
+				<Line>
+					<Start>604290.957055589184 7617368.855221124366 154.027220940683</Start>
+					<End>604288.694381426089 7617376.00576695241 154.139720940497</End>
+				</Line>
+			</CoordGeom>
+			<Location desc="FeatureLine Elevation Point">604292.909765164834 7617362.684231270105 153.509415166918</Location>
+			<Location desc="FeatureLine Elevation Point">604289.599451092072 7617373.14554861933 154.094720940571</Location>
+			<Feature code="FeatureLine" source="Autodesk Civil 3D">
+				<Property label="site" value="FG - BOONES FERRY &amp; MID BLOCK - SE"></Property>
+				<Property label="layer" value="C-TOPO-FEAT"></Property>
+			</Feature>
+		</PlanFeature>
+		<PlanFeature name="Feature 4">
+			<CoordGeom>
+				<Line>
+					<Start>604290.957055589184 7617368.855221124366 154.027220940683</Start>
+					<End>604287.099339251872 7617367.334457743913 153.998853537254</End>
+				</Line>
+				<Line>
+					<Start>604287.099339251872 7617367.334457743913 153.998853537254</Start>
+					<End>604284.213873540983 7617366.196968562901 153.958000830375</End>
+				</Line>
+			</CoordGeom>
+			<Feature code="FeatureLine" source="Autodesk Civil 3D">
+				<Property label="site" value="FG - BOONES FERRY &amp; MID BLOCK - SE"></Property>
+				<Property label="layer" value="C-TOPO-FEAT"></Property>
+			</Feature>
+		</PlanFeature>
+		<PlanFeature name="Feature 5">
+			<CoordGeom>
+				<Line>
+					<Start>604287.099339251872 7617367.334457743913 153.998853537254</Start>
+					<End>604285.655429998878 7617371.897527161986 154.070644603577</End>
+				</Line>
+			</CoordGeom>
+			<Feature code="FeatureLine" source="Autodesk Civil 3D">
+				<Property label="site" value="FG - BOONES FERRY &amp; MID BLOCK - SE"></Property>
+				<Property label="layer" value="C-TOPO-FEAT"></Property>
+			</Feature>
+		</PlanFeature>
+		<PlanFeature name="Feature 6">
+			<CoordGeom>
+				<Curve radius="27.499971891796">
+					<Start>604307.952946279198 7617370.131381448358 154.009999999776</Start>
+					<Center>604297.683982887305 7617364.19526761584 153.509979605442</Center>
+					<End>604297.676706166938 7617364.192963708192 153.526486602146</End>
+				</Curve>
+			</CoordGeom>
+			<Location desc="FeatureLine Elevation Point">604297.691258967854 7617364.197573542595 153.493472608738</Location>
+			<Feature code="FeatureLine" source="Autodesk Civil 3D">
+				<Property label="site" value="FG - BOONES FERRY &amp; MID BLOCK - SE"></Property>
+				<Property label="layer" value="C-TOPO-FEAT"></Property>
+			</Feature>
+		</PlanFeature>
+		<PlanFeature name="Feature 7">
+			<CoordGeom>
+				<Curve radius="28.000000006644">
+					<Start>604308.290643780958 7617369.762653365731 153.560000000056</Start>
+					<Center>604299.190198077005 7617364.18640260864 153.523840842769</Center>
+					<End>604297.827551111579 7617363.716260649264 153.518986601848</End>
+				</Curve>
+			</CoordGeom>
+			<Location desc="FeatureLine Elevation Point">604305.806968059391 7617367.736747426912 153.549201782793</Location>
+			<Location desc="FeatureLine Elevation Point">604303.108040384017 7617366.007953237742 153.538403565995</Location>
+			<Location desc="FeatureLine Elevation Point">604300.526843908243 7617364.726048914716 153.528695083689</Location>
+			<Feature code="FeatureLine" source="Autodesk Civil 3D">
+				<Property label="site" value="FG - BOONES FERRY &amp; MID BLOCK - SE"></Property>
+				<Property label="layer" value="C-TOPO-FEAT"></Property>
+			</Feature>
+		</PlanFeature>
+		<PlanFeature name="Feature 8">
+			<CoordGeom>
+				<Line>
+					<Start>604286.21484494349 7617360.041296944022 153.430000000168</Start>
+					<End>604309.198095228989 7617367.314589614049 153.589999999851</End>
+				</Line>
+			</CoordGeom>
+			<Location desc="FeatureLine Elevation Point">604293.060557322577 7617362.207695040852 153.501917792019</Location>
+			<Location desc="FeatureLine Elevation Point">604297.827551111579 7617363.716260649264 153.518986601848</Location>
+			<Feature code="FeatureLine" source="Autodesk Civil 3D">
+				<Property label="site" value="FG - BOONES FERRY &amp; MID BLOCK - SE"></Property>
+				<Property label="layer" value="C-TOPO-FEAT"></Property>
+			</Feature>
+		</PlanFeature>
+		<Feature code="FeatureLines" source="Autodesk Civil 3D">
+			<Property label="site" value="FG - BOONES FERRY &amp; MID BLOCK - SE"></Property>
+		</Feature>
+	</PlanFeatures>
+	<PlanFeatures name="Site -FG - BOONES FERRY &amp; BAILEY - NW- FeatureLines">
+		<PlanFeature name="Feature 9">
+			<CoordGeom>
+				<Line>
+					<Start>604286.060270759743 7617360.51681994088 153.850323750172</Start>
+					<End>604284.213873540983 7617366.196968562901 153.958000830375</End>
+				</Line>
+				<Line>
+					<Start>604284.213873540983 7617366.196968562901 153.958000830375</Start>
+					<End>604283.355456914753 7617365.923490699381 153.963236294221</End>
+				</Line>
+				<Line>
+					<Start>604283.355456914753 7617365.923490699381 153.963236294221</Start>
+					<End>604281.837147964165 7617370.689293788746 154.085826269351</End>
+				</Line>
+				<Line>
+					<Start>604281.837147964165 7617370.689293788746 154.085826269351</Start>
+					<End>604289.599451091141 7617373.14554861933 154.073365528602</End>
+				</Line>
+				<Line>
+					<Start>604289.599451091141 7617373.14554861933 154.073365528602</Start>
+					<End>604288.694381425157 7617376.00576695241 154.139720940497</End>
+				</Line>
+				<Line>
+					<Start>604288.694381425157 7617376.00576695241 154.139720940497</Start>
+					<End>604300.044352630619 7617379.597281113267 154.180310313124</End>
+				</Line>
+				<Line>
+					<Start>604300.044352630619 7617379.597281113267 154.180310313124</Start>
+					<End>604301.920131055173 7617373.669410541654 154.022445054259</End>
+				</Line>
+				<Line>
+					<Start>604301.920131055173 7617373.669410541654 154.022445054259</Start>
+					<End>604303.796363087371 7617374.263113712892 154.034348252229</End>
+				</Line>
+				<Line>
+					<Start>604303.796363087371 7617374.263113712892 154.034348252229</Start>
+					<End>604304.287785906345 7617372.710109997541 154.001941202208</End>
+				</Line>
+				<Line>
+					<Start>604304.287785906345 7617372.710109997541 154.001941202208</Start>
+					<End>604307.976210913621 7617370.152688229457 154.011124237441</End>
+				</Line>
+			</CoordGeom>
+			<Feature code="FeatureLine" source="Autodesk Civil 3D">
+				<Property label="site" value="FG - BOONES FERRY &amp; BAILEY - NW"></Property>
+				<Property label="layer" value="C-TOPO-FEAT"></Property>
+			</Feature>
+		</PlanFeature>
+		<Feature code="FeatureLines" source="Autodesk Civil 3D">
+			<Property label="site" value="FG - BOONES FERRY &amp; BAILEY - NW"></Property>
+		</Feature>
+	</PlanFeatures>
+	<Surfaces>
+		<Surface name="FG - BOONES FERRY &amp; MID BLOCK - SE" desc="Description">
+			<SourceData>
+				<Breaklines>
+					<Breakline brkType="standard" desc="Breakline set14">
+						<PntList3D>604297.827551111579 7617363.716260649264 153.518986601848 604297.676706166938 7617364.192963708192 153.526486602146 604295.724086140282 7617370.363670567051 154.044268629514 604293.461411977652 7617377.514216395095 154.156768629327</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D">
+							<Property label="planFeatureRef" value="Feature 1"></Property>
+							<Property label="weedDistance" value="0.000000"></Property>
+							<Property label="weedAngle" value="0.000000"></Property>
+							<Property label="supplementDistance" value="0.000000"></Property>
+							<Property label="minOrdinateDistance" value="1.000000"></Property>
+						</Feature>
+					</Breakline>
+					<Breakline brkType="standard" desc="Breakline set14">
+						<PntList3D>604295.724086140282 7617370.363670567051 154.044268629514 604290.957055589184 7617368.855221124366 154.027220940683</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D">
+							<Property label="planFeatureRef" value="Feature 2"></Property>
+							<Property label="weedDistance" value="0.000000"></Property>
+							<Property label="weedAngle" value="0.000000"></Property>
+							<Property label="supplementDistance" value="0.000000"></Property>
+							<Property label="minOrdinateDistance" value="1.000000"></Property>
+						</Feature>
+					</Breakline>
+					<Breakline brkType="standard" desc="Breakline set14">
+						<PntList3D>604293.060557322577 7617362.207695040852 153.501917792019 604292.909765164834 7617362.684231270105 153.509415166918 604290.957055589184 7617368.855221124366 154.027220940683 604289.599451092072 7617373.14554861933 154.094720940571 604288.694381426089 7617376.00576695241 154.139720940497</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D">
+							<Property label="planFeatureRef" value="Feature 3"></Property>
+							<Property label="weedDistance" value="0.000000"></Property>
+							<Property label="weedAngle" value="0.000000"></Property>
+							<Property label="supplementDistance" value="0.000000"></Property>
+							<Property label="minOrdinateDistance" value="1.000000"></Property>
+						</Feature>
+					</Breakline>
+					<Breakline brkType="standard" desc="Breakline set14">
+						<PntList3D>604290.957055589184 7617368.855221124366 154.027220940683 604287.099339251872 7617367.334457743913 153.998853537254 604284.213873540983 7617366.196968562901 153.958000830375</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D">
+							<Property label="planFeatureRef" value="Feature 4"></Property>
+							<Property label="weedDistance" value="0.000000"></Property>
+							<Property label="weedAngle" value="0.000000"></Property>
+							<Property label="supplementDistance" value="0.000000"></Property>
+							<Property label="minOrdinateDistance" value="1.000000"></Property>
+						</Feature>
+					</Breakline>
+					<Breakline brkType="standard" desc="Breakline set14">
+						<PntList3D>604287.099339251872 7617367.334457743913 153.998853537254 604285.655429998878 7617371.897527161986 154.070644603577</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D">
+							<Property label="planFeatureRef" value="Feature 5"></Property>
+							<Property label="weedDistance" value="0.000000"></Property>
+							<Property label="weedAngle" value="0.000000"></Property>
+							<Property label="supplementDistance" value="0.000000"></Property>
+							<Property label="minOrdinateDistance" value="1.000000"></Property>
+						</Feature>
+					</Breakline>
+					<Breakline brkType="standard" desc="Breakline set14">
+						<PntList3D>604307.952946279198 7617370.131381448358 154.009999999776 604297.691258967854 7617364.197573542595 153.493472608738 604297.676706166938 7617364.192963708192 153.526486602146</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D">
+							<Property label="planFeatureRef" value="Feature 6"></Property>
+							<Property label="weedDistance" value="0.000000"></Property>
+							<Property label="weedAngle" value="0.000000"></Property>
+							<Property label="supplementDistance" value="0.000000"></Property>
+							<Property label="minOrdinateDistance" value="1.000000"></Property>
+						</Feature>
+					</Breakline>
+					<Breakline brkType="standard" desc="Breakline set14">
+						<PntList3D>604308.290643780958 7617369.762653365731 153.560000000056 604305.806968059391 7617367.736747426912 153.549201782793 604303.108040384017 7617366.007953237742 153.538403565995 604300.526843908243 7617364.726048914716 153.528695083689 604297.827551111579 7617363.716260649264 153.518986601848</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D">
+							<Property label="planFeatureRef" value="Feature 7"></Property>
+							<Property label="weedDistance" value="0.000000"></Property>
+							<Property label="weedAngle" value="0.000000"></Property>
+							<Property label="supplementDistance" value="0.000000"></Property>
+							<Property label="minOrdinateDistance" value="1.000000"></Property>
+						</Feature>
+					</Breakline>
+					<Breakline brkType="standard" desc="Breakline set14">
+						<PntList3D>604286.21484494349 7617360.041296944022 153.430000000168 604293.060557322577 7617362.207695040852 153.501917792019 604297.827551111579 7617363.716260649264 153.518986601848 604309.198095228989 7617367.314589614049 153.589999999851</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D">
+							<Property label="planFeatureRef" value="Feature 8"></Property>
+							<Property label="weedDistance" value="0.000000"></Property>
+							<Property label="weedAngle" value="0.000000"></Property>
+							<Property label="supplementDistance" value="0.000000"></Property>
+							<Property label="minOrdinateDistance" value="1.000000"></Property>
+						</Feature>
+					</Breakline>
+					<Breakline brkType="standard" desc="Breakline set15">
+						<PntList3D>604286.060270759743 7617360.51681994088 153.850323750172 604284.213873540983 7617366.196968562901 153.958000830375 604283.355456914753 7617365.923490699381 153.963236294221 604281.837147964165 7617370.689293788746 154.085826269351 604289.599451091141 7617373.14554861933 154.073365528602 604288.694381425157 7617376.00576695241 154.139720940497 604300.044352630619 7617379.597281113267 154.180310313124 604301.920131055173 7617373.669410541654 154.022445054259 604303.796363087371 7617374.263113712892 154.034348252229 604304.287785906345 7617372.710109997541 154.001941202208 604307.976210913621 7617370.152688229457 154.011124237441</PntList3D>
+						<Feature code="BreakLine" source="Autodesk Civil 3D">
+							<Property label="planFeatureRef" value="Feature 9"></Property>
+							<Property label="weedDistance" value="0.000000"></Property>
+							<Property label="weedAngle" value="0.000000"></Property>
+							<Property label="supplementDistance" value="0.000000"></Property>
+							<Property label="minOrdinateDistance" value="1.000000"></Property>
+						</Feature>
+					</Breakline>
+				</Breaklines>
+			</SourceData>
+			<Definition surfType="TIN" area2DSurf="288.966038330996" area3DSurf="290.511053466555" elevMax="154.18031031295" elevMin="153.430000000168">
+				<Pnts>
+					<P id="5">604297.827551111579 7617363.716260649264 153.51898660203</P>
+					<P id="6">604297.676706166938 7617364.192963708192 153.526486602086</P>
+					<P id="7">604295.724086140282 7617370.363670567051 154.044268629469</P>
+					<P id="8">604293.461411977652 7617377.514216395095 154.156768629474</P>
+					<P id="9">604290.957055589184 7617368.855221124366 154.027220940548</P>
+					<P id="10">604293.060557322577 7617362.207695040852 153.501917791789</P>
+					<P id="11">604292.909765164834 7617362.684231270105 153.509415167119</P>
+					<P id="12">604289.599451092072 7617373.14554861933 154.094720940522</P>
+					<P id="13">604288.694381426089 7617376.00576695241 154.139720940555</P>
+					<P id="14">604287.099339251872 7617367.334457743913 153.998853537254</P>
+					<P id="15">604284.213873540983 7617366.196968562901 153.958000830375</P>
+					<P id="16">604285.655429998878 7617371.897527161986 154.070644603577</P>
+					<P id="17">604307.952946279198 7617370.131381448358 154.009999999776</P>
+					<P id="18">604297.691258967854 7617364.197573542595 153.493472608738</P>
+					<P id="19">604308.290643780958 7617369.762653365731 153.560000000056</P>
+					<P id="20">604305.806968059391 7617367.736747426912 153.549201782923</P>
+					<P id="21">604303.108040384017 7617366.007953237742 153.538403565799</P>
+					<P id="22">604300.526843908243 7617364.726048914716 153.528695083915</P>
+					<P id="23">604286.21484494349 7617360.041296944022 153.430000000168</P>
+					<P id="24">604309.198095228989 7617367.314589614049 153.589999999851</P>
+					<P id="25">604286.060270759743 7617360.51681994088 153.850323750292</P>
+					<P id="26">604283.355456914753 7617365.923490699381 153.963236294042</P>
+					<P id="27">604281.837147964165 7617370.689293788746 154.085826269376</P>
+					<P id="28">604300.044352630619 7617379.597281113267 154.18031031295</P>
+					<P id="29">604301.920131055173 7617373.669410541654 154.022445054344</P>
+					<P id="30">604303.796363087371 7617374.263113712892 154.034348252455</P>
+					<P id="31">604304.287785906345 7617372.710109997541 154.001941202116</P>
+					<P id="32">604307.976210913621 7617370.152688229457 154.011124237602</P>
+				</Pnts>
+				<Faces>
+					<F i="1" n="2 38 0">5 22 24</F>
+					<F n="1 3 35">22 5 18</F>
+					<F n="2 4 6">18 5 6</F>
+					<F n="8 3 5">11 6 5</F>
+					<F n="4 0 18">11 5 10</F>
+					<F n="3 7 12">18 6 7</F>
+					<F n="11 6 8">9 7 6</F>
+					<F n="16 7 4">11 9 6</F>
+					<F n="12 10 13">29 7 8</F>
+					<F n="14 9 11">12 8 7</F>
+					<F n="10 7 17">12 7 9</F>
+					<F n="34 6 9">29 18 7</F>
+					<F n="9 0 41">29 8 28</F>
+					<F n="0 10 21">13 8 12</F>
+					<F n="17 16 23">16 9 14</F>
+					<F n="15 8 20">14 9 11</F>
+					<F n="21 11 15">16 12 9</F>
+					<F n="19 5 0">23 11 10</F>
+					<F n="20 18 39">25 11 23</F>
+					<F n="24 16 19">25 14 11</F>
+					<F i="1" n="22 14 17">16 13 12</F>
+					<F i="1" n="0 21 27">27 13 16</F>
+					<F n="15 24 27">16 14 15</F>
+					<F n="26 23 20">25 15 14</F>
+					<F n="27 26 0">27 15 26</F>
+					<F i="1" n="25 24 39">26 15 25</F>
+					<F n="22 23 25">27 16 15</F>
+					<F n="33 29 43">32 17 31</F>
+					<F n="28 30 34">31 17 18</F>
+					<F n="31 35 29">17 21 18</F>
+					<F n="32 37 30">17 20 21</F>
+					<F n="31 33 36">20 17 19</F>
+					<F n="0 32 28">32 19 17</F>
+					<F n="29 12 42">31 18 29</F>
+					<F n="38 2 30">21 22 18</F>
+					<F n="37 32 0">24 20 19</F>
+					<F n="38 31 36">24 21 20</F>
+					<F n="1 35 37">24 22 21</F>
+					<F i="1" n="26 19 0">26 25 23</F>
+					<F i="1" n="43 41 0">32 30 28</F>
+					<F i="1" n="42 13 40">30 29 28</F>
+					<F n="34 41 43">31 29 30</F>
+					<F i="1" n="28 42 40">32 31 30</F>
+				</Faces>
+			</Definition>
+		</Surface>
+	</Surfaces>
+</LandXML>

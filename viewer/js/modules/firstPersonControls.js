@@ -96,6 +96,7 @@ export class FirstPersonControls {
     hLine.style.width = '20px';
     hLine.style.height = '2px';
     hLine.style.backgroundColor = 'white';
+    hLine.style.mixBlendMode = 'difference';
     crosshair.appendChild(hLine);
 
     const vLine = document.createElement('div');
@@ -103,6 +104,7 @@ export class FirstPersonControls {
     vLine.style.width = '2px';
     vLine.style.height = '20px';
     vLine.style.backgroundColor = 'white';
+    vLine.style.mixBlendMode = 'difference';
     crosshair.appendChild(vLine);
 
     return crosshair;

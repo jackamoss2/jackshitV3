@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jackshit viewer</title>
+    <title>jackshit</title>
     <link rel="stylesheet" href="viewer/css/theme.css">
     <link rel="stylesheet" href="viewer/css/base.css">
     <link rel="stylesheet" href="viewer/css/toolbar.css">
@@ -23,8 +23,11 @@
         <!-- Top Toolbar -->
         <div id="toolbar">
             <button class="toolbar-btn" data-panel="left-panel" title="Toggle Left Panel">☰</button>
-            <span class="toolbar-title">jackshit viewer</span>
-            <button class="toolbar-btn" data-panel="right-panel" title="Toggle Right Panel">⚙</button>
+            <a href="index.html" class="toolbar-title toolbar-home" id="toolbar-home">jackshit</a>
+            <div class="toolbar-right">
+                <button class="toolbar-btn toolbar-theme" id="toolbar-theme" title="Toggle light/dark mode">☾</button>
+                <button class="toolbar-btn" data-panel="right-panel" title="Toggle Right Panel">⚙</button>
+            </div>
         </div>
 
         <!-- Left Panel -->
@@ -136,8 +139,8 @@
 
                 <div class="setting-group">
                     <label class="setting-checkbox-row">
-                        <input type="checkbox" id="setting-dark-mode" checked>
-                        <span class="setting-checkbox-label">Dark mode</span>
+                        <input type="checkbox" id="setting-confirm-leave" checked>
+                        <span class="setting-checkbox-label">Confirm before leaving with data</span>
                     </label>
                 </div>
 

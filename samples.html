@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jackshit — samples</title>
+    <link rel="stylesheet" href="site/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <button class="nav-hamburger" id="nav-hamburger" title="Menu">☰</button>
+            <a href="index.html" class="site-brand">jackshit</a>
+            <ul id="nav-links">
+                <li><a href="samples.html">Samples</a></li>
+                <li><a href="viewer.html">Viewer</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" title="Toggle light/dark mode">☾</button>
+        </nav>
+    </header>
+
+    <main class="samples-page">
+        <h1 class="samples-heading">Sample Datasets</h1>
+        <p class="samples-sub">Click a sample to open it in the 3D viewer.</p>
+
+        <div class="samples-grid">
+
+            <a href="viewer.html?sample=wilsonville-ramp" class="sample-card">
+                <div class="sample-preview" style="background-image: url('site/images/samples/wilsonville-ramp.png');">
+                    <span class="sample-badge">LandXML</span>
+                </div>
+                <div class="sample-info">
+                    <span class="sample-name">Wilsonville Ramp</span>
+                    <span class="sample-desc">Highway ramp TIN surface</span>
+                </div>
+            </a>
+
+            <a href="viewer.html?sample=mt-hood" class="sample-card">
+                <div class="sample-preview" style="background-image: url('site/images/samples/mt-hood.png');">
+                    <span class="sample-badge">GeoTIFF</span>
+                </div>
+                <div class="sample-info">
+                    <span class="sample-name">Mt Hood</span>
+                    <span class="sample-desc">Clipped DEM elevation raster</span>
+                </div>
+            </a>
+
+            <a href="viewer.html?sample=eg-fg" class="sample-card">
+                <div class="sample-preview" style="background-image: url('site/images/samples/eg-fg.png');">
+                    <span class="sample-badge">LandXML</span>
+                </div>
+                <div class="sample-info">
+                    <span class="sample-name">EG + FG</span>
+                    <span class="sample-desc">Existing &amp; finished ground surfaces</span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+    <script src="site/js/theme.js"></script>
+</body>
+</html>

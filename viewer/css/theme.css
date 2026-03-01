@@ -1,92 +1,100 @@
 /* ── Theme Variables ───────────────────────────────── */
-/* Dark mode (default) */
+/* Dark mode (default) — retrofuturism */
 :root {
   /* Backgrounds */
-  --bg-body:            #1a1a1a;
-  --bg-panel:           rgba(28, 28, 28, 0.9);
-  --bg-toolbar:         rgba(24, 24, 24, 0.85);
-  --bg-statusbar:       rgba(24, 24, 24, 0.85);
-  --bg-hover:           rgba(255, 255, 255, 0.06);
-  --bg-selected:        rgba(255, 255, 255, 0.1);
-  --bg-upload:          rgba(255, 255, 255, 0.04);
-  --bg-upload-hover:    rgba(255, 255, 255, 0.08);
-  --bg-slider-track:    rgba(255, 255, 255, 0.12);
-  --bg-confirm-box:     #1e1e2e;
-  --bg-cancel-btn:      rgba(255, 255, 255, 0.08);
-  --bg-cancel-btn-hover:rgba(255, 255, 255, 0.14);
-  --bg-meta-row-even:   rgba(255, 255, 255, 0.02);
+  --bg-body:            #0d0f1a;
+  --bg-panel:           rgba(14, 16, 32, 0.92);
+  --bg-toolbar:         rgba(12, 14, 28, 0.88);
+  --bg-statusbar:       rgba(12, 14, 28, 0.88);
+  --bg-hover:           rgba(0, 229, 255, 0.07);
+  --bg-selected:        rgba(0, 229, 255, 0.12);
+  --bg-upload:          rgba(138, 130, 200, 0.06);
+  --bg-upload-hover:    rgba(138, 130, 200, 0.12);
+  --bg-slider-track:    rgba(138, 130, 200, 0.18);
+  --bg-confirm-box:     #141628;
+  --bg-cancel-btn:      rgba(138, 130, 200, 0.1);
+  --bg-cancel-btn-hover:rgba(138, 130, 200, 0.2);
+  --bg-meta-row-even:   rgba(138, 130, 200, 0.04);
 
   /* Borders */
-  --border-subtle:      rgba(255, 255, 255, 0.06);
-  --border-panel:       rgba(255, 255, 255, 0.08);
-  --border-btn:         rgba(255, 255, 255, 0.12);
-  --border-btn-hover:   rgba(255, 255, 255, 0.25);
-  --border-reset:       rgba(255, 255, 255, 0.1);
-  --border-reset-hover: rgba(255, 255, 255, 0.3);
-  --border-confirm:     rgba(255, 255, 255, 0.1);
+  --border-subtle:      rgba(138, 130, 200, 0.08);
+  --border-panel:       rgba(138, 130, 200, 0.12);
+  --border-btn:         rgba(138, 130, 200, 0.18);
+  --border-btn-hover:   rgba(0, 229, 255, 0.35);
+  --border-reset:       rgba(138, 130, 200, 0.15);
+  --border-reset-hover: rgba(0, 229, 255, 0.4);
+  --border-confirm:     rgba(138, 130, 200, 0.15);
 
   /* Text */
-  --text-primary:       #e0e0e0;
-  --text-heading:       #ddd;
-  --text-body:          #bbb;
-  --text-secondary:     #ccc;
-  --text-muted:         #999;
-  --text-faint:         #777;
-  --text-label:         #aaa;
-  --text-bright:        #fff;
+  --text-primary:       #e8e0f0;
+  --text-heading:       #ded6ee;
+  --text-body:          #b8b0cc;
+  --text-secondary:     #c8c0dc;
+  --text-muted:         #8a82a0;
+  --text-faint:         #5e5878;
+  --text-label:         #a09abc;
+  --text-bright:        #f5f0ff;
 
-  /* Accents (same in both themes) */
-  --accent-blue:        #4fc3f7;
-  --accent-orange:      #ffa726;
-  --accent-yellow:      #f5c542;
-  --accent-red:         #ef5350;
-  --accent-red-hover:   #e53935;
+  /* Accents */
+  --accent-blue:        #00e5ff;
+  --accent-magenta:     #ff3cac;
+  --accent-orange:      #f5a623;
+  --accent-yellow:      #ffe156;
+  --accent-red:         #ff4060;
+  --accent-red-hover:   #ff1a42;
 
   /* Slider / controls */
-  --slider-thumb:       #ccc;
-  --slider-thumb-hover: #fff;
+  --slider-thumb:       #00e5ff;
+  --slider-thumb-hover: #40efff;
 
   /* Confirm overlay */
-  --bg-overlay:         rgba(0, 0, 0, 0.5);
-  --shadow-confirm:     0 8px 32px rgba(0, 0, 0, 0.5);
+  --bg-overlay:         rgba(6, 4, 16, 0.6);
+  --shadow-confirm:     0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
 /* ── Light Mode Overrides ─────────────────────────── */
 body.light-mode {
-  --bg-body:            #e2e2e2;
-  --bg-panel:           rgba(245, 245, 245, 0.95);
-  --bg-toolbar:         rgba(240, 240, 240, 0.92);
-  --bg-statusbar:       rgba(240, 240, 240, 0.92);
-  --bg-hover:           rgba(0, 0, 0, 0.05);
-  --bg-selected:        rgba(0, 0, 0, 0.08);
-  --bg-upload:          rgba(0, 0, 0, 0.03);
-  --bg-upload-hover:    rgba(0, 0, 0, 0.06);
-  --bg-slider-track:    rgba(0, 0, 0, 0.12);
-  --bg-confirm-box:     #ffffff;
-  --bg-cancel-btn:      rgba(0, 0, 0, 0.06);
-  --bg-cancel-btn-hover:rgba(0, 0, 0, 0.12);
-  --bg-meta-row-even:   rgba(0, 0, 0, 0.03);
+  --bg-body:            #f0ebe3;
+  --bg-panel:           rgba(248, 244, 238, 0.95);
+  --bg-toolbar:         rgba(244, 238, 230, 0.92);
+  --bg-statusbar:       rgba(244, 238, 230, 0.92);
+  --bg-hover:           rgba(8, 145, 178, 0.07);
+  --bg-selected:        rgba(8, 145, 178, 0.12);
+  --bg-upload:          rgba(90, 60, 120, 0.05);
+  --bg-upload-hover:    rgba(90, 60, 120, 0.1);
+  --bg-slider-track:    rgba(90, 60, 120, 0.14);
+  --bg-confirm-box:     #faf7f2;
+  --bg-cancel-btn:      rgba(90, 60, 120, 0.08);
+  --bg-cancel-btn-hover:rgba(90, 60, 120, 0.15);
+  --bg-meta-row-even:   rgba(90, 60, 120, 0.04);
 
-  --border-subtle:      rgba(0, 0, 0, 0.08);
-  --border-panel:       rgba(0, 0, 0, 0.1);
-  --border-btn:         rgba(0, 0, 0, 0.15);
-  --border-btn-hover:   rgba(0, 0, 0, 0.3);
-  --border-reset:       rgba(0, 0, 0, 0.12);
-  --border-reset-hover: rgba(0, 0, 0, 0.3);
-  --border-confirm:     rgba(0, 0, 0, 0.1);
+  --border-subtle:      rgba(90, 60, 120, 0.08);
+  --border-panel:       rgba(90, 60, 120, 0.1);
+  --border-btn:         rgba(90, 60, 120, 0.18);
+  --border-btn-hover:   rgba(8, 145, 178, 0.4);
+  --border-reset:       rgba(90, 60, 120, 0.14);
+  --border-reset-hover: rgba(8, 145, 178, 0.4);
+  --border-confirm:     rgba(90, 60, 120, 0.12);
 
-  --text-primary:       #1a1a1a;
-  --text-heading:       #222;
-  --text-body:          #444;
-  --text-secondary:     #333;
-  --text-muted:         #666;
-  --text-faint:         #888;
-  --text-label:         #555;
-  --text-bright:        #000;
+  --text-primary:       #1a1028;
+  --text-heading:       #22162e;
+  --text-body:          #3d2e52;
+  --text-secondary:     #2e2040;
+  --text-muted:         #6b5a80;
+  --text-faint:         #7a6e94;
+  --text-label:         #4e3e66;
+  --text-bright:        #0e0818;
 
-  --slider-thumb:       #555;
-  --slider-thumb-hover: #222;
+  --accent-blue:        #0891b2;
+  --accent-magenta:     #d6336c;
+  --accent-orange:      #d48a0a;
+  --accent-yellow:      #c99a10;
+  --accent-red:         #e03e5c;
+  --accent-red-hover:   #c8294a;
 
-  --bg-overlay:         rgba(0, 0, 0, 0.3);
-  --shadow-confirm:     0 8px 32px rgba(0, 0, 0, 0.15);
+  --slider-thumb:       #0891b2;
+  --slider-thumb-hover: #067a96;
+
+  --bg-overlay:         rgba(0, 0, 0, 0.25);
+  --shadow-confirm:     0 8px 32px rgba(60, 30, 80, 0.15);
 }

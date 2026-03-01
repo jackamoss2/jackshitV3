@@ -7,8 +7,9 @@ import { LightsSetup } from './modules/lightsSetup.js';
 import { initUI, setStatus } from './modules/uiController.js';
 import { initUpload } from './modules/uploadHandler.js';
 import { initDataTree, onObjectJumpTo } from './modules/dataTree.js';
-import { initSettings } from './modules/settingsManager.js';
+import { initSettings, shouldConfirmLeave } from './modules/settingsManager.js';
 import { initFileHandler } from './modules/fileHandler.js';
+import { getFiles } from './modules/sceneData.js';
 
 // CRS imports
 import { onCRSChange, getOrigin } from './modules/crsManager.js';
@@ -27,10 +28,11 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setPixelRatio(window.devicePixelRatio);
 LightsSetup(scene);
 
-// Default cube
+// Default cube (removed when loading samples)
 const geometry = new THREE.BoxGeometry();
 const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
 const cube = new THREE.Mesh(geometry, material);
+cube.name = '__default_cube__';
 scene.add(cube);
 
 // ── Controls ─────────────────────────────────────────
@@ -52,7 +54,15 @@ initUI();
 initUpload();
 initDataTree();
 initSettings(controls, camera, renderer, scene);
-initFileHandler(scene, controls);
+initFileHandler(scene, controls, camera);
+
+// ── Warn before leaving with loaded data ─────────────
+const isSample = new URLSearchParams(window.location.search).has('sample');
+window.addEventListener('beforeunload', (e) => {
+  if (!isSample && shouldConfirmLeave() && getFiles().length > 0) {
+    e.preventDefault();
+  }
+});
 setStatus('Ready');
 
 // ── CRS display ─────────────────────────────────────

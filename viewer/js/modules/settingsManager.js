@@ -214,7 +214,7 @@ function applyVerticalExaggeration(scene, factor) {
 /** Apply dark or light theme. */
 function applyTheme(isDark) {
   document.body.classList.toggle('light-mode', !isDark);
-  const color = isDark ? 0x0d0f1a : 0xf0ebe3;
+  const color = isDark ? 0x1a1714 : 0xf2efe8;
   if (_renderer) _renderer.setClearColor(color, 1);
   if (_scene) _scene.background = new THREE.Color(color);
 }

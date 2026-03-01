@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jackshit</title>
-    <link rel="stylesheet" href="site/css/style.css">
-</head>
-<body>
+<script>
+(function(){
+  var s = {};
+  try { s = JSON.parse(localStorage.getItem('jackshit-viewer-settings')||'{}'); } catch(e) {}
+  var cls = (s.darkMode===false) ? 'light-mode' : '';
+  document.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>jackshit</title><link rel="stylesheet" href="site/css/style.css"></head><body class="'+cls+'">');
+})();
+</script>
     <header>
         <nav>
             <button class="nav-hamburger" id="nav-hamburger" title="Menu">☰</button>
             <a href="index.html" class="site-brand">jackshit</a>
             <ul id="nav-links">
+                <li><a href="/index.html">Home</a></li>
                 <li><a href="samples.html">Samples</a></li>
-                <li><a href="viewer.html">Viewer</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="viewer.html">New Project</a></li>
             </ul>
             <button class="theme-toggle" id="theme-toggle" title="Toggle light/dark mode">☾</button>
         </nav>
@@ -42,12 +42,12 @@
                         <polygon points="5 3 19 12 5 21 5 3"/>
                     </svg>
                 </span>
-                <span class="card-label">Start Viewer</span>
+                <span class="card-label">New Project</span>
                 <span class="card-desc">Open the 3D viewer</span>
             </a>
 
             <!-- Bottom-right card -->
-            <a href="site/content/about.html" class="hero-card hero-about">
+            <a href="/about.html" class="hero-card hero-about">
                 <span class="card-icon">
                     <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"/>

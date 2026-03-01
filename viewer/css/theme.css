@@ -1,100 +1,107 @@
 /* ── Theme Variables ───────────────────────────────── */
-/* Dark mode (default) — retrofuturism */
+/* Dark mode (default) — 70s natural */
 :root {
   /* Backgrounds */
-  --bg-body:            #0d0f1a;
-  --bg-panel:           rgba(14, 16, 32, 0.92);
-  --bg-toolbar:         rgba(12, 14, 28, 0.88);
-  --bg-statusbar:       rgba(12, 14, 28, 0.88);
-  --bg-hover:           rgba(0, 229, 255, 0.07);
-  --bg-selected:        rgba(0, 229, 255, 0.12);
-  --bg-upload:          rgba(138, 130, 200, 0.06);
-  --bg-upload-hover:    rgba(138, 130, 200, 0.12);
-  --bg-slider-track:    rgba(138, 130, 200, 0.18);
-  --bg-confirm-box:     #141628;
-  --bg-cancel-btn:      rgba(138, 130, 200, 0.1);
-  --bg-cancel-btn-hover:rgba(138, 130, 200, 0.2);
-  --bg-meta-row-even:   rgba(138, 130, 200, 0.04);
+  --bg-body:            #1a1714;
+  --bg-panel:           rgba(24, 22, 18, 0.97);
+  --bg-toolbar:         rgba(22, 20, 16, 0.97);
+  --bg-statusbar:       rgba(22, 20, 16, 0.97);
+  --bg-hover:           rgba(180, 160, 120, 0.07);
+  --bg-selected:        rgba(180, 160, 120, 0.12);
+  --bg-upload:          rgba(160, 140, 100, 0.06);
+  --bg-upload-hover:    rgba(160, 140, 100, 0.12);
+  --bg-slider-track:    rgba(160, 140, 100, 0.16);
+  --bg-confirm-box:     #201e1a;
+  --bg-cancel-btn:      rgba(160, 140, 100, 0.08);
+  --bg-cancel-btn-hover:rgba(160, 140, 100, 0.16);
+  --bg-meta-row-even:   rgba(160, 140, 100, 0.04);
 
   /* Borders */
-  --border-subtle:      rgba(138, 130, 200, 0.08);
-  --border-panel:       rgba(138, 130, 200, 0.12);
-  --border-btn:         rgba(138, 130, 200, 0.18);
-  --border-btn-hover:   rgba(0, 229, 255, 0.35);
-  --border-reset:       rgba(138, 130, 200, 0.15);
-  --border-reset-hover: rgba(0, 229, 255, 0.4);
-  --border-confirm:     rgba(138, 130, 200, 0.15);
+  --border-subtle:      rgba(160, 140, 100, 0.12);
+  --border-panel:       rgba(160, 140, 100, 0.2);
+  --border-btn:         rgba(160, 140, 100, 0.22);
+  --border-btn-hover:   rgba(200, 168, 78, 0.4);
+  --border-reset:       rgba(160, 140, 100, 0.14);
+  --border-reset-hover: rgba(200, 168, 78, 0.4);
+  --border-confirm:     rgba(160, 140, 100, 0.14);
 
   /* Text */
-  --text-primary:       #e8e0f0;
-  --text-heading:       #ded6ee;
-  --text-body:          #b8b0cc;
-  --text-secondary:     #c8c0dc;
-  --text-muted:         #8a82a0;
-  --text-faint:         #5e5878;
-  --text-label:         #a09abc;
-  --text-bright:        #f5f0ff;
+  --text-primary:       #e4ddd0;
+  --text-heading:       #d8d0c0;
+  --text-body:          #b5ad9c;
+  --text-secondary:     #c8c0b0;
+  --text-muted:         #8a8474;
+  --text-faint:         #5e5a4e;
+  --text-label:         #a09880;
+  --text-bright:        #f0ebe0;
 
   /* Accents */
-  --accent-blue:        #00e5ff;
-  --accent-magenta:     #ff3cac;
-  --accent-orange:      #f5a623;
-  --accent-yellow:      #ffe156;
-  --accent-red:         #ff4060;
-  --accent-red-hover:   #ff1a42;
+  --accent-green:       #7a9e6a;
+  --accent-gold:        #c8a84e;
+  --accent-orange:      #c87a3a;
+  --accent-yellow:      #d4b84e;
+  --accent-red:         #c25a3c;
+  --accent-red-hover:   #a8462e;
+
+  /* Aliases for shared component references */
+  --accent-blue:        #c8a84e;
+  --accent-magenta:     #7a9e6a;
 
   /* Slider / controls */
-  --slider-thumb:       #00e5ff;
-  --slider-thumb-hover: #40efff;
+  --slider-thumb:       #c8a84e;
+  --slider-thumb-hover: #d4b85a;
 
   /* Confirm overlay */
-  --bg-overlay:         rgba(6, 4, 16, 0.6);
-  --shadow-confirm:     0 8px 32px rgba(0, 0, 0, 0.6);
+  --bg-overlay:         rgba(10, 8, 6, 0.6);
+  --shadow-confirm:     0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 /* ── Light Mode Overrides ─────────────────────────── */
 body.light-mode {
-  --bg-body:            #f0ebe3;
-  --bg-panel:           rgba(248, 244, 238, 0.95);
-  --bg-toolbar:         rgba(244, 238, 230, 0.92);
-  --bg-statusbar:       rgba(244, 238, 230, 0.92);
-  --bg-hover:           rgba(8, 145, 178, 0.07);
-  --bg-selected:        rgba(8, 145, 178, 0.12);
-  --bg-upload:          rgba(90, 60, 120, 0.05);
-  --bg-upload-hover:    rgba(90, 60, 120, 0.1);
-  --bg-slider-track:    rgba(90, 60, 120, 0.14);
-  --bg-confirm-box:     #faf7f2;
-  --bg-cancel-btn:      rgba(90, 60, 120, 0.08);
-  --bg-cancel-btn-hover:rgba(90, 60, 120, 0.15);
-  --bg-meta-row-even:   rgba(90, 60, 120, 0.04);
+  --bg-body:            #f2efe8;
+  --bg-panel:           rgba(246, 243, 236, 0.98);
+  --bg-toolbar:         rgba(242, 239, 232, 0.98);
+  --bg-statusbar:       rgba(242, 239, 232, 0.98);
+  --bg-hover:           rgba(140, 120, 80, 0.06);
+  --bg-selected:        rgba(140, 120, 80, 0.1);
+  --bg-upload:          rgba(140, 120, 80, 0.05);
+  --bg-upload-hover:    rgba(140, 120, 80, 0.1);
+  --bg-slider-track:    rgba(140, 120, 80, 0.14);
+  --bg-confirm-box:     #f8f6f0;
+  --bg-cancel-btn:      rgba(140, 120, 80, 0.06);
+  --bg-cancel-btn-hover:rgba(140, 120, 80, 0.12);
+  --bg-meta-row-even:   rgba(140, 120, 80, 0.04);
 
-  --border-subtle:      rgba(90, 60, 120, 0.08);
-  --border-panel:       rgba(90, 60, 120, 0.1);
-  --border-btn:         rgba(90, 60, 120, 0.18);
-  --border-btn-hover:   rgba(8, 145, 178, 0.4);
-  --border-reset:       rgba(90, 60, 120, 0.14);
-  --border-reset-hover: rgba(8, 145, 178, 0.4);
-  --border-confirm:     rgba(90, 60, 120, 0.12);
+  --border-subtle:      rgba(140, 120, 80, 0.12);
+  --border-panel:       rgba(140, 120, 80, 0.18);
+  --border-btn:         rgba(140, 120, 80, 0.22);
+  --border-btn-hover:   rgba(160, 136, 48, 0.45);
+  --border-reset:       rgba(140, 120, 80, 0.14);
+  --border-reset-hover: rgba(160, 136, 48, 0.45);
+  --border-confirm:     rgba(140, 120, 80, 0.1);
 
-  --text-primary:       #1a1028;
-  --text-heading:       #22162e;
-  --text-body:          #3d2e52;
-  --text-secondary:     #2e2040;
-  --text-muted:         #6b5a80;
-  --text-faint:         #7a6e94;
-  --text-label:         #4e3e66;
-  --text-bright:        #0e0818;
+  --text-primary:       #2a2418;
+  --text-heading:       #302a1e;
+  --text-body:          #4e4838;
+  --text-secondary:     #3a3428;
+  --text-muted:         #6e6858;
+  --text-faint:         #8e887a;
+  --text-label:         #504830;
+  --text-bright:        #181410;
 
-  --accent-blue:        #0891b2;
-  --accent-magenta:     #d6336c;
-  --accent-orange:      #d48a0a;
-  --accent-yellow:      #c99a10;
-  --accent-red:         #e03e5c;
-  --accent-red-hover:   #c8294a;
+  --accent-green:       #5a7e4a;
+  --accent-gold:        #a08830;
+  --accent-orange:      #a86420;
+  --accent-yellow:      #b09830;
+  --accent-red:         #a84830;
+  --accent-red-hover:   #8e3820;
 
-  --slider-thumb:       #0891b2;
-  --slider-thumb-hover: #067a96;
+  --accent-blue:        #a08830;
+  --accent-magenta:     #5a7e4a;
 
-  --bg-overlay:         rgba(0, 0, 0, 0.25);
-  --shadow-confirm:     0 8px 32px rgba(60, 30, 80, 0.15);
+  --slider-thumb:       #a08830;
+  --slider-thumb-hover: #8a7428;
+
+  --bg-overlay:         rgba(0, 0, 0, 0.2);
+  --shadow-confirm:     0 8px 32px rgba(30, 20, 10, 0.12);
 }

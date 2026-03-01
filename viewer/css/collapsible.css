@@ -1,7 +1,7 @@
 /* ── Collapsible Sub-panels ────────────────────────── */
 
 .collapsible {
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 2px solid var(--border-subtle);
 }
 
 .collapsible:last-child {

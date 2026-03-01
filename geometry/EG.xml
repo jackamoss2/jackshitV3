@@ -3,12 +3,12 @@
 	<Units>
 		<Imperial areaUnit="squareFoot" linearUnit="foot" volumeUnit="cubicYard" temperatureUnit="fahrenheit" pressureUnit="inchHG" diameterUnit="inch" angularUnit="decimal degrees" directionUnit="decimal degrees"></Imperial>
 	</Units>
-	<Project name="Y:\Projects\Milwaukie, City of\003-Harvey Street Improvements\CAD\_WORKING\Civil 3D\3D_Base.dwg"></Project>
+	<Project name="Y:\Projects\City\Street Improvements\CAD\_WORKING\Civil 3D\3D_Base.dwg"></Project>
 	<Application name="Autodesk Civil 3D" desc="Civil 3D" manufacturer="Autodesk, Inc." version="2022" manufacturerURL="www.autodesk.com/civil" timeStamp="2024-09-23T17:08:20">
 		<Author createdBy="" createdByEmail="" company="" companyURL="" timeStamp="2024-09-23T17:08:20"></Author>
 	</Application>
 	<Surfaces>
-		<Surface name="EG-42nd and Harvey" desc="Description">
+		<Surface name="EG-Street" desc="Description">
 			<Definition surfType="TIN" area2DSurf="737275.600203959621" area3DSurf="743593.640079198871" elevMax="195.163836" elevMin="142.173">
 				<Pnts>
 					<P id="2">657910.334709747927 7655803.980970010161 162.32217794008</P>

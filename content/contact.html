@@ -1,0 +1,10 @@
+<script>
+(function(){
+  try {
+    var s = JSON.parse(localStorage.getItem('jackshit-viewer-settings')||'{}');
+    if(s.darkMode===false) document.body.classList.add('light-mode');
+  } catch(e) {}
+})();
+</script>
+
+<link rel="stylesheet" href="../assets/css/style.css">

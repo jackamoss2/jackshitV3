@@ -3,7 +3,7 @@
 	<Units>
 		<Imperial areaUnit="squareFoot" linearUnit="foot" volumeUnit="cubicYard" temperatureUnit="fahrenheit" pressureUnit="inchHG" diameterUnit="inch" angularUnit="decimal degrees" directionUnit="decimal degrees"></Imperial>
 	</Units>
-	<Project name="Y:\Projects\Milwaukie, City of\003-Harvey Street Improvements\CAD\_WORKING\Civil 3D\3D_Base.dwg"></Project>
+	<Project name="Y:\Projects\City\Street Improvements\CAD\_WORKING\Civil 3D\3D_Base.dwg"></Project>
 	<Application name="Autodesk Civil 3D" desc="Civil 3D" manufacturer="Autodesk, Inc." version="2022" manufacturerURL="www.autodesk.com/civil" timeStamp="2024-09-23T17:08:03">
 		<Author createdBy="" createdByEmail="" company="" companyURL="" timeStamp="2024-09-23T17:08:03"></Author>
 	</Application>
@@ -6761,7 +6761,7 @@
 		</Feature>
 	</PlanFeatures>
 	<Surfaces>
-		<Surface name="FG - Harvey" desc="Description">
+		<Surface name="FG - Street" desc="Description">
 			<SourceData>
 				<Boundaries>
 					<Boundary bndType="outer" edgeTrim="true">

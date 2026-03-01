@@ -17,6 +17,18 @@
   color: var(--text-muted);
 }
 
+#status-coords {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  user-select: text;
+  cursor: text;
+  font-variant-numeric: tabular-nums;
+}
+
 #status-text.status-active {
   color: var(--accent-yellow);
 }

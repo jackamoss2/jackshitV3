@@ -11,7 +11,7 @@ import { initSettings } from './modules/settingsManager.js';
 import { initFileHandler } from './modules/fileHandler.js';
 
 // CRS imports
-import { onCRSChange } from './modules/crsManager.js';
+import { onCRSChange, getOrigin } from './modules/crsManager.js';
 
 // utility imports
 import { preventSpaceOnFocusedButtons } from './modules/utility/preventSpacebarButtonPress.js';
@@ -92,11 +92,36 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix();
 });
 
+// ── Coordinate display ──────────────────────────────
+const coordsEl = document.getElementById('status-coords');
+let lastCoordsText = '';
+
+function updateCoords() {
+  const o = getOrigin();
+  if (!o) {
+    if (lastCoordsText !== '') {
+      coordsEl.textContent = '';
+      lastCoordsText = '';
+    }
+    return;
+  }
+  // scene → LandXML: x=northing, z=easting, y=elevation
+  const easting  = camera.position.z + o.y;
+  const northing = camera.position.x + o.x;
+  const elev     = camera.position.y + o.z;
+  const text = `E: ${easting.toFixed(3)}  N: ${northing.toFixed(3)}  Elev: ${elev.toFixed(3)}`;
+  if (text !== lastCoordsText) {
+    coordsEl.textContent = text;
+    lastCoordsText = text;
+  }
+}
+
 // ── Animation loop ──────────────────────────────────
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
   controls.update();
+  updateCoords();
 }
 
 animate();

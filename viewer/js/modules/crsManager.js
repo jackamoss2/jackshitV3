@@ -18,8 +18,7 @@
  */
 
 let origin = null;        // { x, y, z } in raw LandXML space (northing, easting, elev)
-let crsName = null;       // string from <CoordinateSystem desc="...">
-let crsInfo = {};         // full CRS attributes from XML
+let crsEntries = new Map(); // fileKey → { name, info }
 let onChangeCallbacks = [];
 
 /** Register a listener for origin/CRS changes. */
@@ -33,27 +32,49 @@ function notify() {
 }
 
 /**
- * Set the CRS info (call once per file load, first one wins for origin).
- * @param {object} info  - CRS attributes from xmlParser ({ CRS, Datum, ... })
+ * Set/update the CRS info for a particular file.
+ * @param {string} fileKey - unique key for the file (e.g. file name)
+ * @param {object} info    - CRS attributes from xmlParser ({ CRS, Datum, ... })
  */
-export function setCRS(info) {
-    if (!crsName && info.CRS) {
-        crsName = info.CRS;
-    }
-    if (Object.keys(crsInfo).length === 0) {
-        crsInfo = { ...info };
-    }
+export function setCRS(fileKey, info) {
+    crsEntries.set(fileKey, {
+        name: info.CRS || null,
+        info: { ...info }
+    });
     notify();
 }
 
-/** Get the current CRS display name. */
-export function getCRSName() {
-    return crsName || 'Unknown CRS';
+/**
+ * Remove the CRS entry for a file (call on file deletion).
+ * @param {string} fileKey
+ */
+export function removeCRSForFile(fileKey) {
+    crsEntries.delete(fileKey);
+    notify();
 }
 
-/** Get all CRS details. */
+/** Get the current CRS display name (derived from all loaded files). */
+export function getCRSName() {
+    if (crsEntries.size === 0) return null; // no files loaded
+
+    const names = new Set();
+    let hasMissing = false;
+    for (const entry of crsEntries.values()) {
+        if (entry.name) names.add(entry.name);
+        else hasMissing = true;
+    }
+
+    if (names.size === 0) return 'No CRS';            // all files lack CRS
+    if (names.size === 1 && !hasMissing) return [...names][0]; // all files share one CRS
+    return 'Mixed CRS';                                // different CRS or some missing
+}
+
+/** Get all CRS details (merged from first entry that has info). */
 export function getCRSInfo() {
-    return { ...crsInfo };
+    for (const entry of crsEntries.values()) {
+        if (Object.keys(entry.info).length > 0) return { ...entry.info };
+    }
+    return {};
 }
 
 /**
@@ -82,6 +103,15 @@ export function initOriginFromPoints(rawPoints) {
 /** Returns whether origin has been established. */
 export function hasOrigin() {
     return origin !== null;
+}
+
+/**
+ * Reset the scene origin (call when all files have been removed).
+ * The next file load will re-establish a fresh origin.
+ */
+export function resetOrigin() {
+    origin = null;
+    notify();
 }
 
 /** Get the raw origin in LandXML coordinate space. */

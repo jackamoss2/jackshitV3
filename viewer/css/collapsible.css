@@ -49,9 +49,24 @@
   max-height: 500px;
 }
 
-/* Data section gets dedicated space */
+/* Data section fills available space */
+.collapsible-data {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.collapsible-data .collapsible-header {
+  flex-shrink: 0;
+}
+
+.collapsible-data .data-upload-block {
+  flex-shrink: 0;
+}
+
 .collapsible-data.open .collapsible-body {
   max-height: none;
-  height: 33vh;
+  flex: 1;
   overflow-y: auto;
 }

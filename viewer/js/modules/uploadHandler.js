@@ -18,12 +18,12 @@ export function initUpload() {
         });
     }
 
-    // File selected via picker
+    // File(s) selected via picker
     input.addEventListener('change', () => {
-        if (input.files.length > 0) {
-            handleFile(input.files[0], panel);
-            input.value = '';
+        for (const file of input.files) {
+            handleFile(file, panel);
         }
+        input.value = '';
     });
 
     // Drag-and-drop on the data panel body
@@ -42,8 +42,9 @@ export function initUpload() {
     panel.addEventListener('drop', (e) => {
         e.preventDefault();
         panel.classList.remove('drag-over');
-        const file = e.dataTransfer.files[0];
-        if (file) handleFile(file, panel);
+        for (const file of e.dataTransfer.files) {
+            handleFile(file, panel);
+        }
     });
 }
 

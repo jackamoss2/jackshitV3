@@ -4,11 +4,18 @@
  * Supports collapsible groups, visibility toggles, and metadata selection.
  */
 
-import { getFiles, toggleVisibility, findFile, onStoreChange } from './sceneData.js';
+import { getFiles, toggleVisibility, findFile, removeFile, onStoreChange } from './sceneData.js';
+
+// Inline SVG icons (14×14, currentColor)
+const svgEye = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+const svgEyeOff = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
+const svgTarget = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>`;
+const svgTrash = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>`;
 
 let selectedId = null;   // can be an obj id or file id
 let onSelect = null;
 let onJumpTo = null;
+let onDelete = null;
 
 /** Set callback when user clicks an object row. Receives the object entry. */
 export function onObjectSelect(cb) {
@@ -18,6 +25,11 @@ export function onObjectSelect(cb) {
 /** Set callback for "Jump to" button. Receives the object entry. */
 export function onObjectJumpTo(cb) {
     onJumpTo = cb;
+}
+
+/** Set callback for file deletion. Receives fileId. Called after user confirms. */
+export function onFileDelete(cb) {
+    onDelete = cb;
 }
 
 /** Initialise the data tree — call once after DOM ready. */
@@ -46,29 +58,24 @@ function render() {
         html += `    <span class="tree-toggle">▼</span>`;
         html += `    <span class="tree-icon">📄</span>`;
         html += `    <span class="tree-label">${esc(file.name)}</span>`;
+        html += `    <span class="tree-row-actions">`;
+        html += `      <button class="tree-delete" data-file-id="${file.id}" title="Delete file">${svgTrash}</button>`;
+        html += `    </span>`;
         html += `  </div>`;
         html += `  <div class="tree-children">`;
 
-        for (const [type, objects] of Object.entries(file.groups)) {
-            html += `  <div class="tree-node tree-group">`;
-            html += `    <div class="tree-row tree-row-group">`;
-            html += `      <span class="tree-toggle">▼</span>`;
-            html += `      <span class="tree-label">${esc(type)}s (${objects.length})</span>`;
-            html += `    </div>`;
-            html += `    <div class="tree-children">`;
-
+        for (const objects of Object.values(file.groups)) {
             for (const obj of objects) {
                 const sel = obj.id === selectedId ? ' selected' : '';
-                const vis = obj.visible ? '👁' : '👁‍🗨';
+                const visIcon = obj.visible ? svgEye : svgEyeOff;
                 html += `    <div class="tree-row tree-row-obj${sel}" data-obj-id="${obj.id}">`;
-                html += `      <span class="tree-visibility" data-obj-id="${obj.id}" title="Toggle visibility">${vis}</span>`;
                 html += `      <span class="tree-label">${esc(obj.name)}</span>`;
-                html += `      <button class="tree-jumpto" data-obj-id="${obj.id}" title="Jump to object">⎆</button>`;
+                html += `      <span class="tree-row-actions">`;
+                html += `        <button class="tree-jumpto" data-obj-id="${obj.id}" title="Jump to object">${svgTarget}</button>`;
+                html += `        <span class="tree-visibility" data-obj-id="${obj.id}" title="Toggle visibility">${visIcon}</span>`;
+                html += `      </span>`;
                 html += `    </div>`;
             }
-
-            html += `    </div>`;
-            html += `  </div>`;
         }
 
         html += `  </div>`;
@@ -129,6 +136,20 @@ function attachEvents(container) {
         });
     });
 
+    // Delete file buttons
+    container.querySelectorAll('.tree-delete').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const fileId = btn.dataset.fileId;
+            const file = findFile(fileId);
+            if (!file) return;
+            showDeleteConfirm(file.name, () => {
+                if (onDelete) onDelete(fileId);
+                removeFile(fileId);
+            });
+        });
+    });
+
     // Jump-to buttons
     container.querySelectorAll('.tree-jumpto').forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -175,4 +196,35 @@ function esc(str) {
     const d = document.createElement('div');
     d.textContent = str;
     return d.innerHTML;
+}
+
+/** Show a styled confirmation popup before deleting a file. */
+function showDeleteConfirm(fileName, onConfirm) {
+    // Remove any existing popup
+    const existing = document.getElementById('delete-confirm-overlay');
+    if (existing) existing.remove();
+
+    const overlay = document.createElement('div');
+    overlay.id = 'delete-confirm-overlay';
+    overlay.className = 'delete-confirm-overlay';
+    overlay.innerHTML = `
+        <div class="delete-confirm-box">
+            <p class="delete-confirm-msg">Delete <strong>${esc(fileName)}</strong>?</p>
+            <div class="delete-confirm-actions">
+                <button class="delete-confirm-btn delete-btn-cancel">Cancel</button>
+                <button class="delete-confirm-btn delete-btn-ok">Delete</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    overlay.querySelector('.delete-btn-cancel').addEventListener('click', () => overlay.remove());
+    overlay.querySelector('.delete-btn-ok').addEventListener('click', () => {
+        overlay.remove();
+        onConfirm();
+    });
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) overlay.remove();
+    });
 }

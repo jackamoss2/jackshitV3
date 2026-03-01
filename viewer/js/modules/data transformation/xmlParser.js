@@ -1,7 +1,7 @@
 import { createSurfaceMesh } from './XMLtoThree_Surface.js';
-import { setCRS, computeWorldBBox, getOrigin } from '../crsManager.js';
+import { computeWorldBBox, getOrigin } from '../crsManager.js';
 
-export function loadLandXML(xmlString) {
+export function loadLandXML(xmlString, fileName) {
   const parser = new DOMParser();
   const xmlDoc = parser.parseFromString(xmlString, "application/xml");
 
@@ -20,7 +20,6 @@ export function loadLandXML(xmlString) {
   const crs = xmlDoc.querySelector('CoordinateSystem');
   if (crs) {
     if (crs.getAttribute('desc'))             fileMeta['CRS'] = crs.getAttribute('desc');
-    if (crs.getAttribute('ogcWktCode'))       fileMeta['CRS WKT'] = crs.getAttribute('ogcWktCode');
     if (crs.getAttribute('horizontalDatum'))  fileMeta['Horizontal Datum'] = crs.getAttribute('horizontalDatum');
     if (crs.getAttribute('verticalDatum'))    fileMeta['Vertical Datum'] = crs.getAttribute('verticalDatum');
     if (crs.getAttribute('datum'))            fileMeta['Datum'] = crs.getAttribute('datum');
@@ -55,20 +54,19 @@ export function loadLandXML(xmlString) {
     }
   }
 
-  // ── Register CRS with manager ────────────────────
+  // ── Collect CRS attributes (registered by fileHandler after addFile assigns an ID) ──
   const crsAttrs = {};
   if (fileMeta['CRS'])               crsAttrs.CRS = fileMeta['CRS'];
   if (fileMeta['Horizontal Datum'])   crsAttrs['Horizontal Datum'] = fileMeta['Horizontal Datum'];
   if (fileMeta['Vertical Datum'])     crsAttrs['Vertical Datum'] = fileMeta['Vertical Datum'];
   if (fileMeta['Datum'])              crsAttrs.Datum = fileMeta['Datum'];
   if (fileMeta['Coordinate System'])  crsAttrs['Coordinate System'] = fileMeta['Coordinate System'];
-  setCRS(crsAttrs);
 
   // ── Parse objects ────────────────────────────────
   const objects = [];
 
   xmlDoc.querySelectorAll("Surface").forEach((surfaceNode, i) => {
-    const { mesh, rawPoints } = createSurfaceMesh(surfaceNode);
+    const { mesh, rawPoints } = createSurfaceMesh(surfaceNode, i);
     const name = surfaceNode.getAttribute('name') || `Surface ${i + 1}`;
     const desc = surfaceNode.getAttribute('desc') || '';
     const surfType = surfaceNode.getAttribute('surfType') || '';
@@ -78,9 +76,9 @@ export function loadLandXML(xmlString) {
     const bbox = computeWorldBBox(rawPoints);
     const bboxMeta = {};
     if (bbox) {
-      bboxMeta['Easting Range'] = `${bbox.min.y.toFixed(2)} → ${bbox.max.y.toFixed(2)}`;
-      bboxMeta['Northing Range'] = `${bbox.min.x.toFixed(2)} → ${bbox.max.x.toFixed(2)}`;
-      bboxMeta['Elevation Range'] = `${bbox.min.z.toFixed(2)} → ${bbox.max.z.toFixed(2)}`;
+      bboxMeta['Easting Range'] = `${bbox.min.y.toFixed(2)} - ${bbox.max.y.toFixed(2)}`;
+      bboxMeta['Northing Range'] = `${bbox.min.x.toFixed(2)} - ${bbox.max.x.toFixed(2)}`;
+      bboxMeta['Elevation Range'] = `${bbox.min.z.toFixed(2)} - ${bbox.max.z.toFixed(2)}`;
     }
 
     objects.push({
@@ -99,5 +97,5 @@ export function loadLandXML(xmlString) {
 
   // Future: xmlDoc.querySelectorAll("Pipe") → call pipe builder
 
-  return { fileMeta, objects };
+  return { fileMeta, objects, crsAttrs };
 }

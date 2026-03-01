@@ -31,3 +31,7 @@
 .status-right.crs-active {
   color: #4fc3f7;
 }
+
+.status-right.crs-warning {
+  color: #ffa726;
+}

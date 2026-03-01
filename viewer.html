@@ -39,7 +39,7 @@
                     <button class="collapsible-header"><span class="collapse-arrow">▶</span> Data</button>
                     <button id="data-upload-btn" class="data-upload-block" title="Upload XML file">⬆ Upload XML</button>
                     <div class="collapsible-body" id="data-panel-body">
-                        <input type="file" id="upload-input" accept=".xml" hidden>
+                        <input type="file" id="upload-input" accept=".xml" multiple hidden>
                         <div id="data-tree"></div>
                         <div id="data-metadata"></div>
                     </div>
@@ -100,13 +100,22 @@
                     </div>
                 </div>
 
+                <div class="setting-group">
+                    <label class="setting-label" for="setting-ui-scale">UI Scale</label>
+                    <div class="setting-row">
+                        <input type="range" id="setting-ui-scale" class="setting-slider" min="0.8" max="1.6" step="0.05" value="1.15">
+                        <span id="setting-ui-scale-val" class="setting-value">1.15</span>
+                        <button class="setting-reset" data-setting="uiScale" title="Reset to default">↺</button>
+                    </div>
+                </div>
+
             </div>
         </div>
 
         <!-- Bottom Status Bar -->
         <div id="status-bar">
             <span id="status-text">Ready</span>
-            <span id="crs-display" class="status-right" title="Coordinate Reference System">No CRS</span>
+            <span id="crs-display" class="status-right" title="Coordinate Reference System"></span>
         </div>
 
     </div>

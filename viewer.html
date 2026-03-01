@@ -39,7 +39,7 @@
                 <div class="data-section">
                     <button id="data-upload-btn" class="data-upload-block" title="Upload file">Upload</button>
                     <div id="data-panel-body">
-                        <input type="file" id="upload-input" accept=".xml" multiple hidden>
+                        <input type="file" id="upload-input" accept=".xml,.tif,.tiff,.asc" multiple hidden>
                         <div id="data-tree"></div>
                         <div id="data-metadata"></div>
                     </div>
@@ -67,7 +67,7 @@
                 <div class="setting-group">
                     <label class="setting-label" for="setting-speed">Normal Speed</label>
                     <div class="setting-row">
-                        <input type="range" id="setting-speed" class="setting-slider" min="0.01" max="2.5" step="0.01" value="0.1">
+                        <input type="range" id="setting-speed" class="setting-slider" min="0.05" max="2.5" step="0.05" value="0.1">
                         <span id="setting-speed-val" class="setting-value">0.10</span>
                         <button class="setting-reset" data-setting="speed" title="Reset to default">↺</button>
                     </div>
@@ -76,8 +76,8 @@
                 <div class="setting-group">
                     <label class="setting-label" for="setting-zoom-speed">Zoom Speed</label>
                     <div class="setting-row">
-                        <input type="range" id="setting-zoom-speed" class="setting-slider" min="1" max="20" step="0.5" value="8">
-                        <span id="setting-zoom-speed-val" class="setting-value">8.0</span>
+                        <input type="range" id="setting-zoom-speed" class="setting-slider" min="1" max="20" step="1" value="8">
+                        <span id="setting-zoom-speed-val" class="setting-value">8</span>
                         <button class="setting-reset" data-setting="zoomSpeed" title="Reset to default">↺</button>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                 <div class="setting-group">
                     <label class="setting-label" for="setting-sensitivity">Mouse Sensitivity</label>
                     <div class="setting-row">
-                        <input type="range" id="setting-sensitivity" class="setting-slider" min="0.0002" max="0.005" step="0.0002" value="0.001">
+                        <input type="range" id="setting-sensitivity" class="setting-slider" min="0.0005" max="0.005" step="0.0005" value="0.001">
                         <span id="setting-sensitivity-val" class="setting-value">0.0010</span>
                         <button class="setting-reset" data-setting="sensitivity" title="Reset to default">↺</button>
                     </div>
@@ -94,9 +94,27 @@
                 <div class="setting-group">
                     <label class="setting-label" for="setting-render-dist">Render Distance</label>
                     <div class="setting-row">
-                        <input type="range" id="setting-render-dist" class="setting-slider" min="100" max="10000" step="100" value="2000">
+                        <input type="range" id="setting-render-dist" class="setting-slider" min="500" max="50000" step="500" value="2000">
                         <span id="setting-render-dist-val" class="setting-value">2000</span>
                         <button class="setting-reset" data-setting="renderDist" title="Reset to default">↺</button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label" for="setting-vert-exag">Vertical Exaggeration</label>
+                    <div class="setting-row">
+                        <input type="range" id="setting-vert-exag" class="setting-slider" min="1" max="20" step="1" value="1">
+                        <span id="setting-vert-exag-val" class="setting-value">1×</span>
+                        <button class="setting-reset" data-setting="vertExag" title="Reset to default">↺</button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label" for="setting-file-size-cap">File Size Cap (MB)</label>
+                    <div class="setting-row">
+                        <input type="range" id="setting-file-size-cap" class="setting-slider" min="10" max="500" step="10" value="50">
+                        <span id="setting-file-size-cap-val" class="setting-value">50</span>
+                        <button class="setting-reset" data-setting="fileSizeCap" title="Reset to default">↺</button>
                     </div>
                 </div>
 
@@ -135,6 +153,7 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/geotiff"></script>
     <script type="module" src="viewer/js/viewer.js"></script>
 </body>
 </html>

@@ -4,6 +4,8 @@
  * Dispatches a custom 'file-uploaded' event on #data-panel-body with the file contents.
  */
 
+import { getFileSizeCap } from './settingsManager.js';
+
 export function initUpload() {
     const panel = document.getElementById('data-panel-body');
     const input = document.getElementById('upload-input');
@@ -48,18 +50,47 @@ export function initUpload() {
     });
 }
 
+const SUPPORTED_EXTENSIONS = {
+    '.xml':  { type: 'landxml',  readAs: 'text' },
+    '.tif':  { type: 'geotiff',  readAs: 'arraybuffer' },
+    '.tiff': { type: 'geotiff',  readAs: 'arraybuffer' },
+    '.asc':  { type: 'asc',      readAs: 'text' },
+};
+
 function handleFile(file, target) {
-    if (!file.name.toLowerCase().endsWith('.xml')) {
-        alert('Only .xml files are supported.');
+    const ext = '.' + file.name.split('.').pop().toLowerCase();
+    const config = SUPPORTED_EXTENSIONS[ext];
+
+    if (!config) {
+        alert(`Unsupported file type: ${ext}\nSupported: .xml, .tif, .tiff, .asc`);
         return;
+    }
+
+    const maxSize = getFileSizeCap();
+    const warnSize = maxSize / 2;
+
+    if (file.size > maxSize) {
+        alert(`File too large (${(file.size / 1024 / 1024).toFixed(1)} MB).\nMaximum file size is ${(maxSize / 1024 / 1024).toFixed(0)} MB (change in Settings).`);
+        return;
+    }
+
+    if (file.size > warnSize) {
+        if (!confirm(`File is ${(file.size / 1024 / 1024).toFixed(1)} MB \u2014 large files may affect performance.\nContinue?`)) {
+            return;
+        }
     }
 
     const reader = new FileReader();
     reader.onload = () => {
         target.dispatchEvent(new CustomEvent('file-uploaded', {
             bubbles: true,
-            detail: { name: file.name, content: reader.result }
+            detail: { name: file.name, content: reader.result, fileType: config.type }
         }));
     };
-    reader.readAsText(file);
+
+    if (config.readAs === 'arraybuffer') {
+        reader.readAsArrayBuffer(file);
+    } else {
+        reader.readAsText(file);
+    }
 }

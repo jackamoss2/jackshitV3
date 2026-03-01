@@ -55,33 +55,53 @@ function render() {
 
     let html = '';
     for (const file of files) {
-        const fileSel = file.id === selectedId ? ' selected' : '';
-        html += `<div class="tree-node tree-file">`;
-        html += `  <div class="tree-row tree-row-file${fileSel}" data-file-id="${file.id}">`;
-        html += `    <span class="tree-toggle">▼</span>`;
-        html += `    <span class="tree-label">${esc(file.name)}</span>`;
-        html += `    <span class="tree-row-actions">`;
-        html += `      <button class="tree-delete" data-file-id="${file.id}" title="Delete file">${svgTrash}</button>`;
-        html += `    </span>`;
-        html += `  </div>`;
-        html += `  <div class="tree-children">`;
+        // Detect flat-DEM files: single group "DEM" with exactly one object
+        const groupKeys = Object.keys(file.groups);
+        const isDEM = groupKeys.length === 1 && groupKeys[0] === 'DEM' && file.groups.DEM.length === 1;
 
-        for (const objects of Object.values(file.groups)) {
-            for (const obj of objects) {
-                const sel = obj.id === selectedId ? ' selected' : '';
-                const visIcon = obj.visible ? svgEye : svgEyeOff;
-                html += `    <div class="tree-row tree-row-obj${sel}" data-obj-id="${obj.id}">`;
-                html += `      <span class="tree-label">${esc(obj.name)}</span>`;
-                html += `      <span class="tree-row-actions">`;
-                html += `        <button class="tree-jumpto" data-obj-id="${obj.id}" title="Jump to object">${svgTarget}</button>`;
-                html += `        <span class="tree-visibility" data-obj-id="${obj.id}" title="Toggle visibility">${visIcon}</span>`;
-                html += `      </span>`;
-                html += `    </div>`;
+        if (isDEM) {
+            const obj = file.groups.DEM[0];
+            const sel = (obj.id === selectedId || file.id === selectedId) ? ' selected' : '';
+            const visIcon = obj.visible ? svgEye : svgEyeOff;
+            html += `<div class="tree-node tree-file tree-flat-dem">`;
+            html += `  <div class="tree-row tree-row-dem${sel}" data-file-id="${file.id}" data-obj-id="${obj.id}">`;
+            html += `    <span class="tree-label">${esc(file.name)}</span>`;
+            html += `    <span class="tree-row-actions">`;
+            html += `      <button class="tree-jumpto" data-obj-id="${obj.id}" title="Jump to object">${svgTarget}</button>`;
+            html += `      <span class="tree-visibility" data-obj-id="${obj.id}" title="Toggle visibility">${visIcon}</span>`;
+            html += `      <button class="tree-delete" data-file-id="${file.id}" title="Delete file">${svgTrash}</button>`;
+            html += `    </span>`;
+            html += `  </div>`;
+            html += `</div>`;
+        } else {
+            const fileSel = file.id === selectedId ? ' selected' : '';
+            html += `<div class="tree-node tree-file">`;
+            html += `  <div class="tree-row tree-row-file${fileSel}" data-file-id="${file.id}">`;
+            html += `    <span class="tree-toggle">▼</span>`;
+            html += `    <span class="tree-label">${esc(file.name)}</span>`;
+            html += `    <span class="tree-row-actions">`;
+            html += `      <button class="tree-delete" data-file-id="${file.id}" title="Delete file">${svgTrash}</button>`;
+            html += `    </span>`;
+            html += `  </div>`;
+            html += `  <div class="tree-children">`;
+
+            for (const objects of Object.values(file.groups)) {
+                for (const obj of objects) {
+                    const sel = obj.id === selectedId ? ' selected' : '';
+                    const visIcon = obj.visible ? svgEye : svgEyeOff;
+                    html += `    <div class="tree-row tree-row-obj${sel}" data-obj-id="${obj.id}">`;
+                    html += `      <span class="tree-label">${esc(obj.name)}</span>`;
+                    html += `      <span class="tree-row-actions">`;
+                    html += `        <button class="tree-jumpto" data-obj-id="${obj.id}" title="Jump to object">${svgTarget}</button>`;
+                    html += `        <span class="tree-visibility" data-obj-id="${obj.id}" title="Toggle visibility">${visIcon}</span>`;
+                    html += `      </span>`;
+                    html += `    </div>`;
+                }
             }
-        }
 
-        html += `  </div>`;
-        html += `</div>`;
+            html += `  </div>`;
+            html += `</div>`;
+        }
     }
 
     container.innerHTML = html;
@@ -114,6 +134,22 @@ function attachEvents(container) {
             row.classList.add('selected');
             const file = findFile(row.dataset.fileId);
             if (file) updateMetadataPanel({ name: file.name, metadata: file.metadata });
+        });
+    });
+
+    // Flat DEM row selection — show merged file + object metadata
+    container.querySelectorAll('.tree-row-dem').forEach(row => {
+        row.addEventListener('click', () => {
+            selectedId = row.dataset.objId;
+            clearSelection(container);
+            row.classList.add('selected');
+            const file = findFile(row.dataset.fileId);
+            if (file && file.groups.DEM && file.groups.DEM[0]) {
+                const obj = file.groups.DEM[0];
+                const merged = { ...file.metadata, ...obj.metadata };
+                updateMetadataPanel({ name: file.name, metadata: merged });
+                if (onSelect) onSelect(obj);
+            }
         });
     });
 

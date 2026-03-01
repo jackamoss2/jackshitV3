@@ -6,7 +6,7 @@ import * as THREE from '../libs/three.module.js';
  */
 
 const SETTINGS_KEY = 'jackshit-viewer-settings';
-const defaults = { speed: 0.1, zoomSpeed: 8, sensitivity: 0.001, renderDist: 2000, uiScale: 1.15, confirmDelete: true, darkMode: true };
+const defaults = { speed: 0.1, zoomSpeed: 8, sensitivity: 0.001, renderDist: 2000, vertExag: 1, fileSizeCap: 50, uiScale: 1.15, confirmDelete: true, darkMode: true };
 
 let settings = {};
 
@@ -82,6 +82,16 @@ export function initSettings(controls, camera, renderer, scene) {
   uiScaleSlider.value = settings.uiScale;
   uiScaleVal.textContent = settings.uiScale.toFixed(2);
 
+  const vertExagSlider = document.getElementById('setting-vert-exag');
+  const vertExagVal    = document.getElementById('setting-vert-exag-val');
+  vertExagSlider.value = settings.vertExag;
+  vertExagVal.textContent = settings.vertExag + '\u00d7';
+
+  const fileCapSlider = document.getElementById('setting-file-size-cap');
+  const fileCapVal    = document.getElementById('setting-file-size-cap-val');
+  fileCapSlider.value = settings.fileSizeCap;
+  fileCapVal.textContent = settings.fileSizeCap;
+
   // ── Slider input handlers ──────────────────────────
   speedSlider.addEventListener('input', (e) => {
     const val = parseFloat(e.target.value);
@@ -93,7 +103,7 @@ export function initSettings(controls, camera, renderer, scene) {
   zoomSlider.addEventListener('input', (e) => {
     const val = parseFloat(e.target.value);
     controls.sprintMultiplier = val;
-    zoomVal.textContent = val.toFixed(1);
+    zoomVal.textContent = val;
     saveSetting('zoomSpeed', val);
   });
 
@@ -112,6 +122,19 @@ export function initSettings(controls, camera, renderer, scene) {
     saveSetting('renderDist', val);
   });
 
+  vertExagSlider.addEventListener('input', (e) => {
+    const val = parseFloat(e.target.value);
+    vertExagVal.textContent = val + '\u00d7';
+    saveSetting('vertExag', val);
+    applyVerticalExaggeration(scene, val);
+  });
+
+  fileCapSlider.addEventListener('input', (e) => {
+    const val = parseFloat(e.target.value);
+    fileCapVal.textContent = val;
+    saveSetting('fileSizeCap', val);
+  });
+
   uiScaleSlider.addEventListener('input', (e) => {
     const val = parseFloat(e.target.value);
     document.getElementById('ui-overlay').style.zoom = val;
@@ -121,10 +144,12 @@ export function initSettings(controls, camera, renderer, scene) {
 
   // ── Reset buttons ──────────────────────────────────
   const resetMap = {
-    speed:       { slider: speedSlider,   valEl: speedVal,   fmt: v => v.toFixed(2), apply: v => { controls.speed = v; } },
-    zoomSpeed:   { slider: zoomSlider,    valEl: zoomVal,    fmt: v => v.toFixed(1), apply: v => { controls.sprintMultiplier = v; } },
-    sensitivity: { slider: sensSlider,    valEl: sensVal,    fmt: v => v.toFixed(4), apply: v => { controls.sensitivity = v; } },
-    renderDist:  { slider: distSlider,    valEl: distVal,    fmt: v => String(v),    apply: v => { camera.far = v; camera.updateProjectionMatrix(); } },
+    speed:       { slider: speedSlider,    valEl: speedVal,    fmt: v => v.toFixed(2),       apply: v => { controls.speed = v; } },
+    zoomSpeed:   { slider: zoomSlider,     valEl: zoomVal,     fmt: v => String(v),           apply: v => { controls.sprintMultiplier = v; } },
+    sensitivity: { slider: sensSlider,     valEl: sensVal,     fmt: v => v.toFixed(4),        apply: v => { controls.sensitivity = v; } },
+    renderDist:  { slider: distSlider,     valEl: distVal,     fmt: v => String(v),           apply: v => { camera.far = v; camera.updateProjectionMatrix(); } },
+    vertExag:    { slider: vertExagSlider,  valEl: vertExagVal,  fmt: v => v + '\u00d7',       apply: v => { applyVerticalExaggeration(scene, v); } },
+    fileSizeCap: { slider: fileCapSlider,   valEl: fileCapVal,   fmt: v => String(v),          apply: () => {} },
     uiScale:     { slider: uiScaleSlider, valEl: uiScaleVal, fmt: v => v.toFixed(2), apply: v => { document.getElementById('ui-overlay').style.zoom = v; } },
   };
 
@@ -145,6 +170,25 @@ export function initSettings(controls, camera, renderer, scene) {
 /** Check whether delete confirmation is enabled. */
 export function shouldConfirmDelete() {
   return settings.confirmDelete !== false;
+}
+
+/** Get the file size cap in bytes. */
+export function getFileSizeCap() {
+  return (settings.fileSizeCap || defaults.fileSizeCap) * 1024 * 1024;
+}
+
+/** Get the current vertical exaggeration factor. */
+export function getVertExag() {
+  return settings.vertExag || defaults.vertExag;
+}
+
+/** Apply vertical exaggeration to all meshes in the scene. */
+function applyVerticalExaggeration(scene, factor) {
+  scene.traverse(obj => {
+    if (obj.isMesh && obj.userData.baseScaleY !== undefined) {
+      obj.scale.y = factor * obj.userData.baseScaleY;
+    }
+  });
 }
 
 /** Apply dark or light theme. */

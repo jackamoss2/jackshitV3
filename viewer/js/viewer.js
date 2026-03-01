@@ -14,7 +14,7 @@ import { initFileHandler } from './modules/fileHandler.js';
 import { onCRSChange, getOrigin } from './modules/crsManager.js';
 
 // utility imports
-import { preventSpaceOnFocusedButtons } from './modules/utility/preventSpacebarButtonPress.js';
+import { preventSpaceOnFocusedButtons } from './modules/preventSpacebarButtonPress.js';
 
 
 // ── Scene setup ──────────────────────────────────────

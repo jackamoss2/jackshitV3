@@ -82,6 +82,12 @@
   font-weight: 600;
 }
 
+/* ── Flat DEM row ─────────────────────────────────── */
+
+.tree-row-dem .tree-label {
+  font-weight: 600;
+}
+
 .tree-row-group .tree-label {
   color: var(--text-label);
   text-transform: uppercase;

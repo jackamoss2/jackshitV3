@@ -81,6 +81,7 @@ export function createSurfaceMesh(surfaceNode, surfaceIndex = 0) {
 
   const mesh = new THREE.Mesh(geometry, material);
   mesh.name = surfaceName;
+  mesh.userData.baseScaleY = 1;
 
   // Position mesh in scene space using float64 (mesh.position)
   // Raw offset from global origin: (cx - origin.x, cy - origin.y, cz - origin.z)

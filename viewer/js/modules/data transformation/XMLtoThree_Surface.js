@@ -67,8 +67,9 @@ export function createSurfaceMesh(surfaceNode, surfaceIndex = 0) {
 
   geometry.computeVertexNormals();
 
+  const isLight = document.body.classList.contains('light-mode');
   const material = new THREE.MeshStandardMaterial({
-    color: 0x808080,
+    color: isLight ? 0x5a5a5a : 0x808080,
     roughness: 1,
     metalness: 0,
     side: THREE.DoubleSide,

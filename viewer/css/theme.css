@@ -1,0 +1,92 @@
+/* ── Theme Variables ───────────────────────────────── */
+/* Dark mode (default) */
+:root {
+  /* Backgrounds */
+  --bg-body:            #1a1a1a;
+  --bg-panel:           rgba(28, 28, 28, 0.9);
+  --bg-toolbar:         rgba(24, 24, 24, 0.85);
+  --bg-statusbar:       rgba(24, 24, 24, 0.85);
+  --bg-hover:           rgba(255, 255, 255, 0.06);
+  --bg-selected:        rgba(255, 255, 255, 0.1);
+  --bg-upload:          rgba(255, 255, 255, 0.04);
+  --bg-upload-hover:    rgba(255, 255, 255, 0.08);
+  --bg-slider-track:    rgba(255, 255, 255, 0.12);
+  --bg-confirm-box:     #1e1e2e;
+  --bg-cancel-btn:      rgba(255, 255, 255, 0.08);
+  --bg-cancel-btn-hover:rgba(255, 255, 255, 0.14);
+  --bg-meta-row-even:   rgba(255, 255, 255, 0.02);
+
+  /* Borders */
+  --border-subtle:      rgba(255, 255, 255, 0.06);
+  --border-panel:       rgba(255, 255, 255, 0.08);
+  --border-btn:         rgba(255, 255, 255, 0.12);
+  --border-btn-hover:   rgba(255, 255, 255, 0.25);
+  --border-reset:       rgba(255, 255, 255, 0.1);
+  --border-reset-hover: rgba(255, 255, 255, 0.3);
+  --border-confirm:     rgba(255, 255, 255, 0.1);
+
+  /* Text */
+  --text-primary:       #e0e0e0;
+  --text-heading:       #ddd;
+  --text-body:          #bbb;
+  --text-secondary:     #ccc;
+  --text-muted:         #999;
+  --text-faint:         #777;
+  --text-label:         #aaa;
+  --text-bright:        #fff;
+
+  /* Accents (same in both themes) */
+  --accent-blue:        #4fc3f7;
+  --accent-orange:      #ffa726;
+  --accent-yellow:      #f5c542;
+  --accent-red:         #ef5350;
+  --accent-red-hover:   #e53935;
+
+  /* Slider / controls */
+  --slider-thumb:       #ccc;
+  --slider-thumb-hover: #fff;
+
+  /* Confirm overlay */
+  --bg-overlay:         rgba(0, 0, 0, 0.5);
+  --shadow-confirm:     0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Light Mode Overrides ─────────────────────────── */
+body.light-mode {
+  --bg-body:            #e2e2e2;
+  --bg-panel:           rgba(245, 245, 245, 0.95);
+  --bg-toolbar:         rgba(240, 240, 240, 0.92);
+  --bg-statusbar:       rgba(240, 240, 240, 0.92);
+  --bg-hover:           rgba(0, 0, 0, 0.05);
+  --bg-selected:        rgba(0, 0, 0, 0.08);
+  --bg-upload:          rgba(0, 0, 0, 0.03);
+  --bg-upload-hover:    rgba(0, 0, 0, 0.06);
+  --bg-slider-track:    rgba(0, 0, 0, 0.12);
+  --bg-confirm-box:     #ffffff;
+  --bg-cancel-btn:      rgba(0, 0, 0, 0.06);
+  --bg-cancel-btn-hover:rgba(0, 0, 0, 0.12);
+  --bg-meta-row-even:   rgba(0, 0, 0, 0.03);
+
+  --border-subtle:      rgba(0, 0, 0, 0.08);
+  --border-panel:       rgba(0, 0, 0, 0.1);
+  --border-btn:         rgba(0, 0, 0, 0.15);
+  --border-btn-hover:   rgba(0, 0, 0, 0.3);
+  --border-reset:       rgba(0, 0, 0, 0.12);
+  --border-reset-hover: rgba(0, 0, 0, 0.3);
+  --border-confirm:     rgba(0, 0, 0, 0.1);
+
+  --text-primary:       #1a1a1a;
+  --text-heading:       #222;
+  --text-body:          #444;
+  --text-secondary:     #333;
+  --text-muted:         #666;
+  --text-faint:         #888;
+  --text-label:         #555;
+  --text-bright:        #000;
+
+  --slider-thumb:       #555;
+  --slider-thumb-hover: #222;
+
+  --bg-overlay:         rgba(0, 0, 0, 0.3);
+  --shadow-confirm:     0 8px 32px rgba(0, 0, 0, 0.15);
+}

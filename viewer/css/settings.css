@@ -8,7 +8,7 @@
   display: block;
   font-size: 12px;
   font-weight: 600;
-  color: #aaa;
+  color: var(--text-label);
   text-transform: uppercase;
   letter-spacing: 0.4px;
   margin-bottom: 6px;
@@ -25,7 +25,7 @@
   -webkit-appearance: none;
   appearance: none;
   height: 4px;
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--bg-slider-track);
   border-radius: 2px;
   outline: none;
   cursor: pointer;
@@ -37,13 +37,13 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: #ccc;
+  background: var(--slider-thumb);
   cursor: pointer;
   transition: background 0.15s;
 }
 
 .setting-slider::-webkit-slider-thumb:hover {
-  background: #fff;
+  background: var(--slider-thumb-hover);
 }
 
 .setting-slider::-moz-range-thumb {
@@ -51,17 +51,17 @@
   height: 14px;
   border: none;
   border-radius: 50%;
-  background: #ccc;
+  background: var(--slider-thumb);
   cursor: pointer;
 }
 
 .setting-slider::-moz-range-thumb:hover {
-  background: #fff;
+  background: var(--slider-thumb-hover);
 }
 
 .setting-value {
   font-size: 12px;
-  color: #bbb;
+  color: var(--text-body);
   min-width: 36px;
   text-align: right;
   font-variant-numeric: tabular-nums;
@@ -72,9 +72,9 @@
 .setting-reset {
   flex-shrink: 0;
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-reset);
   border-radius: 3px;
-  color: #666;
+  color: var(--text-faint);
   font-size: 13px;
   line-height: 1;
   width: 22px;
@@ -85,6 +85,27 @@
 }
 
 .setting-reset:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--text-bright);
+  border-color: var(--border-reset-hover);
+}
+
+/* ── Checkbox settings ────────────────────────────── */
+
+.setting-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.setting-checkbox-row input[type="checkbox"] {
+  accent-color: var(--accent-blue);
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.setting-checkbox-label {
+  font-size: 12px;
+  color: var(--text-label);
 }

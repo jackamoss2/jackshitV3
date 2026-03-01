@@ -1,12 +1,17 @@
+import * as THREE from '../libs/three.module.js';
+
 /**
  * Settings Manager
  * Handles all viewer settings sliders, localStorage persistence, and reset buttons.
  */
 
 const SETTINGS_KEY = 'jackshit-viewer-settings';
-const defaults = { speed: 0.1, zoomSpeed: 8, sensitivity: 0.001, renderDist: 2000, uiScale: 1.15 };
+const defaults = { speed: 0.1, zoomSpeed: 8, sensitivity: 0.001, renderDist: 2000, uiScale: 1.15, confirmDelete: true, darkMode: true };
 
 let settings = {};
+
+let _renderer = null;
+let _scene = null;
 
 function saveSetting(key, value) {
   settings[key] = value;
@@ -17,8 +22,12 @@ function saveSetting(key, value) {
  * Initialise all settings — load saved values, wire sliders and reset buttons.
  * @param {object} controls  FirstPersonControls instance
  * @param {THREE.PerspectiveCamera} camera
+ * @param {THREE.WebGLRenderer} renderer
+ * @param {THREE.Scene} scene
  */
-export function initSettings(controls, camera) {
+export function initSettings(controls, camera, renderer, scene) {
+  _renderer = renderer;
+  _scene = scene;
   const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
   settings = { ...defaults, ...saved };
 
@@ -29,6 +38,23 @@ export function initSettings(controls, camera) {
   camera.far = settings.renderDist;
   camera.updateProjectionMatrix();
   document.getElementById('ui-overlay').style.zoom = settings.uiScale;
+
+  // Apply theme
+  applyTheme(settings.darkMode);
+
+  // ── Checkbox elements ──────────────────────────────
+  const confirmDeleteCb = document.getElementById('setting-confirm-delete');
+  confirmDeleteCb.checked = settings.confirmDelete;
+  confirmDeleteCb.addEventListener('change', () => {
+    saveSetting('confirmDelete', confirmDeleteCb.checked);
+  });
+
+  const darkModeCb = document.getElementById('setting-dark-mode');
+  darkModeCb.checked = settings.darkMode;
+  darkModeCb.addEventListener('change', () => {
+    saveSetting('darkMode', darkModeCb.checked);
+    applyTheme(darkModeCb.checked);
+  });
 
   // ── Slider elements ────────────────────────────────
   const speedSlider = document.getElementById('setting-speed');
@@ -114,4 +140,17 @@ export function initSettings(controls, camera) {
       saveSetting(key, def);
     });
   });
+}
+
+/** Check whether delete confirmation is enabled. */
+export function shouldConfirmDelete() {
+  return settings.confirmDelete !== false;
+}
+
+/** Apply dark or light theme. */
+function applyTheme(isDark) {
+  document.body.classList.toggle('light-mode', !isDark);
+  const color = isDark ? 0x1a1a1a : 0xe2e2e2;
+  if (_renderer) _renderer.setClearColor(color, 1);
+  if (_scene) _scene.background = new THREE.Color(color);
 }

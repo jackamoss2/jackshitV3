@@ -6,11 +6,11 @@
   width: 100%;
   padding: 8px 0;
   margin-bottom: 8px;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg-upload);
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  color: #999;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-muted);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.3px;
@@ -19,14 +19,14 @@
 }
 
 .data-upload-block:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ddd;
+  background: var(--bg-upload-hover);
+  color: var(--text-heading);
 }
 
 /* Drag-over highlight on data panel body */
 #data-panel-body.drag-over {
   background: rgba(245, 197, 66, 0.06);
-  outline: 2px dashed #f5c542;
+  outline: 2px dashed var(--accent-yellow);
   outline-offset: -2px;
   border-radius: 4px;
 }

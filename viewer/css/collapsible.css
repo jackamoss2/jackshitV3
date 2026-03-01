@@ -1,7 +1,7 @@
 /* ── Collapsible Sub-panels ────────────────────────── */
 
 .collapsible {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .collapsible:last-child {
@@ -16,7 +16,7 @@
   padding: 8px 0;
   background: none;
   border: none;
-  color: #ddd;
+  color: var(--text-heading);
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
@@ -26,7 +26,7 @@
 }
 
 .collapsible-header:hover {
-  color: #fff;
+  color: var(--text-bright);
 }
 
 .collapse-arrow {
@@ -50,23 +50,18 @@
 }
 
 /* Data section fills available space */
-.collapsible-data {
+.data-section {
   flex: 1;
   min-height: 0;
   display: flex;
   flex-direction: column;
 }
 
-.collapsible-data .collapsible-header {
+.data-section .data-upload-block {
   flex-shrink: 0;
 }
 
-.collapsible-data .data-upload-block {
-  flex-shrink: 0;
-}
-
-.collapsible-data.open .collapsible-body {
-  max-height: none;
+.data-section #data-panel-body {
   flex: 1;
   overflow-y: auto;
 }

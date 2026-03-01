@@ -48,7 +48,7 @@ preventSpaceOnFocusedButtons();
 initUI();
 initUpload();
 initDataTree();
-initSettings(controls, camera);
+initSettings(controls, camera, renderer, scene);
 initFileHandler(scene, controls);
 setStatus('Ready');
 

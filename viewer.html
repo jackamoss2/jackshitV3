@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jackshit viewer</title>
+    <link rel="stylesheet" href="viewer/css/theme.css">
     <link rel="stylesheet" href="viewer/css/base.css">
     <link rel="stylesheet" href="viewer/css/toolbar.css">
     <link rel="stylesheet" href="viewer/css/panels.css">
@@ -35,10 +36,9 @@
             <div class="panel-content">
 
                 <!-- Data -->
-                <div class="collapsible collapsible-data open">
-                    <button class="collapsible-header"><span class="collapse-arrow">▶</span> Data</button>
-                    <button id="data-upload-btn" class="data-upload-block" title="Upload XML file">⬆ Upload XML</button>
-                    <div class="collapsible-body" id="data-panel-body">
+                <div class="data-section">
+                    <button id="data-upload-btn" class="data-upload-block" title="Upload file">Upload</button>
+                    <div id="data-panel-body">
                         <input type="file" id="upload-input" accept=".xml" multiple hidden>
                         <div id="data-tree"></div>
                         <div id="data-metadata"></div>
@@ -107,6 +107,20 @@
                         <span id="setting-ui-scale-val" class="setting-value">1.15</span>
                         <button class="setting-reset" data-setting="uiScale" title="Reset to default">↺</button>
                     </div>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-checkbox-row">
+                        <input type="checkbox" id="setting-confirm-delete" checked>
+                        <span class="setting-checkbox-label">Confirm before deleting files</span>
+                    </label>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-checkbox-row">
+                        <input type="checkbox" id="setting-dark-mode" checked>
+                        <span class="setting-checkbox-label">Dark mode</span>
+                    </label>
                 </div>
 
             </div>

@@ -42,6 +42,9 @@ const controls = new FirstPersonControls(camera, renderer.domElement, scene, {
 });
 window.controls = controls;
 camera.position.z = 5;
+camera.position.x = 5;
+camera.position.y = 5;
+camera.lookAt(cube.position);
 
 // ── Initialise modules ──────────────────────────────
 preventSpaceOnFocusedButtons();

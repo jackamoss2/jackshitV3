@@ -1,51 +1,51 @@
 /* ── Theme Variables (dark default) ────────────────── */
 
 :root {
-    --bg-body: #1a1714;
-    --bg-header: #201e1a;
-    --bg-card: #262420;
-    --bg-card-hover: #302e28;
-    --bg-preview: #2a2824;
-    --text-primary: #e4ddd0;
-    --text-secondary: #c8c0b0;
-    --text-muted: #8a8474;
-    --text-faint: #5e5a4e;
-    --text-icon: #5e5a4e;
-    --text-label: #d8d0c0;
-    --text-hover: #f0ebe0;
-    --border-header: rgba(160, 140, 100, 0.12);
-    --border-card: rgba(160, 140, 100, 0.12);
-    --border-card-hover: rgba(200, 168, 78, 0.5);
-    --accent-blue: #c8a84e;
-    --accent-magenta: #7a9e6a;
-    --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4);
-    --shadow-card-hover: 0 0 14px rgba(200, 168, 78, 0.1);
-    --badge-bg: rgba(24, 22, 18, 0.7);
-    --badge-text: #8a8474;
+    --bg-body: #111111;
+    --bg-header: #161616;
+    --bg-card: #1a1a1a;
+    --bg-card-hover: #222222;
+    --bg-preview: #141414;
+    --text-primary: #e0e0e0;
+    --text-secondary: #aaaaaa;
+    --text-muted: #666666;
+    --text-faint: #444444;
+    --text-icon: #555555;
+    --text-label: #cccccc;
+    --text-hover: #ffffff;
+    --border-header: #222222;
+    --border-card: #222222;
+    --border-card-hover: #444444;
+    --accent-blue: #cccccc;
+    --accent-magenta: #888888;
+    --shadow-card: none;
+    --shadow-card-hover: none;
+    --badge-bg: rgba(0,0,0,0.5);
+    --badge-text: #666666;
 }
 
 body.light-mode {
-    --bg-body: #f2efe8;
-    --bg-header: #f6f3ec;
-    --bg-card: #f8f6f0;
-    --bg-card-hover: #ffffff;
-    --bg-preview: #ece8de;
-    --text-primary: #2a2418;
-    --text-secondary: #3a3428;
-    --text-muted: #6e6858;
-    --text-faint: #8e887a;
-    --text-icon: #8e887a;
-    --text-label: #302a1e;
-    --text-hover: #181410;
-    --border-header: rgba(140, 120, 80, 0.1);
-    --border-card: rgba(140, 120, 80, 0.1);
-    --border-card-hover: #a08830;
-    --accent-blue: #a08830;
-    --accent-magenta: #5a7e4a;
-    --shadow-card: 0 4px 16px rgba(30, 20, 10, 0.06);
+    --bg-body: #f5f5f5;
+    --bg-header: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f0f0f0;
+    --bg-preview: #ebebeb;
+    --text-primary: #111111;
+    --text-secondary: #333333;
+    --text-muted: #666666;
+    --text-faint: #999999;
+    --text-icon: #888888;
+    --text-label: #222222;
+    --text-hover: #000000;
+    --border-header: #e0e0e0;
+    --border-card: #e0e0e0;
+    --border-card-hover: #aaaaaa;
+    --accent-blue: #333333;
+    --accent-magenta: #666666;
+    --shadow-card: none;
     --shadow-card-hover: none;
-    --badge-bg: rgba(246, 243, 236, 0.85);
-    --badge-text: #6e6858;
+    --badge-bg: rgba(255,255,255,0.8);
+    --badge-text: #888888;
 }
 
 /* ── Base ──────────────────────────────────────────── */
@@ -70,7 +70,7 @@ body {
 
 header {
     background: var(--bg-header);
-    border-bottom: 3px solid var(--accent-blue);
+    border-bottom: 1px solid var(--border-header);
     padding: 0 24px;
 }
 
@@ -87,12 +87,12 @@ nav {
 .nav-hamburger {
     display: none;
     background: none;
-    border: 2px solid var(--border-card);
+    border: 1px solid var(--border-card);
     color: var(--text-muted);
     font-size: 16px;
     width: 32px;
     height: 32px;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
     align-items: center;
     justify-content: center;
@@ -113,28 +113,15 @@ nav {
     top: 50%;
     transform: translate(-50%, -50%);
     font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
     color: var(--text-label);
     text-decoration: none;
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-magenta, #7a9e6a), var(--accent-blue));
-    background-size: 200% 100%;
-    background-position: 100% 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: var(--text-label);
-    transition: none;
     z-index: 1;
 }
 
 .site-brand:hover {
-    -webkit-text-fill-color: transparent;
-    animation: gradient-flow 0.6s ease forwards;
-}
-
-@keyframes gradient-flow {
-    from { background-position: 100% 0; }
-    to   { background-position: 0% 0; }
+    color: var(--text-hover);
 }
 
 /* ── Nav links (between brand and toggle) ───────── */
@@ -165,11 +152,11 @@ nav ul li a:hover {
 .theme-toggle {
     flex-shrink: 0;
     background: none;
-    border: 2px solid var(--border-card);
+    border: 1px solid var(--border-card);
     color: var(--text-muted);
     width: 32px;
     height: 32px;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -208,7 +195,7 @@ nav ul li a:hover {
         left: 0;
         flex-direction: column;
         background: var(--bg-header);
-        border: 2px solid var(--border-header);
+        border: 1px solid var(--border-header);
         border-top: none;
         padding: 8px 16px;
         gap: 4px;
@@ -242,46 +229,28 @@ nav ul li a:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 20px;
+    gap: 16px;
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
 }
 
-/* Left card spans both rows — gold accent */
+/* Left card spans both rows */
 .hero-samples {
     grid-column: 1;
     grid-row: 1 / 3;
-    --card-accent: #c8a84e;
-    --card-accent-light: #a08830;
-    --card-glow: rgba(200, 168, 78, 0.12);
-    --card-bg: rgba(200, 168, 78, 0.08);
-    --card-bg-hover: rgba(200, 168, 78, 0.14);
-    border-left: 4px solid var(--card-accent);
 }
 
-/* Top right — sage green accent */
+/* Top right */
 .hero-viewer {
     grid-column: 2;
     grid-row: 1;
-    --card-accent: #7a9e6a;
-    --card-accent-light: #5a7e4a;
-    --card-glow: rgba(122, 158, 106, 0.12);
-    --card-bg: rgba(122, 158, 106, 0.08);
-    --card-bg-hover: rgba(122, 158, 106, 0.14);
-    border-left: 4px solid var(--card-accent);
 }
 
-/* Bottom right — slate blue accent */
+/* Bottom right */
 .hero-about {
     grid-column: 2;
     grid-row: 2;
-    --card-accent: #7a8ea8;
-    --card-accent-light: #5a7090;
-    --card-glow: rgba(122, 142, 168, 0.12);
-    --card-bg: rgba(122, 142, 168, 0.08);
-    --card-bg-hover: rgba(122, 142, 168, 0.14);
-    border-left: 4px solid var(--card-accent);
 }
 
 /* ── Card base ────────────────────────────────────── */
@@ -291,21 +260,19 @@ nav ul li a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     padding: 24px;
-    border-radius: 6px;
-    border: 2px solid var(--card-accent, var(--border-card));
-    background-color: var(--card-bg, var(--bg-card));
+    border: 1px solid var(--border-card);
+    background-color: var(--bg-card);
     text-decoration: none;
     color: var(--text-muted);
-    transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+    transition: background-color 0.15s, border-color 0.15s;
     cursor: pointer;
 }
 
 .hero-card:hover {
-    background-color: var(--card-bg-hover, var(--bg-card-hover));
-    border-color: var(--card-accent, var(--border-card-hover));
-    box-shadow: 0 0 14px var(--card-glow, transparent);
+    background-color: var(--bg-card-hover);
+    border-color: var(--border-card-hover);
 }
 
 .hero-card:hover .card-label {
@@ -313,18 +280,16 @@ nav ul li a:hover {
 }
 
 .hero-card:hover .card-icon {
-    color: var(--card-accent, var(--accent-blue));
-    transition: color 0.4s ease;
+    color: var(--text-secondary);
 }
 
 .card-icon {
-    color: var(--card-accent, var(--text-icon));
-    transition: color 0.2s;
+    color: var(--text-icon);
     display: flex;
 }
 
 .card-label {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: var(--text-label);
     transition: color 0.15s;
@@ -335,11 +300,6 @@ nav ul li a:hover {
     color: var(--text-faint);
     text-align: center;
     line-height: 1.4;
-}
-
-body.light-mode .hero-card:hover {
-    border-color: var(--card-accent-light, var(--border-card-hover));
-    box-shadow: none;
 }
 
 /* ── Responsive ───────────────────────────────────── */
@@ -408,18 +368,16 @@ iframe {
 .sample-card {
     display: flex;
     flex-direction: column;
-    border-radius: 6px;
-    border: 2px solid var(--border-card);
+    border: 1px solid var(--border-card);
     background: var(--bg-card);
     overflow: hidden;
     text-decoration: none;
     color: var(--text-secondary);
-    transition: border-color 0.15s, box-shadow 0.15s;
+    transition: border-color 0.15s;
 }
 
 .sample-card:hover {
     border-color: var(--border-card-hover);
-    box-shadow: var(--shadow-card-hover);
 }
 
 .sample-preview {

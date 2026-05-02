@@ -4,7 +4,7 @@
  * Supports collapsible groups, visibility toggles, and metadata selection.
  */
 
-import { getFiles, toggleVisibility, findFile, removeFile, onStoreChange } from './sceneData.js';
+import { getFiles, toggleVisibility, setGroupVisibility, findFile, removeFile, removeObject, onStoreChange } from './sceneData.js';
 import { shouldConfirmDelete } from './settingsManager.js';
 
 // Inline SVG icons (14×14, currentColor)
@@ -19,6 +19,8 @@ let selectedId = null;   // can be an obj id or file id
 let onSelect = null;
 let onJumpTo = null;
 let onDelete = null;
+let onDeleteObj = null;
+const collapsedNodes = new Set(); // persists collapsed state across re-renders
 
 /** Set callback when user clicks an object row. Receives the object entry. */
 export function onObjectSelect(cb) {
@@ -33,6 +35,11 @@ export function onObjectJumpTo(cb) {
 /** Set callback for file deletion. Receives fileId. Called after user confirms. */
 export function onFileDelete(cb) {
     onDelete = cb;
+}
+
+/** Set callback for single-object deletion. Receives { objId, fileId }. Called after user confirms. */
+export function onObjectDelete(cb) {
+    onDeleteObj = cb;
 }
 
 /** Initialise the data tree — call once after DOM ready. */
@@ -75,7 +82,8 @@ function render() {
             html += `</div>`;
         } else {
             const fileSel = file.id === selectedId ? ' selected' : '';
-            html += `<div class="tree-node tree-file">`;
+            const fileCollapsed = collapsedNodes.has(file.id) ? ' collapsed' : '';
+            html += `<div class="tree-node tree-file${fileCollapsed}" data-node-id="${file.id}">`;
             html += `  <div class="tree-row tree-row-file${fileSel}" data-file-id="${file.id}">`;
             html += `    <span class="tree-toggle">▼</span>`;
             html += `    <span class="tree-label">${esc(file.name)}</span>`;
@@ -85,16 +93,44 @@ function render() {
             html += `  </div>`;
             html += `  <div class="tree-children">`;
 
-            for (const objects of Object.values(file.groups)) {
+            const GROUP_LABELS = {
+                Surface: 'Surfaces', DEM: 'DEMs', PipeNetwork: 'Pipe Networks',
+                Alignment: 'Alignments', FeatureLine: 'Feature Lines',
+            };
+            const groupEntries = Object.entries(file.groups).filter(([, objs]) => objs.length > 0);
+            const multiGroup = groupEntries.length > 1;
+
+            for (const [type, objects] of groupEntries) {
+                const groupLabel = GROUP_LABELS[type] || type;
+                if (multiGroup) {
+                    const allVis = objects.every(o => o.visible);
+                    const groupNodeId = `${file.id}::${type}`;
+                    const groupCollapsed = collapsedNodes.has(groupNodeId) ? ' collapsed' : '';
+                    html += `    <div class="tree-node tree-group${groupCollapsed}" data-node-id="${groupNodeId}">`;
+                    html += `      <div class="tree-row tree-row-group" data-file-id="${file.id}" data-group-type="${type}">`;
+                    html += `        <span class="tree-toggle">▼</span>`;
+                    html += `        <span class="tree-label">${esc(groupLabel)}</span>`;
+                    html += `        <span class="tree-group-count">${objects.length}</span>`;
+                    html += `        <span class="tree-row-actions">`;
+                    html += `          <span class="tree-visibility tree-group-vis" data-file-id="${file.id}" data-group-type="${type}" title="Toggle group visibility">${allVis ? svgEye : svgEyeOff}</span>`;
+                    html += `        </span>`;
+                    html += `      </div>`;
+                    html += `      <div class="tree-children">`;
+                }
                 for (const obj of objects) {
                     const sel = obj.id === selectedId ? ' selected' : '';
                     const visIcon = obj.visible ? svgEye : svgEyeOff;
-                    html += `    <div class="tree-row tree-row-obj${sel}" data-obj-id="${obj.id}">`;
-                    html += `      <span class="tree-label">${esc(obj.name)}</span>`;
-                    html += `      <span class="tree-row-actions">`;
-                    html += `        <button class="tree-jumpto" data-obj-id="${obj.id}" title="Jump to object">${svgTarget}</button>`;
-                    html += `        <span class="tree-visibility" data-obj-id="${obj.id}" title="Toggle visibility">${visIcon}</span>`;
-                    html += `      </span>`;
+                    html += `        <div class="tree-row tree-row-obj${sel}" data-obj-id="${obj.id}">`;
+                    html += `          <span class="tree-label">${esc(obj.name)}</span>`;
+                    html += `          <span class="tree-row-actions">`;
+                    html += `            <button class="tree-jumpto" data-obj-id="${obj.id}" title="Jump to object">${svgTarget}</button>`;
+                    html += `            <span class="tree-visibility" data-obj-id="${obj.id}" title="Toggle visibility">${visIcon}</span>`;
+                    html += `            <button class="tree-delete-obj" data-obj-id="${obj.id}" data-file-id="${file.id}" title="Delete object">${svgTrash}</button>`;
+                    html += `          </span>`;
+                    html += `        </div>`;
+                }
+                if (multiGroup) {
+                    html += `      </div>`;
                     html += `    </div>`;
                 }
             }
@@ -114,15 +150,48 @@ function attachEvents(container) {
         toggle.addEventListener('click', (e) => {
             e.stopPropagation();
             const node = toggle.closest('.tree-node');
-            if (node) node.classList.toggle('collapsed');
+            if (!node) return;
+            node.classList.toggle('collapsed');
+            const nodeId = node.dataset.nodeId;
+            if (nodeId) {
+                if (node.classList.contains('collapsed')) collapsedNodes.add(nodeId);
+                else collapsedNodes.delete(nodeId);
+            }
         });
     });
 
-    // Visibility toggles
-    container.querySelectorAll('.tree-visibility').forEach(btn => {
+    // Per-object visibility toggles
+    container.querySelectorAll('.tree-visibility:not(.tree-group-vis)').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleVisibility(btn.dataset.objId);
+        });
+    });
+
+    // Group visibility toggles — set all objects in the group
+    container.querySelectorAll('.tree-group-vis').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const file = findFile(btn.dataset.fileId);
+            if (!file) return;
+            const objs = file.groups[btn.dataset.groupType] || [];
+            const allVis = objs.every(o => o.visible);
+            setGroupVisibility(btn.dataset.fileId, btn.dataset.groupType, !allVis);
+        });
+    });
+
+    // Group row header click — collapse/expand group
+    container.querySelectorAll('.tree-row-group').forEach(row => {
+        row.addEventListener('click', (e) => {
+            if (e.target.closest('.tree-row-actions')) return;
+            const node = row.closest('.tree-node');
+            if (!node) return;
+            node.classList.toggle('collapsed');
+            const nodeId = node.dataset.nodeId;
+            if (nodeId) {
+                if (node.classList.contains('collapsed')) collapsedNodes.add(nodeId);
+                else collapsedNodes.delete(nodeId);
+            }
         });
     });
 
@@ -170,6 +239,30 @@ function attachEvents(container) {
                         return;
                     }
                 }
+            }
+        });
+    });
+
+    // Delete individual object buttons
+    container.querySelectorAll('.tree-delete-obj').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const { objId, fileId } = btn.dataset;
+            const file = findFile(fileId);
+            if (!file) return;
+            let objName = objId;
+            for (const group of Object.values(file.groups)) {
+                const obj = group.find(o => o.id === objId);
+                if (obj) { objName = obj.name; break; }
+            }
+            const doDelete = () => {
+                if (onDeleteObj) onDeleteObj({ objId, fileId });
+                removeObject(objId);
+            };
+            if (shouldConfirmDelete()) {
+                showDeleteConfirm(objName, doDelete);
+            } else {
+                doDelete();
             }
         });
     });

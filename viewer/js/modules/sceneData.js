@@ -73,6 +73,21 @@ export function removeFile(fileId) {
     notify();
 }
 
+/** Remove a single object from the store. If its group or file becomes empty, those are pruned too. */
+export function removeObject(objId) {
+    for (const file of files) {
+        for (const [type, group] of Object.entries(file.groups)) {
+            const idx = group.findIndex(o => o.id === objId);
+            if (idx === -1) continue;
+            group.splice(idx, 1);
+            if (group.length === 0) delete file.groups[type];
+            if (Object.keys(file.groups).length === 0) files = files.filter(f => f.id !== file.id);
+            notify();
+            return;
+        }
+    }
+}
+
 /** Find a file entry by id. */
 export function findFile(fileId) {
     return files.find(f => f.id === fileId) || null;
@@ -97,6 +112,17 @@ export function toggleVisibility(objId) {
     if (obj.mesh) obj.mesh.visible = obj.visible;
     notify();
     return obj.visible;
+}
+
+/** Set visibility of all objects in a named group within a file. */
+export function setGroupVisibility(fileId, type, visible) {
+    const file = files.find(f => f.id === fileId);
+    if (!file || !file.groups[type]) return;
+    for (const obj of file.groups[type]) {
+        obj.visible = visible;
+        if (obj.mesh) obj.mesh.visible = visible;
+    }
+    notify();
 }
 
 /** Get all file entries (read-only snapshot). */

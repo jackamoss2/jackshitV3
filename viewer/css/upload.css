@@ -6,21 +6,21 @@
   width: 100%;
   padding: 8px 0;
   margin-bottom: 8px;
-  background: var(--bg-upload);
-  border: none;
-  border-top: 2px solid var(--border-subtle);
-  border-bottom: 2px solid var(--border-subtle);
-  color: var(--text-muted);
+  background: none;
+  border: 1px solid var(--border-btn);
+  border-radius: 3px;
+  color: var(--text-secondary);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.3px;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
 .data-upload-block:hover {
-  background: var(--bg-upload-hover);
-  color: var(--text-heading);
+  background: var(--bg-hover);
+  border-color: var(--border-btn-hover);
+  color: var(--text-bright);
 }
 
 /* Drag-over highlight on data panel body */

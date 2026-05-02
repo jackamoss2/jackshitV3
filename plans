@@ -1,0 +1,23 @@
+- find GIS data pipe network?
+- create dummy landxml, dwg files in c3d
+- develop better samples
+    - ADA ramp
+    - full roadway intersection w/ pipes ("home" survey?)
+    - drainage/stormwater? (DEM and/or surface/piped system?) - really big lift
+
+
+AI
+- add tutorial page, populate with functionality, controls, settings, etc. manageable amoun of material, or broken into extra pages or expand on click
+- pipe network landXML to three.js environment
+- give sample project cards image backgrounds (mt hood clipped, cube)
+- fix default speed in sample projects - ex mt hood is so large and player speed is relatively way too slow
+- add tools:
+    - inspector tool (need properties panel for some like pipe network parts)
+        - point info: elev, description?
+        - surface segment/face info: slope, length
+        - pipe slope, length, ID (assign if none)
+        - structure/appurtanence: name/ID (assign if none), connected objects + IE, rim, sump
+            - is alignment / STA possible? if alignment support needed, add it
+    - water dropper
+    - edit ???
+    - 

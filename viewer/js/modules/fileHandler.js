@@ -6,8 +6,8 @@
  */
 
 import * as THREE from '../libs/three.module.js';
-import { addFile, findFile, getFiles } from './sceneData.js';
-import { onFileDelete } from './dataTree.js';
+import { addFile, findFile, getFiles, removeObject } from './sceneData.js';
+import { onFileDelete, onObjectDelete } from './dataTree.js';
 import { setStatus } from './uiController.js';
 import { setCRS, removeCRSForFile, resetOrigin, initOriginFromPoints, getOrigin } from './crsManager.js';
 import { parseLandXML } from './xmlParser.js';
@@ -84,18 +84,202 @@ function buildMeshFromWorkerData(surfaceData, surfaceIndex) {
   return mesh;
 }
 
-// ── Sample definitions ─────────────────────────────────
+// ── Line-geometry colours per feature type ──────────────────────────────────
+const LINE_COLORS = {
+  PipeNetwork: 0x00BFFF,
+  Structure:   0x40E0D0,
+  Alignment:   0xFF8C00,
+  FeatureLine: 0x90EE90,
+};
+
+/**
+ * Build a Three.js LineSegments object from a lineBuffer produced by the parser.
+ */
+function buildLineFromWorkerData(objData) {
+  const { lineBuffer, centroid } = objData;
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(lineBuffer, 3));
+  geometry.rotateX(-Math.PI / 2);
+  geometry.scale(1, 1, -1);
+
+  const color    = LINE_COLORS[objData.type] ?? 0xAAAAAA;
+  const material = new THREE.LineBasicMaterial({ color });
+  const lineObj  = new THREE.LineSegments(geometry, material);
+  lineObj.name   = objData.name;
+
+  const bboxCentroid = objData.rawBBox.centroid;
+  initOriginFromPoints([[bboxCentroid.x, bboxCentroid.y, bboxCentroid.z]]);
+
+  const origin = getOrigin() || { x: 0, y: 0, z: 0 };
+  lineObj.position.set(
+    centroid.x - origin.x,
+    centroid.z - origin.z,
+    centroid.y - origin.y
+  );
+
+  return lineObj;
+}
+
+// ── LandXML (N, E, Z) → Three.js world (x, y, z) given scene origin ──────────
+// Three.js world = (N - oN,  Z - oZ,  E - oE)
+function landxmlToThree(n, e, z, origin) {
+  return new THREE.Vector3(n - origin.x, z - origin.z, e - origin.y);
+}
+
+/**
+ * Build a merged Three.js Mesh of oriented cylinders, one per pipe segment.
+ * Each pipe uses its CircPipe outer radius and is oriented along its 3D axis.
+ */
+function buildPipeNetworkMesh(objData) {
+  const { pipeSegments, rawBBox } = objData;
+  initOriginFromPoints([[rawBBox.centroid.x, rawBBox.centroid.y, rawBBox.centroid.z]]);
+  const origin = getOrigin() || { x: 0, y: 0, z: 0 };
+
+  const positions = [], normals = [], indices = [];
+  let vertOffset = 0;
+  const yAxis = new THREE.Vector3(0, 1, 0);
+
+  for (const seg of pipeSegments) {
+    const p1  = landxmlToThree(seg.start[0], seg.start[1], seg.start[2], origin);
+    const p2  = landxmlToThree(seg.end[0],   seg.end[1],   seg.end[2],   origin);
+    const len = p1.distanceTo(p2);
+    if (len < 1e-4) continue;
+
+    const cyl = new THREE.CylinderGeometry(seg.radiusOut, seg.radiusOut, len, 10, 1, false);
+
+    const dir  = new THREE.Vector3().subVectors(p2, p1).normalize();
+    const quat = new THREE.Quaternion();
+    const dot  = dir.dot(yAxis);
+    if (dot < -0.9999) {
+      quat.set(1, 0, 0, 0); // 180° around X for antiparallel case
+    } else if (dot < 0.9999) {
+      quat.setFromUnitVectors(yAxis, dir);
+    }
+    const mid = p1.clone().add(p2).multiplyScalar(0.5);
+    cyl.applyMatrix4(new THREE.Matrix4().compose(mid, quat, new THREE.Vector3(1, 1, 1)));
+
+    const pa = cyl.attributes.position.array;
+    const na = cyl.attributes.normal.array;
+    const ia = cyl.index.array;
+    for (let i = 0; i < pa.length; i++) positions.push(pa[i]);
+    for (let i = 0; i < na.length; i++) normals.push(na[i]);
+    for (let i = 0; i < ia.length; i++) indices.push(ia[i] + vertOffset);
+    vertOffset += pa.length / 3;
+    cyl.dispose();
+  }
+
+  if (positions.length === 0) return null;
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
+  geo.setAttribute('normal',   new THREE.BufferAttribute(new Float32Array(normals),   3));
+  geo.setIndex(new THREE.BufferAttribute(new Uint32Array(indices), 1));
+
+  const mesh = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: 0x00BFFF, roughness: 0.5, metalness: 0.15 }));
+  mesh.name = objData.name;
+  return mesh;
+}
+
+/**
+ * Build a merged Three.js Mesh of vertical tapered cylinders, one per manhole structure.
+ * Bottom radius = CircStruct radius; top radius = 25% of that (cone neck typical of manholes).
+ * Positioned from elevSump (barrel base) to elevRim (cover).
+ */
+function buildStructureMesh(objData) {
+  const { structSegments, rawBBox } = objData;
+  initOriginFromPoints([[rawBBox.centroid.x, rawBBox.centroid.y, rawBBox.centroid.z]]);
+  const origin = getOrigin() || { x: 0, y: 0, z: 0 };
+
+  const positions = [], normals = [], indices = [];
+  let vertOffset = 0;
+
+  for (const seg of structSegments) {
+    const height = seg.zRim - seg.zSump;
+    if (height < 1e-4) continue;
+
+    const rBase = seg.radiusOut;
+    // Split into barrel (lower 80%) and cone neck (upper 20%) for manhole shape
+    const barrelH = height * 0.80;
+    const neckH   = height * 0.20;
+    const rNeck   = rBase * 0.30; // ~30% radius at top — typical manhole cone
+
+    const tx = seg.northing - origin.x;
+    const tz = seg.easting  - origin.y;
+
+    // Barrel: full-radius cylinder for lower portion
+    const barrel = new THREE.CylinderGeometry(rBase, rBase, barrelH, 14, 1, false);
+    const barrelMid = (seg.zSump + seg.zSump + barrelH) / 2 - origin.z; // midpoint of barrel
+    barrel.applyMatrix4(new THREE.Matrix4().makeTranslation(tx, (seg.zSump - origin.z) + barrelH / 2, tz));
+
+    // Cone neck: tapered top section
+    const neck = new THREE.CylinderGeometry(rNeck, rBase, neckH, 14, 1, false);
+    neck.applyMatrix4(new THREE.Matrix4().makeTranslation(tx, (seg.zRim - origin.z) - neckH / 2, tz));
+
+    for (const cyl of [barrel, neck]) {
+      const pa = cyl.attributes.position.array;
+      const na = cyl.attributes.normal.array;
+      const ia = cyl.index.array;
+      for (let i = 0; i < pa.length; i++) positions.push(pa[i]);
+      for (let i = 0; i < na.length; i++) normals.push(na[i]);
+      for (let i = 0; i < ia.length; i++) indices.push(ia[i] + vertOffset);
+      vertOffset += pa.length / 3;
+      cyl.dispose();
+    }
+  }
+
+  if (positions.length === 0) return null;
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
+  geo.setAttribute('normal',   new THREE.BufferAttribute(new Float32Array(normals),   3));
+  geo.setIndex(new THREE.BufferAttribute(new Uint32Array(indices), 1));
+
+  const mesh = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: 0x40E0D0, roughness: 0.4, metalness: 0.2 }));
+  mesh.name = objData.name + ' — Structures';
+  return mesh;
+}
+
+/**
+ * Build a THREE.Group containing both the pipe mesh and structure mesh for a network.
+ * The group is treated as a single scene object so visibility/delete affects both together.
+ */
+function buildNetworkMesh(objData) {
+  const group = new THREE.Group();
+  group.name = objData.name;
+  if (objData.pipeSegments) {
+    const pipeMesh = buildPipeNetworkMesh(objData);
+    if (pipeMesh) { pipeMesh.name = objData.name + ' — Pipes'; group.add(pipeMesh); }
+  }
+  if (objData.structSegments) {
+    const structMesh = buildStructureMesh(objData);
+    if (structMesh) group.add(structMesh);
+  }
+  return group.children.length > 0 ? group : null;
+}
+
+/** Recursively remove a mesh/group from the scene and dispose all GPU resources. */
+function disposeMesh(obj, scene) {
+  if (!obj) return;
+  scene.remove(obj);
+  obj.traverse(child => {
+    if (child.geometry) child.geometry.dispose();
+    if (child.material) {
+      if (Array.isArray(child.material)) child.material.forEach(m => m.dispose());
+      else child.material.dispose();
+    }
+  });
+}
+
 // Each key is a ?sample= query-param value, mapping to file paths + types.
 const SAMPLES = {
   'wilsonville-ramp': [
-    { path: 'geometry/Wilsonville_Ramp.xml', type: 'landxml', readAs: 'text' },
+    { path: 'geometry/C/Wilsonville_Ramp.xml', type: 'landxml', readAs: 'text' },
   ],
   'mt-hood': [
     { path: 'geometry/Mt Hood Clipped.tif', type: 'geotiff', readAs: 'arraybuffer' },
   ],
   'eg-fg': [
-    { path: 'geometry/EG.xml', type: 'landxml', readAs: 'text' },
-    { path: 'geometry/FG.xml', type: 'landxml', readAs: 'text' },
+    { path: 'geometry/C/EG.xml', type: 'landxml', readAs: 'text' },
+    { path: 'geometry/C/FG.xml', type: 'landxml', readAs: 'text' },
   ],
 };
 
@@ -104,6 +288,14 @@ const SAMPLES = {
  */
 async function parseAndLoad(name, content, fileType, scene) {
   setStatus(`Loading ${name}...`);
+
+  // Remove the default placeholder cube on first real load
+  const defaultCube = scene.getObjectByName('__default_cube__');
+  if (defaultCube) {
+    scene.remove(defaultCube);
+    if (defaultCube.geometry) defaultCube.geometry.dispose();
+    if (defaultCube.material) defaultCube.material.dispose();
+  }
 
   try {
     let result;
@@ -115,26 +307,38 @@ async function parseAndLoad(name, content, fileType, scene) {
 
     const { surfaces, fileMeta, crsAttrs } = result;
 
-    const objects = surfaces.map((surfData, i) => {
-      const mesh = buildMeshFromWorkerData(surfData, i);
+    let surfaceIdx = 0;
+    const objects = surfaces.map(surfData => {
+      let mesh;
+      if (surfData.pipeSegments || surfData.structSegments) {
+        mesh = buildNetworkMesh(surfData);
+      } else if (surfData.lineBuffer) {
+        mesh = buildLineFromWorkerData(surfData);
+      } else {
+        mesh = buildMeshFromWorkerData(surfData, surfaceIdx++);
+      }
+      if (!mesh) return null;
       return {
         mesh,
         type: surfData.type || 'Surface',
         name: surfData.name,
         metadata: surfData.meta || {},
       };
-    });
+    }).filter(Boolean);
 
     objects.forEach(obj => scene.add(obj.mesh));
     const fileEntry = addFile(name, objects, fileMeta);
     setCRS(fileEntry.id, crsAttrs);
 
-    const count = objects.length;
-    const label = (fileType === 'landxml') ? 'surface' : 'DEM';
+    const count      = objects.length;
+    const allSurfaces = objects.every(o => o.type === 'Surface');
+    const label       = (fileType === 'geotiff' || fileType === 'asc') ? 'DEM'
+                      : allSurfaces ? 'surface' : 'object';
     setStatus(`Loaded ${name} (${count} ${label}${count !== 1 ? 's' : ''})`);
   } catch (err) {
     console.error(err);
-    setStatus(`Error loading ${name}`);
+    const msg = err?.message ? `: ${err.message}` : '';
+    setStatus(`Error loading ${name}${msg}`);
   }
 }
 
@@ -150,7 +354,8 @@ async function loadFileFromURL(url, fileType, scene) {
     await parseAndLoad(fileName, content, fileType, scene);
   } catch (err) {
     console.error(err);
-    setStatus(`Error loading ${fileName}`);
+    const msg = err?.message ? `: ${err.message}` : '';
+    setStatus(`Error loading ${fileName}${msg}`);
   }
 }
 
@@ -160,7 +365,7 @@ async function loadFileFromURL(url, fileType, scene) {
 function positionCameraAboveScene(scene, camera) {
   const box = new THREE.Box3();
   scene.traverse(obj => {
-    if (obj.isMesh) box.expandByObject(obj);
+    if (obj.isMesh || obj.isLine) box.expandByObject(obj);
   });
   if (box.isEmpty()) return;
 
@@ -190,25 +395,27 @@ export function initFileHandler(scene, controls, camera) {
     await parseAndLoad(name, content, fileType, scene);
   });
 
+  // Delete single object from data tree → remove mesh from scene and dispose resources
+  onObjectDelete(({ objId, fileId }) => {
+    const file = findFile(fileId);
+    if (!file) return;
+    for (const group of Object.values(file.groups)) {
+      const obj = group.find(o => o.id === objId);
+      if (obj?.mesh) { disposeMesh(obj.mesh, scene); break; }
+    }
+    const totalObjs = getFiles().reduce((sum, f) => sum + Object.values(f.groups).reduce((s, g) => s + g.length, 0), 0);
+    const fileObjCount = Object.values(file.groups).reduce((s, g) => s + g.length, 0);
+    if (fileObjCount <= 1) removeCRSForFile(fileId);
+    if (totalObjs <= 1) resetOrigin();
+  });
+
   // Delete file from data tree → remove meshes from scene and dispose resources
   onFileDelete((fileId) => {
     const file = findFile(fileId);
     if (!file) return;
     removeCRSForFile(fileId);
     for (const group of Object.values(file.groups)) {
-      for (const obj of group) {
-        if (obj.mesh) {
-          scene.remove(obj.mesh);
-          if (obj.mesh.geometry) obj.mesh.geometry.dispose();
-          if (obj.mesh.material) {
-            if (Array.isArray(obj.mesh.material)) {
-              obj.mesh.material.forEach(m => m.dispose());
-            } else {
-              obj.mesh.material.dispose();
-            }
-          }
-        }
-      }
+      for (const obj of group) disposeMesh(obj.mesh, scene);
     }
 
     // If scene is now empty, reset origin so next load gets a fresh one

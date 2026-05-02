@@ -96,6 +96,13 @@
   font-weight: 600;
 }
 
+.tree-group-count {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-left: 4px;
+  flex-shrink: 0;
+}
+
 /* ── Row actions (right side) ─────────────────────── */
 
 .tree-row-actions {
@@ -143,25 +150,23 @@
 
 /* ── Delete button ────────────────────────────────── */
 
-.tree-delete {
+.tree-delete,
+.tree-delete-obj {
   flex-shrink: 0;
   background: none;
   border: none;
   color: currentColor;
   padding: 0;
   cursor: pointer;
-  opacity: 0;
+  opacity: 0.4;
   transition: opacity 0.15s, color 0.15s;
   display: flex;
   align-items: center;
 }
 
-.tree-row:hover .tree-delete {
-  opacity: 0.4;
-}
-
-.tree-delete:hover {
-  opacity: 1 !important;
+.tree-delete:hover,
+.tree-delete-obj:hover {
+  opacity: 1;
   color: var(--accent-red);
 }
 
@@ -180,8 +185,8 @@
 
 .delete-confirm-box {
   background: var(--bg-confirm-box);
-  border: 2px solid var(--border-confirm);
-  border-radius: 6px;
+  border: 1px solid var(--border-confirm);
+  border-radius: 4px;
   padding: 20px 24px;
   min-width: 260px;
   text-align: center;
@@ -237,7 +242,7 @@
 #data-metadata {
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 2px solid var(--border-subtle);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .meta-title {

@@ -6,7 +6,7 @@
   bottom: 28px;
   width: 280px;
   background: var(--bg-panel);
-  border: 2px solid var(--border-panel);
+  border: 1px solid var(--border-panel);
   display: flex;
   flex-direction: column;
   transition: transform 0.25s ease, opacity 0.25s ease;
@@ -42,8 +42,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 14px;
-  border-bottom: 2px solid var(--border-panel);
-  font-size: 14px;
+  border-bottom: 1px solid var(--border-panel);
+  font-size: 13px;
   font-weight: 600;
   color: var(--text-heading);
 }
@@ -72,4 +72,30 @@
   color: var(--text-body);
   display: flex;
   flex-direction: column;
+}
+
+/* ── Panel resize handle ──────────────────────────── */
+
+.panel-resize-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: ew-resize;
+  z-index: 2;
+  transition: background 0.15s;
+}
+
+.panel-left .panel-resize-handle {
+  right: -4px;
+}
+
+.panel-right .panel-resize-handle {
+  left: -4px;
+}
+
+.panel-resize-handle:hover,
+.panel-resize-handle.resizing {
+  background: var(--border-btn-hover);
+  opacity: 0.6;
 }

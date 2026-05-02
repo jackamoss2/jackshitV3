@@ -1,7 +1,7 @@
 /* ── Collapsible Sub-panels ────────────────────────── */
 
 .collapsible {
-  border-bottom: 2px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .collapsible:last-child {
@@ -49,19 +49,31 @@
   max-height: 500px;
 }
 
-/* Data section fills available space */
-.data-section {
+/* Data collapsible fills available panel height */
+.collapsible--data {
   flex: 1;
   min-height: 0;
   display: flex;
   flex-direction: column;
 }
 
-.data-section .data-upload-block {
+.collapsible--data .collapsible-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.collapsible--data.open .collapsible-body {
+  max-height: 9999px;
+}
+
+.collapsible--data .data-upload-block {
   flex-shrink: 0;
 }
 
-.data-section #data-panel-body {
+.collapsible--data #data-panel-body {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
 }

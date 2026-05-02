@@ -38,13 +38,16 @@
             </div>
             <div class="panel-content">
 
-                <!-- Data -->
-                <div class="data-section">
-                    <button id="data-upload-btn" class="data-upload-block" title="Upload file">Upload</button>
-                    <div id="data-panel-body">
-                        <input type="file" id="upload-input" accept=".xml,.tif,.tiff,.asc" multiple hidden>
-                        <div id="data-tree"></div>
-                        <div id="data-metadata"></div>
+                <!-- Data (collapsible, open by default) -->
+                <div class="collapsible collapsible--data open">
+                    <button class="collapsible-header"><span class="collapse-arrow">▶</span> Data</button>
+                    <div class="collapsible-body">
+                        <button id="data-upload-btn" class="data-upload-block" title="Upload file">Upload</button>
+                        <div id="data-panel-body">
+                            <input type="file" id="upload-input" accept=".xml,.tif,.tiff,.asc" multiple hidden>
+                            <div id="data-tree"></div>
+                            <div id="data-metadata"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -57,6 +60,7 @@
                 </div>
 
             </div>
+            <div class="panel-resize-handle"></div>
         </div>
 
         <!-- Right Panel -->
@@ -145,6 +149,7 @@
                 </div>
 
             </div>
+            <div class="panel-resize-handle"></div>
         </div>
 
         <!-- Bottom Status Bar -->
@@ -156,7 +161,7 @@
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/geotiff"></script>
+    <script src="viewer/js/libs/geotiff.js"></script>
     <script type="module" src="viewer/js/viewer.js"></script>
 </body>
 </html>

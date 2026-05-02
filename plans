@@ -6,9 +6,13 @@
     - drainage/stormwater? (DEM and/or surface/piped system?) - really big lift
 
 
-AI
+AI now
+is there a global variable for units? is it in feet. or depend on upload data? is there always metdadata for that, if not, is it just unitless? would like to know if files with mismatching units are uploaded together...
+make vertical exaggeration work for pipe networks
+
+
+AI future
 - add tutorial page, populate with functionality, controls, settings, etc. manageable amoun of material, or broken into extra pages or expand on click
-- pipe network landXML to three.js environment
 - give sample project cards image backgrounds (mt hood clipped, cube)
 - fix default speed in sample projects - ex mt hood is so large and player speed is relatively way too slow
 - add tools:

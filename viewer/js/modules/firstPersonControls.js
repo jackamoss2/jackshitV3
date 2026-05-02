@@ -43,11 +43,8 @@ export class FirstPersonControls {
     this._initPointerLock();
     this._initMouseButtons();
 
-    this.domElement.addEventListener('click', () => {
-      if (!this.enabled) {
-        this._enterControls();
-      }
-    });
+    this._onClick = () => { if (!this.enabled) this._enterControls(); };
+    this.domElement.addEventListener('click', this._onClick);
   }
 
   frameObject(object3D) {
@@ -130,14 +127,12 @@ export class FirstPersonControls {
   }
 
   _initKeyboard() {
-    window.addEventListener('keydown', (e) => {
+    this._onKeyDown = (e) => {
       if (this.enabled && e.code === 'Escape') {
         this._exitControls();
         return;
       }
-
       if (!this.enabled) return;
-
       switch (e.code) {
         case 'KeyW': this.keys.w = true; break;
         case 'KeyA': this.keys.a = true; break;
@@ -149,11 +144,10 @@ export class FirstPersonControls {
         case 'ControlLeft':
         case 'ControlRight': this.keys.ctrl = true; break;
       }
-    });
+    };
 
-    window.addEventListener('keyup', (e) => {
+    this._onKeyUp = (e) => {
       if (!this.enabled) return;
-
       switch (e.code) {
         case 'KeyW': this.keys.w = false; break;
         case 'KeyA': this.keys.a = false; break;
@@ -165,7 +159,10 @@ export class FirstPersonControls {
         case 'ControlLeft':
         case 'ControlRight': this.keys.ctrl = false; break;
       }
-    });
+    };
+
+    window.addEventListener('keydown', this._onKeyDown);
+    window.addEventListener('keyup',   this._onKeyUp);
   }
 
   _enterControls() {
@@ -197,29 +194,22 @@ export class FirstPersonControls {
   }
 
   _initPointerLock() {
-    document.addEventListener('pointerlockchange', () => {
+    this._onPointerLockChange = () => {
       this.isPointerLocked = document.pointerLockElement === this.domElement;
+      if (this.enabled && !this.isPointerLocked) this._exitControls();
+    };
 
-      if (this.enabled && !this.isPointerLocked) {
-        this._exitControls();
-      }
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (!this.enabled) return;
-      if (!this.isPointerLocked) return;
-
-      if (this._ignoreFirstMouseMove) {
-        this._ignoreFirstMouseMove = false;
-        return;
-      }
-
-      this.yaw -= e.movementX * this.sensitivity;
+    this._onMouseMove = (e) => {
+      if (!this.enabled || !this.isPointerLocked) return;
+      if (this._ignoreFirstMouseMove) { this._ignoreFirstMouseMove = false; return; }
+      this.yaw   -= e.movementX * this.sensitivity;
       this.pitch -= e.movementY * this.sensitivity;
-
       const piHalf = Math.PI / 2 - 0.1;
       this.pitch = Math.max(-piHalf, Math.min(piHalf, this.pitch));
-    });
+    };
+
+    document.addEventListener('pointerlockchange', this._onPointerLockChange);
+    document.addEventListener('mousemove',         this._onMouseMove);
   }
 
   _initMouseButtons() {
@@ -238,8 +228,17 @@ export class FirstPersonControls {
     this.domElement.addEventListener('contextmenu', (e) => e.preventDefault());
   }
 
+  /** Remove all global event listeners. Call when the viewer is torn down. */
+  dispose() {
+    window.removeEventListener('keydown', this._onKeyDown);
+    window.removeEventListener('keyup',   this._onKeyUp);
+    document.removeEventListener('pointerlockchange', this._onPointerLockChange);
+    document.removeEventListener('mousemove',         this._onMouseMove);
+    this.domElement.removeEventListener('click', this._onClick);
+    this._exitControls();
+  }
+
   update() {
-    if (!this.enabled) return;
 
     let currentSpeed = this.speed;
 

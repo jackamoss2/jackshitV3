@@ -154,7 +154,7 @@ function parseCoords(text) {
  * Parse a LandXML string into structured surface data.
  * @param {string} xmlString
  * @param {string} fileName
- * @returns {{ surfaces, fileMeta, crsAttrs }}
+ * @returns {{ surfaces, fileMeta, crsAttrs, xmlDoc }}
  */
 export function parseLandXML(xmlString, fileName) {
   const parser = new DOMParser();
@@ -492,5 +492,5 @@ export function parseLandXML(xmlString, fileName) {
     });
   });
 
-  return { ok: true, surfaces, fileMeta, crsAttrs };
+  return { ok: true, surfaces, fileMeta, crsAttrs, xmlDoc };
 }

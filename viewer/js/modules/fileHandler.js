@@ -6,11 +6,118 @@
  */
 
 import * as THREE from '../libs/three.module.js';
-import { addFile, findFile, getFiles, removeObject } from './sceneData.js';
+import { addFile, findFile, getFiles, removeObject, onSetDisplayMode } from './sceneData.js';
 import { onFileDelete, onObjectDelete } from './dataTree.js';
 import { setStatus } from './uiController.js';
 import { setCRS, removeCRSForFile, resetOrigin, initOriginFromPoints, getOrigin } from './crsManager.js';
 import { parseLandXML } from './xmlParser.js';
+
+// ── Contour ShaderMaterial ───────────────────────────────────────────────────
+const CONTOUR_VERT = `
+varying vec3 vWorldPos;
+void main() {
+  vec4 worldPos = modelMatrix * vec4(position, 1.0);
+  vWorldPos = worldPos.xyz;
+  gl_Position = projectionMatrix * viewMatrix * worldPos;
+}
+`;
+
+const CONTOUR_FRAG = `
+uniform float uMinY;
+uniform float uMaxY;
+uniform float uInterval;
+uniform vec3  uLineColor;
+uniform vec3  uBaseColor;
+varying vec3 vWorldPos;
+void main() {
+  float t = fract(vWorldPos.y / uInterval);
+  // Anti-aliased line: thin band near 0
+  float fw = fwidth(vWorldPos.y / uInterval);
+  float line = 1.0 - smoothstep(fw * 0.5, fw * 1.5, min(t, 1.0 - t));
+  vec3 col = mix(uBaseColor, uLineColor, line);
+  gl_FragColor = vec4(col, 1.0);
+}
+`;
+
+export function buildContourMaterial(minY, maxY, interval) {
+  const autoInterval = interval || Math.max(0.5, Math.round((maxY - minY) / 20));
+  return new THREE.ShaderMaterial({
+    uniforms: {
+      uMinY:      { value: minY },
+      uMaxY:      { value: maxY },
+      uInterval:  { value: autoInterval },
+      uLineColor: { value: new THREE.Color(0x000000) },
+      uBaseColor: { value: new THREE.Color(0x888888) },
+    },
+    vertexShader:   CONTOUR_VERT,
+    fragmentShader: CONTOUR_FRAG,
+    side: THREE.DoubleSide,
+    extensions: { derivatives: true },
+  });
+}
+
+/**
+ * Switch a surface mesh between 'solid' and 'contour' display modes.
+ * Stores the original solid material on mesh.userData so it can be restored.
+ */
+export function setDisplayMode(mesh, mode) {
+  if (!mesh || !mesh.isMesh) return;
+  if (mode === 'contour') {
+    if (!mesh.userData._solidMaterial) mesh.userData._solidMaterial = mesh.material;
+    const minY = (mesh.userData.elevMinY ?? 0);
+    const maxY = (mesh.userData.elevMaxY ?? 100);
+    mesh.material = buildContourMaterial(minY, maxY);
+  } else {
+    if (mesh.userData._solidMaterial) {
+      mesh.material.dispose();
+      mesh.material = mesh.userData._solidMaterial;
+      mesh.userData._solidMaterial = null;
+    }
+  }
+}
+
+/**
+ * Serialize a file entry's xmlDoc to an XML string, inject visual settings,
+ * and trigger a browser download. No-op if the file has no xmlDoc (e.g. DEM).
+ * @param {object} fileEntry - entry from sceneData
+ */
+export function exportFileXML(fileEntry) {
+  if (!fileEntry?.xmlDoc) return;
+
+  // Collect non-default styles to embed
+  const styles = [];
+  for (const group of Object.values(fileEntry.groups)) {
+    for (const obj of group) {
+      if (obj.style?.color) {
+        styles.push({ name: obj.name, color: obj.style.color, displayMode: obj.style.displayMode || 'solid' });
+      }
+    }
+  }
+
+  // Remove previous viewer metadata, then re-inject if any
+  const doc = fileEntry.xmlDoc;
+  doc.querySelectorAll('Feature[code="JackshitViewer3D"]').forEach(el => el.remove());
+  if (styles.length > 0) {
+    const feature = doc.createElement('Feature');
+    feature.setAttribute('code', 'JackshitViewer3D');
+    const prop = doc.createElement('Property');
+    prop.setAttribute('label', 'styles');
+    prop.setAttribute('value', JSON.stringify(styles));
+    feature.appendChild(prop);
+    doc.documentElement.appendChild(feature);
+  }
+
+  const xml = new XMLSerializer().serializeToString(doc);
+  const blob = new Blob([xml], { type: 'application/xml' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileEntry.name.endsWith('.xml') ? fileEntry.name : fileEntry.name + '.xml';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
 
 // Spin up the parse worker once (used for DEM only)
 const worker = new Worker(new URL('./parseWorker.js', import.meta.url));
@@ -69,6 +176,11 @@ function buildMeshFromWorkerData(surfaceData, surfaceIndex) {
   const mesh = new THREE.Mesh(geometry, material);
   mesh.name = surfaceData.name;
   mesh.userData.baseScaleY = 1;
+
+  // Store elevation range for contour shader
+  const bbox = surfaceData.rawBBox;
+  mesh.userData.elevMinY = bbox.min.z;  // Z in LandXML = elevation
+  mesh.userData.elevMaxY = bbox.max.z;
 
   // Set origin from the first surface's raw bbox centroid (same first-call-wins logic)
   const bboxCentroid = surfaceData.rawBBox.centroid;
@@ -289,14 +401,6 @@ const SAMPLES = {
 async function parseAndLoad(name, content, fileType, scene) {
   setStatus(`Loading ${name}...`);
 
-  // Remove the default placeholder cube on first real load
-  const defaultCube = scene.getObjectByName('__default_cube__');
-  if (defaultCube) {
-    scene.remove(defaultCube);
-    if (defaultCube.geometry) defaultCube.geometry.dispose();
-    if (defaultCube.material) defaultCube.material.dispose();
-  }
-
   try {
     let result;
     if (fileType === 'landxml') {
@@ -305,7 +409,7 @@ async function parseAndLoad(name, content, fileType, scene) {
       result = await workerParse(fileType, content, name);
     }
 
-    const { surfaces, fileMeta, crsAttrs } = result;
+    const { surfaces, fileMeta, crsAttrs, xmlDoc } = result;
 
     let surfaceIdx = 0;
     const objects = surfaces.map(surfData => {
@@ -327,7 +431,7 @@ async function parseAndLoad(name, content, fileType, scene) {
     }).filter(Boolean);
 
     objects.forEach(obj => scene.add(obj.mesh));
-    const fileEntry = addFile(name, objects, fileMeta);
+    const fileEntry = addFile(name, objects, fileMeta, xmlDoc ?? null);
     setCRS(fileEntry.id, crsAttrs);
 
     const count      = objects.length;
@@ -389,6 +493,9 @@ function positionCameraAboveScene(scene, camera) {
  */
 export function initFileHandler(scene, controls, camera) {
 
+  // Wire up display mode changes from sceneData
+  onSetDisplayMode(setDisplayMode);
+
   // Handle uploaded files — parse and load into scene
   document.getElementById('data-panel-body').addEventListener('file-uploaded', async (e) => {
     const { name, content, fileType } = e.detail;
@@ -429,14 +536,6 @@ export function initFileHandler(scene, controls, camera) {
   const params = new URLSearchParams(window.location.search);
   const sampleKey = params.get('sample');
   if (sampleKey && SAMPLES[sampleKey]) {
-    // Remove the default cube
-    const cube = scene.getObjectByName('__default_cube__');
-    if (cube) {
-      scene.remove(cube);
-      if (cube.geometry) cube.geometry.dispose();
-      if (cube.material) cube.material.dispose();
-    }
-
     const files = SAMPLES[sampleKey];
     (async () => {
       for (const f of files) {

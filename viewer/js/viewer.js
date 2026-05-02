@@ -9,7 +9,7 @@ import { initUpload } from './modules/uploadHandler.js';
 import { initDataTree, onObjectJumpTo } from './modules/dataTree.js';
 import { initSettings, shouldConfirmLeave } from './modules/settingsManager.js';
 import { initFileHandler } from './modules/fileHandler.js';
-import { getFiles } from './modules/sceneData.js';
+import { getFiles, addFile } from './modules/sceneData.js';
 
 // CRS imports
 import { onCRSChange, getOrigin } from './modules/crsManager.js';
@@ -28,14 +28,20 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setPixelRatio(window.devicePixelRatio);
 LightsSetup(scene);
 
-// Default cube (removed when loading samples)
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
-const cube = new THREE.Mesh(geometry, material);
-cube.name = '__default_cube__';
+// Default cube — registered as a real data entry so it shows in the tree and can be deleted normally
+const cube = new THREE.Mesh(
+  new THREE.BoxGeometry(),
+  new THREE.MeshStandardMaterial({ color: 0x0077ff })
+);
+cube.name = 'Blue Cube';
 scene.add(cube);
+addFile('Default Scene', [{ mesh: cube, type: 'Surface', name: 'Blue Cube', metadata: {} }]);
 
 // ── Controls ─────────────────────────────────────────
+// Set camera position BEFORE constructing controls so yaw/pitch initialise correctly
+camera.position.set(5, 5, 5);
+camera.lookAt(cube.position);
+
 const statusEl = document.getElementById('status-text');
 const controls = new FirstPersonControls(camera, renderer.domElement, scene, {
   speed: .1,
@@ -43,10 +49,7 @@ const controls = new FirstPersonControls(camera, renderer.domElement, scene, {
   onExit: () => { setStatus('Ready'); statusEl.classList.remove('status-active'); }
 });
 window.controls = controls;
-camera.position.z = 5;
-camera.position.x = 5;
-camera.position.y = 5;
-camera.lookAt(cube.position);
+console.log('[cube] camera pos:', camera.position, 'looking at:', cube.position);
 
 // ── Initialise modules ──────────────────────────────
 preventSpaceOnFocusedButtons();

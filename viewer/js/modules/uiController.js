@@ -3,8 +3,6 @@
  * Handles toggling panels, status bar updates, and general UI state.
  */
 
-const panels = {};
-
 /** Initialise panel toggle buttons, close buttons, and collapsible sections. */
 export function initUI() {
     // Toolbar buttons toggle panels

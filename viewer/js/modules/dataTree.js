@@ -4,7 +4,10 @@
  * Supports collapsible groups, visibility toggles, and metadata selection.
  */
 
-import { getFiles, toggleVisibility, setGroupVisibility, findFile, removeFile, removeObject, onStoreChange } from './sceneData.js';
+import { getFiles, toggleVisibility, setGroupVisibility, findFile, removeFile, removeObject, onStoreChange, getStyle, setStyle, renameFile, renameObject } from './sceneData.js';
+import { exportFileXML, setDisplayMode } from './fileHandler.js';
+
+const CONTOUR_TYPES = new Set(['Surface', 'DEM']);
 import { shouldConfirmDelete } from './settingsManager.js';
 
 // Inline SVG icons (14×14, currentColor)
@@ -14,6 +17,8 @@ const svgTarget = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" s
 const svgTrash = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>`;
 
 const svgFile = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
+const svgSave = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>`;
+const svgContour = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 Q6 6 12 8 Q18 10 21 6"/><path d="M3 17 Q6 11 12 13 Q18 15 21 11"/><path d="M3 7 Q6 3 12 4 Q18 5 21 3"/></svg>`;
 
 let selectedId = null;   // can be an obj id or file id
 let onSelect = null;
@@ -70,10 +75,12 @@ function render() {
             const obj = file.groups.DEM[0];
             const sel = (obj.id === selectedId || file.id === selectedId) ? ' selected' : '';
             const visIcon = obj.visible ? svgEye : svgEyeOff;
+            const swatchColorDEM = obj.style?.color || obj.style?.defaultColor || '#888888';
             html += `<div class="tree-node tree-file tree-flat-dem">`;
             html += `  <div class="tree-row tree-row-dem${sel}" data-file-id="${file.id}" data-obj-id="${obj.id}">`;
             html += `    <span class="tree-label">${esc(file.name)}</span>`;
             html += `    <span class="tree-row-actions">`;
+            html += `      <button class="tree-color-swatch" data-obj-id="${obj.id}" title="Object color" style="background:${swatchColorDEM}"></button>`;
             html += `      <button class="tree-jumpto" data-obj-id="${obj.id}" title="Jump to object">${svgTarget}</button>`;
             html += `      <span class="tree-visibility" data-obj-id="${obj.id}" title="Toggle visibility">${visIcon}</span>`;
             html += `      <button class="tree-delete" data-file-id="${file.id}" title="Delete file">${svgTrash}</button>`;
@@ -86,8 +93,9 @@ function render() {
             html += `<div class="tree-node tree-file${fileCollapsed}" data-node-id="${file.id}">`;
             html += `  <div class="tree-row tree-row-file${fileSel}" data-file-id="${file.id}">`;
             html += `    <span class="tree-toggle">▼</span>`;
-            html += `    <span class="tree-label">${esc(file.name)}</span>`;
+            html += `    <span class="tree-label tree-label-rename" data-rename-file-id="${file.id}" title="Double-click to rename">${esc(file.name)}</span>`;
             html += `    <span class="tree-row-actions">`;
+            if (file.xmlDoc) html += `      <button class="tree-save" data-file-id="${file.id}" title="Save/export XML">${svgSave}</button>`;
             html += `      <button class="tree-delete" data-file-id="${file.id}" title="Delete file">${svgTrash}</button>`;
             html += `    </span>`;
             html += `  </div>`;
@@ -120,9 +128,14 @@ function render() {
                 for (const obj of objects) {
                     const sel = obj.id === selectedId ? ' selected' : '';
                     const visIcon = obj.visible ? svgEye : svgEyeOff;
+                    const swatchColor = obj.style?.color || obj.style?.defaultColor || '#888888';
+                    const isContourMode = obj.style?.displayMode === 'contour';
+                    const showContourBtn = CONTOUR_TYPES.has(type);
                     html += `        <div class="tree-row tree-row-obj${sel}" data-obj-id="${obj.id}">`;
-                    html += `          <span class="tree-label">${esc(obj.name)}</span>`;
+                    html += `          <span class="tree-label tree-label-rename" data-rename-obj-id="${obj.id}" title="Double-click to rename">${esc(obj.name)}</span>`;
                     html += `          <span class="tree-row-actions">`;
+                    html += `            <button class="tree-color-swatch" data-obj-id="${obj.id}" title="Object color" style="background:${swatchColor}"></button>`;
+                    if (showContourBtn) html += `            <button class="tree-contour${isContourMode ? ' active' : ''}" data-obj-id="${obj.id}" title="Toggle contours">${svgContour}</button>`;
                     html += `            <button class="tree-jumpto" data-obj-id="${obj.id}" title="Jump to object">${svgTarget}</button>`;
                     html += `            <span class="tree-visibility" data-obj-id="${obj.id}" title="Toggle visibility">${visIcon}</span>`;
                     html += `            <button class="tree-delete-obj" data-obj-id="${obj.id}" data-file-id="${file.id}" title="Delete object">${svgTrash}</button>`;
@@ -283,6 +296,109 @@ function attachEvents(container) {
             } else {
                 doDelete();
             }
+        });
+    });
+
+    // Save/export XML buttons
+    container.querySelectorAll('.tree-save').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const file = findFile(btn.dataset.fileId);
+            if (file) exportFileXML(file);
+        });
+    });
+
+    // Inline rename — double-click on file labels
+    container.querySelectorAll('.tree-label-rename[data-rename-file-id]').forEach(label => {
+        label.addEventListener('dblclick', (e) => {
+            e.stopPropagation();
+            const fileId = label.dataset.renameFileId;
+            const file = findFile(fileId);
+            if (!file) return;
+            const input = document.createElement('input');
+            input.className = 'tree-rename-input';
+            input.value = file.name;
+            label.replaceWith(input);
+            input.focus();
+            input.select();
+            const commit = () => {
+                const val = input.value.trim();
+                if (val && val !== file.name) renameFile(fileId, val);
+                else render(); // restore if unchanged
+            };
+            input.addEventListener('blur', commit);
+            input.addEventListener('keydown', (ev) => {
+                if (ev.key === 'Enter') { ev.preventDefault(); input.blur(); }
+                else if (ev.key === 'Escape') { input.value = file.name; input.blur(); }
+            });
+        });
+    });
+
+    // Inline rename — double-click on object labels
+    container.querySelectorAll('.tree-label-rename[data-rename-obj-id]').forEach(label => {
+        label.addEventListener('dblclick', (e) => {
+            e.stopPropagation();
+            const objId = label.dataset.renameObjId;
+            const files = getFiles();
+            let objName = '';
+            for (const f of files) {
+                for (const g of Object.values(f.groups)) {
+                    const o = g.find(x => x.id === objId);
+                    if (o) { objName = o.name; break; }
+                }
+                if (objName) break;
+            }
+            const input = document.createElement('input');
+            input.className = 'tree-rename-input';
+            input.value = objName;
+            label.replaceWith(input);
+            input.focus();
+            input.select();
+            const commit = () => {
+                const val = input.value.trim();
+                if (val && val !== objName) renameObject(objId, val);
+                else render();
+            };
+            input.addEventListener('blur', commit);
+            input.addEventListener('keydown', (ev) => {
+                if (ev.key === 'Enter') { ev.preventDefault(); input.blur(); }
+                else if (ev.key === 'Escape') { input.value = objName; input.blur(); }
+            });
+        });
+    });
+
+    // Contour toggle buttons
+    container.querySelectorAll('.tree-contour').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const objId = btn.dataset.objId;
+            const style = getStyle(objId);
+            const newMode = (style?.displayMode === 'contour') ? 'solid' : 'contour';
+            setStyle(objId, { displayMode: newMode });
+            btn.classList.toggle('active', newMode === 'contour');
+        });
+    });
+
+    // Color swatch buttons — open native color picker
+    container.querySelectorAll('.tree-color-swatch').forEach(swatch => {
+        swatch.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const objId = swatch.dataset.objId;
+            const style = getStyle(objId);
+            const currentColor = style?.color || style?.defaultColor || '#888888';
+
+            const input = document.createElement('input');
+            input.type = 'color';
+            input.value = currentColor;
+            Object.assign(input.style, { position: 'fixed', opacity: '0', pointerEvents: 'none', top: '0', left: '0' });
+            document.body.appendChild(input);
+
+            input.addEventListener('input', (ev) => {
+                setStyle(objId, { color: ev.target.value });
+                swatch.style.background = ev.target.value;
+            });
+            input.addEventListener('change', () => input.remove());
+            input.click();
         });
     });
 
